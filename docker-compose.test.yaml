@@ -1,0 +1,22 @@
+services:
+  api:
+    container_name: test_api
+    environment: 
+      - PGUSER=quizzical
+      - PGHOST=db
+      - PGPASSWORD=password
+      - PGDATABASE=quizzicalDB_test
+      - PGPORT=5432
+      - NODE_ENV=test
+    depends_on:
+      - db
+    tty: true
+  db:
+    container_name: test_db
+    volumes:
+      - "test_db:/var/lib/postgresql/data"
+    environment: 
+      - POSTGRES_DB=quizzicalDB_test
+      - POSTGRES_PASSWORD=password
+volumes:
+  test_db:
