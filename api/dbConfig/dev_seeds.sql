@@ -1,2 +1,2 @@
-INSERT INTO players (name, scores) 
+INSERT INTO players (playername, scores) 
 VALUES
