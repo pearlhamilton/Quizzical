@@ -1,5 +1,6 @@
 [build]
     command = "npm run build" # how to trigger a build
+    base = "react-client/"
     publish = "/build" # what folder to publish 
 
 [[redirects]]
