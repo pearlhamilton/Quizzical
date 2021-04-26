@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component} from 'react'
 import io from "socket.io-client";
 import { Switch, Route } from 'react-router-dom';
-
+import { Welcome } from './pages';
 const serverEndpoint = "http://localhost:3000";
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
 
   return (
       <Switch>
-        <Route exact path="/" render={() => <h1>Welcome to Quizzical</h1>} />
+        <Route exact path="/" component={Welcome} />
         {/* <Route exact path="/quizz/:id" component={quiz} /> */}
       </Switch>
   );

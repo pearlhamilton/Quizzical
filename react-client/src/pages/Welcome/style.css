@@ -1,0 +1,45 @@
+#welcome{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+#welcome img{
+    height: 200px; 
+}
+
+#welcome form{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    width: 90%;
+}
+#welcome label{
+    text-align: center; 
+    margin-bottom: 5px;  
+    font-size: 18px;
+    width: 100%;
+}
+#welcome input {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;  
+}
+
+#welcome input[type="text"] {
+    width: 100%;
+}
+
+#welcome input[type="submit"] {
+    width: 49%;
+}
+
+@media screen and (min-width: 700px) {
+    #welcome img{
+        height: 450px; 
+    }
+}
