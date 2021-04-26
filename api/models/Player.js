@@ -51,7 +51,7 @@ class Player {
                 console.log(playerData);
                 const db = await init();
                 const createPlayer = await db
-                    .collection("player")
+                    .collection("players")
                     .insertOne({ ...playerData });
                 resolve(createPlayer.ops[0]._id);
             } catch (err) {
