@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Component} from 'react'
 import io from "socket.io-client";
 import { Switch, Route } from 'react-router-dom';
-import { Welcome } from './pages';
+import { Welcome, Home, LeaderBoard, Quiz } from "./pages";
+
 const serverEndpoint = "http://localhost:3000";
 
 const App = () => {
@@ -41,10 +42,14 @@ const App = () => {
       
       <Switch>
         <Route exact path="/"  render={() => (<Welcome playerCount={playerCount} />)}/>
-     
+        <Route path="/home" component={Home} />
+      <Route path="/quiz" component={Quiz} />
+      <Route path="/leaderboard" component={LeaderBoard} />
+      {/* <Route path="/" component={PageNotFound} /> */}
         {/* <Route exact path="/quizz/:id" component={quiz} /> */}
       </Switch>
   );
 };
 
-export default App
+
+export default App;

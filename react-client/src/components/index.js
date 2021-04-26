@@ -1,1 +1,3 @@
-// export { default as ComponentName } from './ComponentName' 
+export { default as AnswerCard } from './AnswerCard' 
+export { default as Question } from './Question' 
+

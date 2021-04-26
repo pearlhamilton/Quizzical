@@ -9,8 +9,12 @@ services:
         target: /code
 
   db:
-    image: postgres:12.4
+    image: mongo:latest
     environment: 
-      - POSTGRES_USER=quizzical
+      - MONGO_INITDB_ROOT_USERNAME=quizzicalTeam
+      - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
+      - "dbdata:/var/lib/mongodb/data"
       - "./db/migrations:/docker-entrypoint-initdb.d/:ro"
+volumes:
+  dbdata:

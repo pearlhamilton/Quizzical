@@ -7,7 +7,15 @@ const server = require("http").createServer(app);
 
 
 //ROUTES
-app.get('/', (req, res) => res.send("Welcome to Quizzical"))
+const playersRoutes = require('./routes/players');
+const scoresRoutes = require('./routes/scores');
+
+app.use('/players', playersRoutes);
+app.use('/scores', scoresRoutes);
+
+// Root route
+app.get('/', (req, res) => res.send("Hello, world! Welcome to Quizzical\'s API!"))
+
 
 //make server and sockets interact
 const io = require("socket.io")(server, {
@@ -15,6 +23,7 @@ const io = require("socket.io")(server, {
         origin: "*",
         }
     });
+
 
 io.on('connection', socket => {
     console.log(`connected to socket: ${socket.id}`);
