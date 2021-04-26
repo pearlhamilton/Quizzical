@@ -5,10 +5,10 @@ import Quiz from "../Quiz";
 
 function HomePage() {
   
-  const handleClick = () => {
-    // dispatch(fetchQuiz());
-    <Link to="/quiz"></Link>;
-  };
+  // const handleClick = () => {
+  //   // dispatch(fetchQuiz());
+  //   <Link to="/quiz"></Link>;
+  // };
 
   return (
     <div>
@@ -48,9 +48,11 @@ function HomePage() {
         </label>
         <br />
       </form>
-      <button type="submit" value="Play" onClick={handleClick}>
-        Play
+      
+      <button type="submit" value="Play">
+        <Link to="/quiz" > Play </Link>
       </button>
+
     </div>
   );
 }
