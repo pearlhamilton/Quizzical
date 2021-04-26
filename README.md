@@ -20,22 +20,26 @@ Open the terminal:
 `npm install`  
 `npm run dev`   
 
+To start up client test suite:
+`npm run tests` 
+
 It should automatically load on 0.0.0.0:8080
 
-To start docker compose with api and database containers  
+To start docker compose with api and database containers: 
 `bash _scripts/startDev.sh`    
 - starts api & db services
 - runs db migrations
 - seeds db for development
 - serves api on localhost:3000
 
+To run our test suite:   
 `bash _scripts/startTest.sh` 
 - starts api & db services
 - runs db migrations
 - attaches to api container and triggers full test run
 - no ports mapped to local host
 
-To teardown docker compose completely  
+To teardown docker compose completely:   
 `bash _scripts/teardown.sh`  
 
 # Technologies
