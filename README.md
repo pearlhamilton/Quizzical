@@ -16,7 +16,7 @@ Clone or download the repo.
 Clone this repo and navigate to the root directory of this repo.
 
 Open the terminal:  
-`cd client`   
+`cd react-client`   
 `npm install`  
 `npm run dev`   
 
@@ -24,8 +24,16 @@ It should automatically load on 0.0.0.0:8080
 
 To start docker compose with api and database containers  
 `bash _scripts/startDev.sh`    
+- starts api & db services
+- runs db migrations
+- seeds db for development
+- serves api on localhost:3000
 
-**API:** localhost:3000   
+`bash _scripts/startTest.sh` 
+- starts api & db services
+- runs db migrations
+- attaches to api container and triggers full test run
+- no ports mapped to local host
 
 To teardown docker compose completely  
 `bash _scripts/teardown.sh`  
