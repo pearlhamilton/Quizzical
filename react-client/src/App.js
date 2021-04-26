@@ -3,7 +3,8 @@ import io from "socket.io-client";
 import { Switch, Route } from 'react-router-dom';
 import { Welcome, Home, LeaderBoard, Quiz } from "./pages";
 
-const serverEndpoint = "http://localhost:3000";
+// const serverEndpoint = "http://localhost:3000";
+const serverEndpoint = "https://quizzicalquiz.herokuapp.com"
 
 const App = () => {
 
