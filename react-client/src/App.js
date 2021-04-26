@@ -1,5 +1,11 @@
 import React from 'react'
+import {Home, LeaderBoard } from './pages'
 
-const App = () => <h1>Hello World!</h1>
+const App = () => 
+<div>
+   
+    <Home />
+    <LeaderBoard />
+</div>
 
 export default App
