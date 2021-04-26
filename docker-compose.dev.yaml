@@ -1,37 +1,23 @@
 services:
-  # client:
-  #   container_name: quizzical_client
-  #   image: node:12.18.4
-  #   ports: 
-  #     - 8080:8080
-  #   working_dir: /code
-  #   volumes:
-  #     - type: bind
-  #       source: ./client
-  #       target: /code
-  #   command: bash -c "npm install && npm run dev"
   api:
     container_name: quizzical_api
     ports: 
       - 3000:3000
     environment: 
-      - PGUSER=quizzical
-      - PGHOST=db
-      - PGPASSWORD=password
-      - PGDATABASE=quizzicalDB
-      - PGPORT=5432
+      - DB_NAME=quizzical_db
+      - DB_CONNECTION=mongodb://quizzicalTeam:password@db:27017
       - NODE_ENV=development
     depends_on:
       - db
-    command: bash -c "npm install && npm run seedDev && npm run dev"
+    command: bash -c "npm install && npm run dev"
 
   db:
     container_name: quizzical_db
     volumes:
-      - "dbdata:/var/lib/postgresql/data"
+      - "dbdata:/var/lib/mongodb/data"
     environment: 
-      - POSTGRES_DB=quizzicalDB
-      - POSTGRES_USER=quizzical
-      - POSTGRES_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=quizzicalTeam
+      - MONGO_INITDB_DATABASE=quizzical_db
+      - MONGO_INITDB_ROOT_PASSWORD=password
 volumes:
   dbdata:

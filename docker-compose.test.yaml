@@ -2,11 +2,8 @@ services:
   api:
     container_name: test_api
     environment: 
-      - PGUSER=quizzical
-      - PGHOST=db
-      - PGPASSWORD=password
-      - PGDATABASE=quizzicalDB_test
-      - PGPORT=5432
+      - DB_NAME=test_db
+      - DB_CONNECTION=mongodb://quizzicalTeam:password@db:27017
       - NODE_ENV=test
     depends_on:
       - db
@@ -14,9 +11,10 @@ services:
   db:
     container_name: test_db
     volumes:
-      - "test_db:/var/lib/postgresql/data"
+      - "test_db:/var/lib/mongodb/data"
     environment: 
-      - POSTGRES_DB=quizzicalDB_test
-      - POSTGRES_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=quizzicalTeam
+      - MONGO_INITDB_DATABASE=test_db
+      - MONGO_INITDB_ROOT_PASSWORD=password
 volumes:
   test_db:
