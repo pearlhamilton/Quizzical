@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css'
 
 
@@ -18,6 +18,23 @@ const Welcome = ({playerCount}) => {
         setNameInput("");
     } 
 
+    const renderJoin= () => {
+        let tags = null; 
+
+        if(playerCount < 2 ) {
+            tags = "disabled";
+        }
+        console.log
+
+        return(
+            <>
+            <input type="submit" className={tags} name="joinQuiz" value="Join"/>
+            </>
+        )
+
+    }
+
+
     return(
         <div id="welcome">
             <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical"/>
@@ -26,9 +43,9 @@ const Welcome = ({playerCount}) => {
                 <input type="text" id="username" name="username" placeholder="Choose your player name" value={usrInput} onChange={handleInput}/>
             
                 <input type="submit" name="newQuiz" value="Create"/>
-                <input type="submit" name="joinQuiz" value="Join"/>
+                {renderJoin()}
             </form>
-            <p>Players online: <span>{ playerCount }</span></p>
+            <p>{ (playerCount - 1) ===  0 ? "No Players Online" : `Players online: ${playerCount - 1}`}</p>
         </div>
     );
 };

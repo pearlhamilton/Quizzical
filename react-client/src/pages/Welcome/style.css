@@ -59,12 +59,17 @@ body{
     width:100%;
     text-align: center;
     font-family: var(--heading-text);
-    color: var(--content)
+    color: var(--content);
+    font-size: 1.5rem;
+}
+#welcome .disabled{
+    pointer-events: none;
+    color: grey;
+    
 }
 
-#welcome span{
-  font-size: 1.5rem;
-}
+
+
 
 @media screen and (min-width: 700px) {
     #welcome img{
