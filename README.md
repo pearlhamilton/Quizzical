@@ -72,24 +72,24 @@ To teardown docker compose completely:
 
 # Changelog
 
-## React-Client
+### React-Client
 1.
 
-## API
+### API
 1. Set up server with routes, models and controllers
 2. Install socket.io and integrate into client
 
-## db 
+### db 
 1. Set up config files and install dependencies required for mongodb.
 
 
 # Wins & Challenges
 
-## Wins
+### Wins
 - Deploying to Heroku and Netlify from one repo! And deploy early!
 
 
-## Challenges
+### Challenges
 
 
 # Future Features 
