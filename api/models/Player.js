@@ -48,7 +48,6 @@ class Player {
     static create(playerData) {
         return new Promise(async (resolve, reject) => {
             try {
-                console.log(playerData);
                 const db = await init();
                 const createPlayer = await db
                     .collection("players")
@@ -64,9 +63,10 @@ class Player {
         return new Promise(async (resolve, reject) => {
             try {
                 const db = await init();
-                let updatedPlayerData = await db.collection('players').findOneAndUpdate({ _id: ObjectId(this.id) }, { score: highScore }, { returnOriginal: false })
+                let updatedPlayerData = await db.collection('players').findOneAndUpdate({ _id: ObjectId(this.id) }, { $set: { "score": highScore } }, {returnOriginal: false })
+                console.log(updatedPlayerData)
                 let updatedPlayer = new Player(updatedPlayerData.value);
-                resolve (updatedPlayer);
+                resolve(updatedPlayer);
             } catch (err) {
                 reject('Error updating player score');
             }
