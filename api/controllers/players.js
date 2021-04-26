@@ -11,6 +11,8 @@ async function index (req, res) {
 
 async function show (req, res) {
     try {
+        console.log(req.params.id)
+      
         const player = await Player.findById(req.params.id);
         const scores = await player.scores;
         res.status(200).json({ ...player, scores });
@@ -19,4 +21,13 @@ async function show (req, res) {
     };
 }
 
-module.exports = { index, show }
+async function create (req, res) {
+    try {
+        const player = await Player.create(req.body);
+        res.status(201).json(player)
+    } catch (err) {
+        res.status(422).json({err})
+    }
+}
+
+module.exports = { index, show, create }
