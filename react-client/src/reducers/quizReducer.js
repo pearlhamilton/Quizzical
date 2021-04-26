@@ -10,7 +10,7 @@ const init = {
 current_question: 0
 }
 
-console.log(init.current_question)
+
 
 const quizReducer = (state = init, action) => {
   switch (action.type) {

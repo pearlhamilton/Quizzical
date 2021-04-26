@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AnswerCard, Question } from "../../components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchQuiz } from "../../actions";
 
 const Quiz = () => {
+  const dispatch = useDispatch();
+
+  // dispatch(fetchQuiz());
+  useEffect(() => {
+    dispatch(fetchQuiz());
+  }, []);
+
   const currentQuestion = useSelector((state) => state.current_question);
   const result = useSelector((state) => state.results);
   let correctAnswer = result[currentQuestion].correct_answer;
@@ -27,9 +35,11 @@ const Quiz = () => {
   }
   const shuffeledAnswers = shuffle(answers);
   console.log(shuffeledAnswers);
+
   return (
     <>
       <h1> I am the quiz page</h1>
+      <p></p>
       <Question />
 
       {shuffeledAnswers &&

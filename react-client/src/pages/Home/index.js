@@ -1,17 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { fetchQuiz } from "../../actions";
+
+import { Link } from "react-router-dom";
+import Quiz from "../Quiz";
 
 function HomePage() {
-  const dispatch = useDispatch();
+  
   const handleClick = () => {
-    dispatch(fetchQuiz());
+    // dispatch(fetchQuiz());
+    <Link to="/quiz"></Link>;
   };
 
   return (
     <div>
       <h1>Let's Get Quizzical</h1>
-      <button onClick={handleClick}>get questions</button>
       <form>
         <label for="number of players">
           Number of players
@@ -46,14 +47,10 @@ function HomePage() {
           </select>
         </label>
         <br />
-        {/* <label>Player 1 username</label>
-        <input type="text" placeholder="enter your username" />
-        <br />
-        <label>Player 2 username</label>
-        <input type="text" placeholder="enter your username" />
-        <br /> */}
-        <input type="submit" value="Play" />
       </form>
+      <button type="submit" value="Play" onClick={handleClick}>
+        Play
+      </button>
     </div>
   );
 }
