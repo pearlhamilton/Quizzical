@@ -50,10 +50,10 @@ class Player {
             try {
                 console.log(playerData);
                 const db = await init();
-                const sendPlayer = await db
-                    .collection("player")
-                    .insertOne({ ...playerData, date: new Date() });
-                resolve(sendPlayer.ops[0]._id);
+                const createPlayer = await db
+                    .collection("players")
+                    .insertOne({ ...playerData });
+                resolve(createPlayer.ops[0]._id);
             } catch (err) {
                 reject("Error creating player");
             }
