@@ -63,19 +63,24 @@ To teardown docker compose completely:
 
 # Process 
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board.
-2. Create Figma design plan.
-3. Deploy to Netlify and Heroku!
-
+2. Create Figma design plan.  
+3. Deploy to Netlify and Heroku!  
+4. Set up files and folder structure for docker, react-client with redux, api, db for mongodb and test suites.    
 
 # Bugs
 
 
 # Changelog
 
-## Server-side
+## React-Client
+1.
 
+## API
+1. Set up server with routes, models and controllers
+2. Install socket.io and integrate into client
 
-## Client-side
+## db 
+1. Set up config files and install dependencies required for mongodb.
 
 
 # Wins & Challenges
@@ -88,4 +93,6 @@ To teardown docker compose completely:
 
 
 # Future Features 
-
+- Login / user accounts with authentication   
+- High scores leaderboard for each difficulty  
+- Score to include time taken to complete quiz  
