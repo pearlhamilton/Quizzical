@@ -68,7 +68,7 @@ To teardown docker compose completely:
 4. Set up files and folder structure for docker, react-client with redux, api, db for mongodb and test suites.    
 
 # Bugs
-
+- [x] issues with routing with mongodb  
 
 # Changelog
 
@@ -78,6 +78,7 @@ To teardown docker compose completely:
 ### API
 1. Set up server with routes, models and controllers
 2. Install socket.io and integrate into client
+3. Complete GET, POST, PATCH routes 
 
 ### db 
 1. Set up config files and install dependencies required for mongodb.
@@ -87,10 +88,12 @@ To teardown docker compose completely:
 
 ### Wins
 - Deploying to Heroku and Netlify from one repo! And deploy early!
-
+- Amazing progress after Day 1 - socket connection establisted, routes working on API, react-redux set up!
 
 ### Challenges
-
+- Understanding and implementing socket.io
+- Testing with mongodb
+- Deploying mongodb
 
 # Future Features 
 - Login / user accounts with authentication   
