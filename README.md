@@ -20,10 +20,10 @@ Open the terminal:
 `npm install`  
 `npm run dev`   
 
+It should automatically load on 0.0.0.0:8080
+
 To start up client test suite:
 `npm run tests` 
-
-It should automatically load on 0.0.0.0:8080
 
 To start docker compose with api and database containers: 
 `bash _scripts/startDev.sh`    
