@@ -8,19 +8,22 @@ const App = () => {
 
     const [socket, setSocket] = useState(null);
     const [message, setMessage] = useState();
+
+
     useEffect(() => {
         const socket = io(serverEndpoint);
-        setSocket({ socket });
-        // socket.on("connect", (str) => {
-        //     setMessage(str)
-        //   })
+       
         socket.on('admin-message', msg => console.log(msg));
         socket.on('admin-message', msg => setMessage(msg));
-        //closes the connection
+
+        setSocket({ socket });
+
         return() => {
             socket.disconnect();
         }
       }, []);
+
+
 
      
 

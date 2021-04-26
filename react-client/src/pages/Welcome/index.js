@@ -22,7 +22,7 @@ const Welcome = () => {
             <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical"/>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="That's not my name!" value={usrInput} onChange={handleInput}/>
+                <input type="text" id="username" name="username" placeholder="Choose your player name" value={usrInput} onChange={handleInput}/>
             
                 <input type="submit" name="newQuiz" value="Create the Quiz"/>
                 <input type="submit" name="joinQuiz" value="Join the Quiz"/>
