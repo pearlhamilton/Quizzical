@@ -72,6 +72,7 @@ To teardown docker compose completely:
 
 # Bugs
 - [x] issues with routing with mongodb  
+- [x] cors error when implementing socket.io
 
 # Changelog
 
@@ -84,8 +85,9 @@ To teardown docker compose completely:
 3. Complete GET, POST, PATCH routes 
 
 ### db 
-1. Set up config files and install dependencies required for mongodb.
-
+1. Initially decided on SQL but changed to noSQL due to simplicity of data needed.   
+2. Update config files and install dependencies required for mongodb.
+3. Set up connectin string with mongodb and mock connection for testing
 
 # Wins & Challenges
 
