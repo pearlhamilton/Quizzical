@@ -1,10 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { fetchQuiz } from "../../actions";
 
 function HomePage() {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(fetchQuiz());
+  };
+
   return (
     <div>
       <h1>Let's Get Quizzical</h1>
-
+      <button onClick={handleClick}>get questions</button>
       <form>
         <label for="number of players">
           Number of players
@@ -39,12 +46,12 @@ function HomePage() {
           </select>
         </label>
         <br />
-        <label>Player 1 username</label>
+        {/* <label>Player 1 username</label>
         <input type="text" placeholder="enter your username" />
         <br />
         <label>Player 2 username</label>
         <input type="text" placeholder="enter your username" />
-        <br />
+        <br /> */}
         <input type="submit" value="Play" />
       </form>
     </div>
