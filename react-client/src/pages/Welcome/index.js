@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css'
 
 
-const Welcome = ({playerCount}) => {
+const Welcome = ({playerCount, joinGame}) => {
     const [ username, setUsername ] = useState("");
     //get the existing usrnames???? 
     const [ usrInput, setUsrInput ] = useState("");
@@ -12,9 +12,10 @@ const Welcome = ({playerCount}) => {
     const handleInput = e => setUsrInput(e.target.value);
 
  
-    const handleSubmit = e => {
+    const handleCreate = e => {
         e.preventDefault();
         setUsername(usrInput);
+        
         setNameInput("");
     } 
 
@@ -38,11 +39,11 @@ const Welcome = ({playerCount}) => {
     return(
         <div id="welcome">
             <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical"/>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Choose your player name" value={usrInput} onChange={handleInput}/>
             
-                <input type="submit" name="newQuiz" value="Create"/>
+                <input type="submit" name="newQuiz" value="New Game" onSubmit={handleCreate}/>
                 {renderJoin()}
             </form>
             <p>{ (playerCount - 1) ===  0 ? "No Players Online" : `Players online: ${playerCount - 1}`}</p>
