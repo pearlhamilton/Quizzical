@@ -60,11 +60,15 @@ class Player {
         });
     }
 
-    update(score) {
+    update(highScore) {
         return new Promise(async (resolve, reject) => {
             try {
+                const db = await init();
+                let updatedPlayerData = await db.collection('players').findOneAndUpdate({ _id: ObjectId(this.id) }, { score: highScore }, { returnOriginal: false })
+                let updatedPlayer = new Player(updatedPlayerData.value);
+                resolve (updatedPlayer);
             } catch (err) {
-                reject(`Error updating score: ${err}`);
+                reject('Error updating player score');
             }
         });
     }
