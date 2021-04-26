@@ -2,9 +2,12 @@ const init = {
   loading: false,
   results: [
       {question: "", 
-      correct_answer:"" 
+      correct_answer:"",
+      answers: []
     }
-]
+  
+],
+current_question: 0
 }
 
 const quizReducer = (state = init, action) => {

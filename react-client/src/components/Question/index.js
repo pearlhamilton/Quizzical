@@ -8,6 +8,7 @@ const Question = () => {
   const result = useSelector((state) => state.results);
   console.log(result[0].question);
   const question = result[0].question;
+  
   //   if (result) {
   //     console.log(result[0].question);
   //   } else {

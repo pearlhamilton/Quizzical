@@ -1,8 +1,13 @@
 import React from "react"
 
-const AnswerCard = () => {
+const AnswerCard = (props) => {
+
+
     return (
-        <p> I am an answer card </p>
+        <>
+         <button>{props.answer}</button>
+
+         </>
     )
 }
 

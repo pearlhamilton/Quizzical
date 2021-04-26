@@ -11,10 +11,11 @@ export const fetchQuiz = () => {
         `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`
       );
 
-      let quizData = data.results.map((element) => ({
+      let quizData = data.results.map((element, i) => ({
+        id: i + 1,
         question: element.question,
         correct_answer: element.correct_answer,
-        incorrect_answers: element.incorrect_answers,
+        answers: [...element.incorrect_answers, element.correct_answer],
       }));
       console.log(quizData);
       //   console.log(data.results[0].question);
