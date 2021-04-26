@@ -10,6 +10,8 @@ const init = {
 current_question: 0
 }
 
+console.log(init.current_question)
+
 const quizReducer = (state = init, action) => {
   switch (action.type) {
     case "LOAD_QUESTIONS":
@@ -19,6 +21,12 @@ const quizReducer = (state = init, action) => {
       };
     case "SET ERROR":
       return { ...state, error: action.payload };
+
+  case"CHANGE_QUESTION":
+      const nextQuestion = state.current_question + 1
+      return{...state, current_question: nextQuestion}
+
+
     default:
       return state;
   }

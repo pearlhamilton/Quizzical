@@ -3,11 +3,10 @@ import {AnswerCard, Question} from '../../components'
 import { useSelector } from  'react-redux'
 
 const Quiz = () => {
-
+    const currentQuestion = useSelector((state) => state.current_question)
     const result = useSelector((state) => state.results);
-    console.log(result[0])
-    let correctAnswer = result[0].correct_answer
-    let answers = result[0].answers
+    let correctAnswer = result[currentQuestion].correct_answer
+    let answers = result[currentQuestion].answers
     // console.log(incorrectAnswer)
 
     //     if (incorrectAnswer){

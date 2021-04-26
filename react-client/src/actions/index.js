@@ -28,3 +28,6 @@ export const fetchQuiz = () => {
     } catch (err) {}
   };
 };
+
+
+export const changeQuestion = () => ({ type: 'CHANGE_QUESTION' })
