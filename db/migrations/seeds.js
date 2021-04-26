@@ -5,6 +5,6 @@ db.players.drop();
 db.players.insertMany([
     {
         player: "Player 1",
-        score: "20",
+        score: 20,
     },
 ]);
