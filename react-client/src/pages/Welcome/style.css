@@ -1,13 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;1,600&family=Pacifico&display=swap');
+
+:root{
+    --heading-text: 'Pacifico';
+    --content-text: 'Nunito', sans-serif;
+    --content: white;
+}
+
+
+body{
+    background-image: url('../../images/home-background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
 #welcome{
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    font-style: var(--content-text);
 
 }
 
 #welcome img{
     height: 200px; 
+    margin-top: 10%;
 }
 
 #welcome form{
@@ -15,19 +33,17 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* flex-direction: column; */
-    width: 90%;
+    width: 70%;
 }
 #welcome label{
-    text-align: center; 
-    margin-bottom: 5px;  
-    font-size: 18px;
-    width: 100%;
+    display: none;
 }
 #welcome input {
     font-size: 18px;
     margin-bottom: 10px;
-    text-align: center;  
+    text-align: center;
+    border-radius: 5px;  
+    padding: 10px 0;
 }
 
 #welcome input[type="text"] {
@@ -35,11 +51,28 @@
 }
 
 #welcome input[type="submit"] {
-    width: 49%;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 10px;
+}
+#welcome p{
+    width:100%;
+    text-align: center;
+    font-family: var(--heading-text);
+    color: var(--content)
+}
+
+#welcome span{
+  font-size: 1.5rem;
 }
 
 @media screen and (min-width: 700px) {
     #welcome img{
         height: 450px; 
+    }
+
+    #welcome input[type="submit"] {
+        font-weight: 600;
+        width: 49%;
     }
 }
