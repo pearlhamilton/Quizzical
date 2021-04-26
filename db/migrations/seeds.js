@@ -1,8 +1,8 @@
 const db = connect("mongodb://localhost:27017/quizzical_db");
 
-db.posts.drop();
+db.players.drop();
 
-db.posts.insertMany([
+db.players.insertMany([
     {
         player: "Player 1",
         score: "20",
