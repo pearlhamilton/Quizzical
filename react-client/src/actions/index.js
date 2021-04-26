@@ -17,10 +17,17 @@ export const fetchQuiz = () => {
         correct_answer: element.correct_answer,
         answers: [...element.incorrect_answers, element.correct_answer],
       }));
-      console.log(quizData);
-      //   console.log(data.results[0].question);
+      // console.log(quizData[0].correct_answer);
+      // console.log(quizData[1].correct_answer);
+      // console.log(quizData[2].correct_answer);
+      // console.log(quizData[3].correct_answer);
+      // console.log(quizData[4].correct_answer);
+      // console.log(quizData[5].correct_answer);
+      // console.log(quizData[6].correct_answer);
+      // console.log(quizData[7].correct_answer);
+      // console.log(quizData[8].correct_answer);
+      // console.log(quizData[9].correct_answer);
 
-      //   console.log(data.results[0].correct_answer);
       dispatch({
         type: "LOAD_QUESTIONS",
         payload: quizData,
@@ -29,5 +36,4 @@ export const fetchQuiz = () => {
   };
 };
 
-
-export const changeQuestion = () => ({ type: 'CHANGE_QUESTION' })
+export const changeQuestion = () => ({ type: "CHANGE_QUESTION" });
