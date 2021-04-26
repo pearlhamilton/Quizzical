@@ -1,0 +1,1 @@
+docker exec -it quizzical_db mongo

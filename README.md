@@ -41,6 +41,9 @@ To run our test suite:
 - attaches to api container and triggers full test run
 - no ports mapped to local host
 
+MongoDB shell   
+`bash _scripts/mongo.sh`    
+
 To teardown docker compose completely:    
 `bash _scripts/teardown.sh`  
 
