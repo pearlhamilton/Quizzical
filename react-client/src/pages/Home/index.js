@@ -39,6 +39,12 @@ function HomePage() {
           </select>
         </label>
         <br />
+        <label>Player 1 username</label>
+        <input type="text" placeholder="enter your username" />
+        <br />
+        <label>Player 2 username</label>
+        <input type="text" placeholder="enter your username" />
+        <br />
         <input type="submit" value="Play" />
       </form>
     </div>
