@@ -1,19 +1,32 @@
-import React from "react";
-
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, useHistory } from "react-router-dom";
 import Quiz from "../Quiz";
+import {fetchQuiz} from '../../actions'
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function HomePage() {
-  
-  // const handleClick = () => {
-  //   // dispatch(fetchQuiz());
-  //   <Link to="/quiz"></Link>;
-  // };
+
+  const [ difficulty, setDifficulty] = useState("easy"); 
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(fetchQuiz(difficulty))
+    
+    history.push('/quiz')
+  }
+
+  const handleChange = e => {
+    setDifficulty(e.target.value)
+  }
 
   return (
     <div>
       <h1>Let's Get Quizzical</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label for="number of players">
           Number of players
           <input type="radio" id="1-player" name="players" value="1 player" />
@@ -25,7 +38,7 @@ function HomePage() {
         </label>
         <br />
         <label for="pick a category">
-          Pick a category
+          Pick a category    
           <select>
             <option value="General Knowledge">General Knowledge</option>
             <option value="Music">Music</option>
@@ -40,19 +53,15 @@ function HomePage() {
         <br />
         <label for="difficulty">
           Difficulty
-          <select>
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
+          <select name="difficulty-level" onChange={handleChange}>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
           </select>
         </label>
         <br />
+        <input type="submit"  value="Play"/>
       </form>
-      
-      <button type="submit" value="Play">
-        <Link to="/quiz" > Play </Link>
-      </button>
-
     </div>
   );
 }

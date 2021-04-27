@@ -22,13 +22,15 @@ const App = () => {
         setSocket( socket );
         // console.log(socket)
 
-        const joinGame = e => {
-            e.preventDefault();
-            const { username, gameId } = e.target;
-            const data = { username: username.value, gameId: gameId.value };
-            this.state.socket.emit('request-join-game', data);
-            this.setState({ username: username.value, current: { gameId: gameId.value } });
-        }
+        // const joinGame = e => {
+        //     e.preventDefault();
+        //     const { username, gameId } = e.target;
+        //     const data = { username: username.value, gameId: gameId.value };
+        //     this.state.socket.emit('request-join-game', data);
+        //     this.setState({ username: username.value, current: { gameId: gameId.value } });
+        // }
+
+        
         socket.on("users", (users) => {
           users.forEach((user) => {
             // user.self = user.userID === socket.id;
