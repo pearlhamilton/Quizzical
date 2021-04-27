@@ -14,7 +14,7 @@ describe('scores controller', () => {
     describe('index', () => {
         test('it returns scores with a 200 status code', async () => {
             let testScore = [10, 10] //??????
-            jest.spyOn(Score, 'all', 'get')
+            jest.spyOn(Score, 10, 10)
                  .mockResolvedValue(testScores);
             await scoresController.index(null, mockRes);
             expect(mockStatus).toHaveBeenCalledWith(200);

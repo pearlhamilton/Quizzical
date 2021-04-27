@@ -6,26 +6,31 @@
     --content: white;
 }
 
-
 body{
     background-image: url('../../images/home-background.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #welcome{
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center; 
+    /* flex-wrap: wrap; */
     font-style: var(--content-text);
-
 }
 
 #welcome img{
-    height: 200px; 
-    margin-top: 10%;
+    height: auto;
+    width: 200px;
+    margin: 3rem;
 }
 
 #welcome form{
@@ -65,15 +70,13 @@ body{
 #welcome .disabled{
     pointer-events: none;
     color: grey;
-    
 }
 
-
-
-
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
     #welcome img{
-        height: 450px; 
+        height: 360px; 
+        width: auto;
+        margin: 2rem;
     }
 
     #welcome input[type="submit"] {

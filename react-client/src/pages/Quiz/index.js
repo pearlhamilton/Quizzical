@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import { AnswerCard, Question } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchQuiz } from "../../actions";
@@ -6,8 +6,7 @@ import { Redirect } from "react-router";
 
 const Quiz = () => {
   const dispatch = useDispatch();
-
-
+  
   useEffect(() => {
     dispatch(fetchQuiz());
   }, []);
@@ -19,7 +18,6 @@ const Quiz = () => {
   const answers = result[currentQuestion].answers;
   const index = result.indexOf(result[currentQuestion])
   const question = result[currentQuestion].question;
-
 
 
 // SHUFFLE ARRAY, so answers are not in the same order each time
@@ -39,6 +37,7 @@ const Quiz = () => {
     }
     return array;
   }
+
 
 //Use the shuffled array and for each answer in the array map over it 
   const shuffledAnswers = shuffle(answers);
