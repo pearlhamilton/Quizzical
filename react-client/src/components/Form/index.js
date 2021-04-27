@@ -62,6 +62,7 @@ function Form() {
         <label for="number of questions">
           Number of questions (min:5 max:20)
           <input
+            value={numberOfQs}
             type="number"
             name="number-of-questions"
             min="5"
