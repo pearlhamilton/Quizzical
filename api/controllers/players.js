@@ -36,6 +36,7 @@ async function update(req, res) {
         console.log(player)
         const updatedPlayer = await player.update(req.body.score)
         res.json({ player: updatedPlayer })
+        res.status(204).json(updatedPlayer)
     } catch (err) {
         res.status(500).json({ err })
     }
