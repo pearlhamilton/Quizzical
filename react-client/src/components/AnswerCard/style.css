@@ -20,7 +20,7 @@ button {
   margin: auto;
   margin-top: 1rem;
   font-family: var(--content-text);
-  border: none;
+ 
 }
 
 button:hover {
