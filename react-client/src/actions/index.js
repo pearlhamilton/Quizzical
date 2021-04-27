@@ -4,11 +4,11 @@
 
 import axios from "axios";
 
-export const fetchQuiz = (difficulty) => {
+export const fetchQuiz = (difficulty, numberOfQs) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
-        `https://opentdb.com/api.php?amount=10&category=9&difficulty=${difficulty}&type=multiple`
+        `https://opentdb.com/api.php?amount=${numberOfQs}&category=9&difficulty=${difficulty}&type=multiple`
       );
 
       let quizData = data.results.map((element, i) => ({
@@ -17,7 +17,7 @@ export const fetchQuiz = (difficulty) => {
         correct_answer: element.correct_answer,
         answers: [...element.incorrect_answers, element.correct_answer],
       }));
-      console.log(quizData)
+      console.log(quizData);
       // console.log(quizData[0].correct_answer);
       // console.log(quizData[1].correct_answer);
       // console.log(quizData[2].correct_answer);
