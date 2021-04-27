@@ -2,21 +2,26 @@ import React, { useEffect } from "react";
 import { AnswerCard, Question } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchQuiz } from "../../actions";
+import { Redirect } from "react-router";
 
 const Quiz = () => {
   const dispatch = useDispatch();
 
-  // dispatch(fetchQuiz());
+
   useEffect(() => {
     dispatch(fetchQuiz());
   }, []);
+ 
 
+  const endQuestion = useSelector((state)=> state.endOfQuestions)
   const currentQuestion = useSelector((state) => state.current_question);
   const result = useSelector((state) => state.results);
-  let correctAnswer = result[currentQuestion].correct_answer;
   let answers = result[currentQuestion].answers;
-  console.log(answers);
+  let index = result.indexOf(result[currentQuestion])
 
+  
+
+  // SHUFFLE ARRAY, so answers are not in the same order each time
   function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
@@ -33,19 +38,31 @@ const Quiz = () => {
     }
     return array;
   }
+
+
+  //Use the shuffled array and for each answer in the array map over it 
   const shuffeledAnswers = shuffle(answers);
-  console.log(shuffeledAnswers);
+ 
+//if not at the end of the questions, keep rendering questions
+  if (!endQuestion){
 
   return (
     <>
       <h1> I am the quiz page</h1>
-      <p></p>
       <Question />
 
       {shuffeledAnswers &&
-        shuffeledAnswers.map((answer) => <AnswerCard answer={answer} />)}
+        shuffeledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
     </>
   );
+      } 
+    //else go to the leader board 
+    else{ 
+      return(
+        <Redirect to="/leaderboard"/>
+   
+    )
+    }
 };
 
 export default Quiz;

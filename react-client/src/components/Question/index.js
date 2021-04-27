@@ -7,7 +7,7 @@ const Question = () => {
   const result = useSelector((state) => state.results);
   const question = result[currentQuestion].question;
 
-  return <p> {question} </p>;
+  return <p style={{color: "white"}}> {question} </p>;
 };
 
 export default Question;

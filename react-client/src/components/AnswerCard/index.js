@@ -1,19 +1,25 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeQuestion } from "../../actions";
+import { endQuestions, changeQuestion } from "../../actions";
 
 const AnswerCard = (props) => {
+
   const dispatch = useDispatch();
-  const nextQuestion = (chosenAnswer) => dispatch(changeQuestion(chosenAnswer));
-  console.log(props);
+  const nextQuestion = (answer) => dispatch(changeQuestion(answer));
+  const endQuestion = (finalAnswer) => dispatch(endQuestions(finalAnswer))
 
+    // index 9 is where the code broke, so if the answer that is clicked on is at index 9 of the array, do not go to the next question, instead end the questions
 
+  if (props.index === 9){
+    return(
+        <button style={{color: "white", backgroundColor: "pink"}} onClick = { () => endQuestion(props.answer)}>{props.answer}</button>
+    )
   
-  return (
-    <>
-      <button onClick={() => nextQuestion(props.answer)}>{props.answer}</button>
-    </>
-  );
+  }else{
+      return (
+        <button style={{color: "white", backgroundColor: "pink"}} onClick={() => nextQuestion(props.answer)}>{props.answer}</button>
+    );
+  }
 };
 
 export default AnswerCard;

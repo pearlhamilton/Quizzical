@@ -37,3 +37,5 @@ export const fetchQuiz = () => {
 };
 
 export const changeQuestion = (chosenAnswer) => ({ type: "CHANGE_QUESTION", payload:chosenAnswer });
+
+export const endQuestions = (finalAnswer) => ({type: "END_QUESTIONS", payload:finalAnswer});
