@@ -31,6 +31,12 @@ function Form() {
     subject(setSubject);
   };
 
+  //random category
+  let categories = [9, 12, 21, 22, 26, 31]
+  const random = Math.floor(Math.random() * categories.length);
+  let randomCategory = categories[random];
+  console.log(randomCategory)
+
   return (
     <div>
       {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
@@ -56,6 +62,7 @@ function Form() {
             <option value="22">Geography</option>
             <option value="31">Anime and Manga</option>
             <option value="26">Celebrities</option>
+            <option value={randomCategory}> Surprise Me</option>
           </select>
         </label>
         <br />
