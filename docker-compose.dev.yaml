@@ -5,7 +5,7 @@ services:
       - 3000:3000
     environment: 
       - DB_NAME=quizzical_db
-      - DB_CONNECTION=mongodb://quizzicalTeam:password@db:27017
+      - DB_CONNECTION=mongodb://quizzicalTeam:quizzical1234@db:27017
       - NODE_ENV=development
     depends_on:
       - db
@@ -18,6 +18,6 @@ services:
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=quizzicalTeam
       - MONGO_INITDB_DATABASE=quizzical_db
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_PASSWORD=quizzical1234
 volumes:
   dbdata:

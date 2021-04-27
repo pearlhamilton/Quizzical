@@ -12,7 +12,7 @@ services:
     image: mongo:latest
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=quizzicalTeam
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_PASSWORD=quizzical1234
     volumes:
       - "dbdata:/var/lib/mongodb/data"
       - "./db/migrations:/docker-entrypoint-initdb.d/:ro"
