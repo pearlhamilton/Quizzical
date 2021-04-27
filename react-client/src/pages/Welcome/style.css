@@ -30,7 +30,6 @@ body{
 #welcome img{
     height: auto;
     width: 200px;
-    margin: 2rem;
     margin: 3rem;
 }
 
@@ -73,10 +72,11 @@ body{
     color: grey;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
     #welcome img{
-        height: 450px; 
+        height: 360px; 
         width: auto;
+        margin: 2rem;
     }
 
     #welcome input[type="submit"] {
