@@ -36,4 +36,4 @@ export const fetchQuiz = () => {
   };
 };
 
-export const changeQuestion = () => ({ type: "CHANGE_QUESTION" });
+export const changeQuestion = (chosenAnswer) => ({ type: "CHANGE_QUESTION", payload:chosenAnswer });

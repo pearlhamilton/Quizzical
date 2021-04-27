@@ -4,14 +4,14 @@ import { changeQuestion } from "../../actions";
 
 const AnswerCard = (props) => {
   const dispatch = useDispatch();
-  const nextQuestion = () => dispatch(changeQuestion());
+  const nextQuestion = (chosenAnswer) => dispatch(changeQuestion(chosenAnswer));
   console.log(props);
 
 
   
   return (
     <>
-      <button onClick={nextQuestion}>{props.answer}</button>
+      <button onClick={() => nextQuestion(props.answer)}>{props.answer}</button>
     </>
   );
 };
