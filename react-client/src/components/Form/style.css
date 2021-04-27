@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;1,600&family=Pacifico&display=swap");
+
+:root {
+  --heading-text: "Pacifico";
+  --content-text: "Nunito", sans-serif;
+  --content: white;
+}
+
+body{
+    background-image: url('../../images/home-background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img {
+  height: 100px;
+  position: relative;
+  top: -2rem;
+  left: 60rem;
+}
+form {
+  font-family: var(--content-text);
+  text-align: center;
+  color: whitesmoke;
+}
+
+select {
+  color: fuchsia;
+  background-color: lightcyan;
+  border-radius: 4px;
+  padding: 0.2rem;
+}
+label {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+input {
+  background-color: lightcyan;
+  border-radius: 4px;
+  border: none;
+  color: fuchsia;
+}
+
+#play-button input {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: fuchsia;
+  padding:0.2rem
+}
