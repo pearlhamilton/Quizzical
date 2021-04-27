@@ -22,4 +22,6 @@ export const fetchQuiz = (numberOfQs, subject, difficulty) => {
   };
 };
 
-export const changeQuestion = () => ({ type: "CHANGE_QUESTION" });
+export const changeQuestion = (answer) => ({ type: "CHANGE_QUESTION", payload:answer });
+
+export const endQuestions = (finalAnswer) => ({type: "END_QUESTIONS", payload:finalAnswer});
