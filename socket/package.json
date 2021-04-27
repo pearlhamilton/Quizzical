@@ -1,0 +1,17 @@
+{
+  "name": "quizzical-socket",
+  "version": "1.0.0",
+  "description": "Websocket to handle quizz live interactions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --legacy-watch socket.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.0.1"
+  }
+}
