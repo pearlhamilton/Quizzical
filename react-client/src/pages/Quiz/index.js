@@ -4,18 +4,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchQuiz } from "../../actions";
 
 const Quiz = () => {
-  const dispatch = useDispatch();
-
-  // dispatch(fetchQuiz());
-  useEffect(() => {
-    dispatch(fetchQuiz());
-  }, []);
+ 
 
   const currentQuestion = useSelector((state) => state.current_question);
   const result = useSelector((state) => state.results);
   let correctAnswer = result[currentQuestion].correct_answer;
   let answers = result[currentQuestion].answers;
-  console.log(answers);
+
+
+  
+  console.log(" result");
+  console.log(result[currentQuestion].question)
 
   function shuffle(array) {
     var currentIndex = array.length,

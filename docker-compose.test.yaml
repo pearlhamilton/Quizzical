@@ -3,7 +3,7 @@ services:
     container_name: test_api
     environment: 
       - DB_NAME=test_db
-      - DB_CONNECTION=mongodb://quizzicalTeam:password@db:27017
+      - DB_CONNECTION=mongodb://quizzicalTeam:quizzical1234@db:27017
       - NODE_ENV=test
     depends_on:
       - db
@@ -15,6 +15,6 @@ services:
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=quizzicalTeam
       - MONGO_INITDB_DATABASE=test_db
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_PASSWORD=quizzical1234
 volumes:
   test_db:

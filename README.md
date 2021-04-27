@@ -41,6 +41,9 @@ To run our test suite:
 - attaches to api container and triggers full test run
 - no ports mapped to local host
 
+MongoDB shell   
+`bash _scripts/mongo.sh`    
+
 To teardown docker compose completely:    
 `bash _scripts/teardown.sh`  
 
@@ -68,7 +71,8 @@ To teardown docker compose completely:
 4. Set up files and folder structure for docker, react-client with redux, api, db for mongodb and test suites.    
 
 # Bugs
-
+- [x] issues with routing with mongodb  
+- [x] cors error when implementing socket.io
 
 # Changelog
 
@@ -78,19 +82,23 @@ To teardown docker compose completely:
 ### API
 1. Set up server with routes, models and controllers
 2. Install socket.io and integrate into client
+3. Complete GET, POST, PATCH routes 
 
 ### db 
-1. Set up config files and install dependencies required for mongodb.
-
+1. Initially decided on SQL but changed to noSQL due to simplicity of data needed.   
+2. Update config files and install dependencies required for mongodb.
+3. Set up connectin string with mongodb and mock connection for testing
 
 # Wins & Challenges
 
 ### Wins
 - Deploying to Heroku and Netlify from one repo! And deploy early!
-
+- Amazing progress after Day 1 - socket connection establisted, routes working on API, react-redux set up!
 
 ### Challenges
-
+- Understanding and implementing socket.io
+- Testing with mongodb
+- Deploying mongodb
 
 # Future Features 
 - Login / user accounts with authentication   
