@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
-
+import "./style.css";
 
 function Form() {
   const [difficulty, setDifficulty] = useState("easy");
@@ -24,19 +24,19 @@ function Form() {
 
   const handleChangeNumberQs = (e) => {
     setNumberOfQs(e.target.value);
-    
   };
 
   const handleChangeSubject = (e) => {
     setSubject(e.target.value);
-    subject(setSubject)
+    subject(setSubject);
   };
 
   return (
     <div>
-      <h1>Let's Get Quizzical</h1>
+      {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
+      <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical" />
       <form onSubmit={handleSubmit}>
-        <label for="number of players">
+        {/* <label for="number of players">
           Number of players
           <input type="radio" id="1-player" name="players" value="1 player" />
           <label for="1 player">1 player</label>
@@ -44,7 +44,7 @@ function Form() {
           <label for="2 players">2 players</label>
           <input type="radio" id="3-players" name="players" value="3 players" />
           <label for="3 players">3 players</label>
-        </label>
+        </label> */}
         <br />
         <label for="pick a category">
           Pick a category
@@ -79,7 +79,7 @@ function Form() {
           </select>
         </label>
         <br />
-        <input type="submit" value="Play" />
+        <input type="submit" value="Play" id="play-button" />
       </form>
     </div>
   );
