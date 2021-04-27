@@ -74,6 +74,7 @@ To teardown docker compose completely:
 - [x] issues with routing with mongodb  
 - [x] cors error when implementing socket.io
 - [ ] fetch returns undefined data
+- [ ] answers are encoded 
 - [ ] after submitting answer for final question in quiz, page will crash
 
 # Changelog
