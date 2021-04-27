@@ -5,9 +5,6 @@ import { changeQuestion } from "../../actions";
 const AnswerCard = (props) => {
   const dispatch = useDispatch();
   const nextQuestion = () => dispatch(changeQuestion());
-  console.log(props);
-
-
   
   return (
     <>

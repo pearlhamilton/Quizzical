@@ -2,31 +2,35 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
-import { Quiz } from "../../pages";
 
 
 function Form() {
-    const [difficulty, setDifficulty] = useState("easy");
-    const [numberOfQs, setNumberOfQs] = useState(5);
-    // const [subject, setSubject] = useState('')
+  const [difficulty, setDifficulty] = useState("easy");
+  const [numberOfQs, setNumberOfQs] = useState(5);
+  const [subject, setSubject] = useState("");
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(fetchQuiz(difficulty, numberOfQs));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+    history.push("/quiz");
+  };
 
-      history.push("/quiz");
-    };
+  const handleChangeDifficulty = (e) => {
+    setDifficulty(e.target.value);
+  };
 
-    const handleChangeDifficulty = (e) => {
-      setDifficulty(e.target.value);
-    };
+  const handleChangeNumberQs = (e) => {
+    setNumberOfQs(e.target.value);
+    
+  };
 
-    const handleChangeNumberQs = (e) => {
-      setNumberOfQs(e.target.value);
-    };
+  const handleChangeSubject = (e) => {
+    setSubject(e.target.value);
+    subject(setSubject)
+  };
 
   return (
     <div>
@@ -44,16 +48,26 @@ function Form() {
         <br />
         <label for="pick a category">
           Pick a category
-          <select>
-            <option value="General Knowledge">General Knowledge</option>
-            <option value="Music">Music</option>
-            <option value="Sport">Sport</option>
+          <select onChange={handleChangeSubject}>
+            {/* https://opentdb.com/api_category.php */}
+            <option value="9">General Knowledge</option>
+            <option value="12">Music</option>
+            <option value="21">Sport</option>
+            <option value="22">Geography</option>
+            <option value="31">Anime and Manga</option>
+            <option value="26">Celebrities</option>
           </select>
         </label>
         <br />
         <label for="number of questions">
           Number of questions (min:5 max:20)
-          <input type="number" name="number-of-questions" min="5" max="20" onChange={handleChangeNumberQs}/>
+          <input
+            type="number"
+            name="number-of-questions"
+            min="5"
+            max="20"
+            onChange={handleChangeNumberQs}
+          />
         </label>
         <br />
         <label for="difficulty">
@@ -68,7 +82,6 @@ function Form() {
         <input type="submit" value="Play" />
       </form>
     </div>
-
   );
 }
 

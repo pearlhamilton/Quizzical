@@ -3,12 +3,13 @@ import './style.css'
 import axios from 'axios';
 import { Socket } from 'socket.io-client';
 const server = "http://localhost:3000";
+import { useHistory } from "react-router-dom";
 
 const Welcome = ({playerCount, joinGame, socket}) => {
     // const [ username, setUsername ] = useState("");
     //get the existing usrnames???? 
-    const [ usrInput, setUsrInput ] = useState("");
-     
+    const [ usrInput, setUsrInput ] = useState();
+    const history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -16,36 +17,43 @@ const Welcome = ({playerCount, joinGame, socket}) => {
     
     };
 
-    const handleInput = e => setUsrInput(e.target.value);
+    const handleInput = e => {     
+            setUsrInput(e.target.value)    
+    };
 
  
     const handleCreate = e => {
         e.preventDefault();
-        console.log(e.target)
-
-        // setUsername(usrInput);
-     
         const player = usrInput;
         console.log(player)
-        //pass back to server
-        // axios.post(`${server}/quizzes`, {
-        //     player: player
-        //   })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
 
-        // console.log(socket)
-        // useEffect(
-        //     socket.emit('add user', player)
-        // );
-
-        // setUsrInput("");
-        socket.emit('pass-username', player);
+        if(player === undefined){
+            alert("Don't ne rude, introduce yourself!");
+        } else {
+            console.log(e.target);
+            // setUsername(usrInput);
         
+        
+            //pass back to server
+            // axios.post(`${server}/quizzes`, {
+            //     player: player
+            //   })
+            //   .then(function (response) {
+            //     console.log(response);
+            //   })
+            //   .catch(function (error) {
+            //     console.log(error);
+            //   });
+
+            // console.log(socket)
+            // useEffect(
+            //     socket.emit('add user', player)
+            // );
+
+            // setUsrInput("");
+            socket.emit('pass-username', player);
+            history.push('/home')
+        }  
     } 
 
     const renderJoin= () => {
@@ -68,7 +76,7 @@ const Welcome = ({playerCount, joinGame, socket}) => {
     return(
         <div id="welcome" >
             <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical"/>
-            <form >
+            <form autoComplete="off">
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Choose your player name" value={usrInput} onChange={handleInput}/>
             
