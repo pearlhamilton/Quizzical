@@ -3,7 +3,7 @@ import {useSelector} from "react-redux"
 
 function leaderBoard() {
 
-  const score = useSelector((state)=> state.score)
+  const score = useSelector((state)=> state.score) //get score from state
 
   return (
     <div style={{color: "lightblue"}}>

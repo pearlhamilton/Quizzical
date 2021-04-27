@@ -18,10 +18,11 @@ const Quiz = () => {
   const result = useSelector((state) => state.results);
   let answers = result[currentQuestion].answers;
   let index = result.indexOf(result[currentQuestion])
+  const question = result[currentQuestion].question;
 
-  
 
-  // SHUFFLE ARRAY, so answers are not in the same order each time
+
+// SHUFFLE ARRAY, so answers are not in the same order each time
   function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
@@ -39,8 +40,7 @@ const Quiz = () => {
     return array;
   }
 
-
-  //Use the shuffled array and for each answer in the array map over it 
+//Use the shuffled array and for each answer in the array map over it 
   const shuffeledAnswers = shuffle(answers);
  
 //if not at the end of the questions, keep rendering questions
@@ -49,7 +49,7 @@ const Quiz = () => {
   return (
     <>
       <h1> I am the quiz page</h1>
-      <Question />
+      <Question question={question} />
 
       {shuffeledAnswers &&
         shuffeledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
