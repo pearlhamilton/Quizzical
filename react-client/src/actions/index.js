@@ -1,7 +1,3 @@
-// write redux actions here
-// e.g.
-// export const addUser = newUser => ({ type: 'ADD_USER', payload: newUser })
-
 import axios from "axios";
 
 export const fetchQuiz = () => {
@@ -36,6 +32,6 @@ export const fetchQuiz = () => {
   };
 };
 
-export const changeQuestion = (chosenAnswer) => ({ type: "CHANGE_QUESTION", payload:chosenAnswer });
+export const changeQuestion = (answer) => ({ type: "CHANGE_QUESTION", payload:answer });
 
 export const endQuestions = (finalAnswer) => ({type: "END_QUESTIONS", payload:finalAnswer});

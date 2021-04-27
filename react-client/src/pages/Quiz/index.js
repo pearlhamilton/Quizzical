@@ -14,10 +14,10 @@ const Quiz = () => {
  
 
   const endQuestion = useSelector((state)=> state.endOfQuestions)
-  const currentQuestion = useSelector((state) => state.current_question);
+  const currentQuestion = useSelector((state) => state.current_question_index);
   const result = useSelector((state) => state.results);
-  let answers = result[currentQuestion].answers;
-  let index = result.indexOf(result[currentQuestion])
+  const answers = result[currentQuestion].answers;
+  const index = result.indexOf(result[currentQuestion])
   const question = result[currentQuestion].question;
 
 
@@ -41,7 +41,7 @@ const Quiz = () => {
   }
 
 //Use the shuffled array and for each answer in the array map over it 
-  const shuffeledAnswers = shuffle(answers);
+  const shuffledAnswers = shuffle(answers);
  
 //if not at the end of the questions, keep rendering questions
   if (!endQuestion){
@@ -51,8 +51,8 @@ const Quiz = () => {
       <h1> I am the quiz page</h1>
       <Question question={question} />
 
-      {shuffeledAnswers &&
-        shuffeledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
+      {shuffledAnswers &&
+        shuffledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
     </>
   );
       } 

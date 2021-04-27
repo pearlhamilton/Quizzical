@@ -13,7 +13,7 @@ function leaderBoard() {
       <p>Joe Bloggs: 78%</p>
       <p>Barack Obama: 51%</p>
       <p>Will Smith: 30%</p>
-      <h1>{score}</h1>
+      <h1>You scored: {score}</h1>
     </div>
   );
 }
