@@ -28,7 +28,7 @@ const Welcome = ({playerCount, joinGame, socket}) => {
         console.log(player)
 
         if(player === undefined){
-            alert("Don't ne rude, introduce yourself!");
+            alert("Don't be rude, introduce yourself!");
         } else {
             console.log(e.target);
             // setUsername(usrInput);

@@ -8,7 +8,6 @@ const Quiz = () => {
   //let correctAnswer = result[currentQuestion].correct_answer;
   let answers = result[currentQuestion].answers;
 
-
   function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
@@ -26,12 +25,9 @@ const Quiz = () => {
     return array;
   }
   const shuffeledAnswers = shuffle(answers);
-  
 
   return (
     <>
-      <h1> I am the quiz page</h1>
-   
       <Question />
 
       {shuffeledAnswers &&
