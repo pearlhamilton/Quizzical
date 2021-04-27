@@ -3,8 +3,8 @@ import io from "socket.io-client";
 import { Switch, Route } from 'react-router-dom';
 import { Welcome, Home, LeaderBoard, Quiz } from "./pages";
 
-const serverEndpoint = "http://localhost:3000";
-// const serverEndpoint = "https://quizzicalquiz.herokuapp.com"
+//const serverEndpoint = "http://localhost:3000";
+const serverEndpoint = "https://quizzicalquiz.herokuapp.com"
 
 const App = () => {
 
@@ -14,7 +14,10 @@ const App = () => {
 
     useEffect(() => {
         const socket = io(serverEndpoint);
-       
+        socket.on("connect", () => {
+          console.log(socket.id); // ojIckSD2jqNzOqIrAGzL
+        
+        });
         socket.on('admin-message', msg => console.log(msg));
         // socket.on('admin-message', msg => setMessage(msg));
         socket.on('player-count', count => setPlayerCount(count.players_count));
@@ -30,7 +33,7 @@ const App = () => {
         //     this.setState({ username: username.value, current: { gameId: gameId.value } });
         // }
 
-        
+
         socket.on("users", (users) => {
           users.forEach((user) => {
             // user.self = user.userID === socket.id;
