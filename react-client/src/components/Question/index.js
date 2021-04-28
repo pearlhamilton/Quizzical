@@ -8,6 +8,22 @@ const Question = () => {
   const result = useSelector((state) => state.results);
   const question = result[currentQuestion].question;
 
+
+// function encode(question) {
+//   return encodeURIComponent(question)
+//     .replace(/%40/gi, "@")
+//     .replace(/%3A/gi, ":")
+//     .replace(/%24/g, "$")
+//     .replace(/%2C/gi, ",")
+//     .replace(/%5B/gi, "[")
+//     .replace(/%5D/gi, "]")
+//     .replace(/&quot;/, '"')
+//     .replace(/&#039;/, "'")
+
+
+// }
+// encode(question)
+// console.log(question)
   return (
   <div>
     <StartAgain />
