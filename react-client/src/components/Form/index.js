@@ -43,7 +43,7 @@ function Form() {
     <div>
       {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
       {/* <img src={logo} alt="logo: Let's Get Quizzical" className="logo-small" /> */}
-      <form onSubmit={handleSubmit}>
+      <form aria-label="game-selection" onSubmit={handleSubmit}>
         {/* <label for="number of players">
           Number of players
           <input type="radio" id="1-player" name="players" value="1 player" />
@@ -54,9 +54,9 @@ function Form() {
           <label for="3 players">3 players</label>
         </label> */}
         <br />
-        <label for="pick a category">
+        <label htmlFor="pick a category">
           Pick a category
-          <select onChange={handleChangeSubject}>
+          <select onChange={handleChangeSubject} aria-label="category">
             {/* https://opentdb.com/api_category.php */}
             <option value="9">General Knowledge</option>
             <option value="12">Music</option>
@@ -68,7 +68,7 @@ function Form() {
           </select>
         </label>
         <br />
-        <label for="number of questions">
+        <label htmlFor="number of questions">
           Number of questions (min:5 max:20)
           <input
             value={numberOfQs}
@@ -80,9 +80,13 @@ function Form() {
           />
         </label>
         <br />
-        <label for="difficulty">
+        <label htmlFor="difficulty">
           Difficulty
-          <select name="difficulty-level" onChange={handleChangeDifficulty}>
+          <select
+            name="difficulty-level"
+            onChange={handleChangeDifficulty}
+            aria-label="number of questions"
+          >
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
