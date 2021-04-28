@@ -76,6 +76,7 @@ To teardown docker compose completely:
 - [ ] fetch returns undefined data
 - [ ] answers are encoded 
 - [ ] after submitting answer for final question in quiz, page will crash
+- [ ] sends wrong quiz score to post
 
 # Changelog
 
