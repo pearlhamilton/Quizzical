@@ -34,7 +34,6 @@ const Welcome = ({ playerCount, joinGame, socket }) => {
             console.log(e.target);
             // setUsername(usrInput);
 
-
             //pass back to server
             // axios.post(`${server}/quizzes`, {
             //     player: player
@@ -52,6 +51,7 @@ const Welcome = ({ playerCount, joinGame, socket }) => {
             // );
 
             // setUsrInput("");
+            //dispatch username
             socket.emit('pass-username', player);
             history.push('/home')
         }

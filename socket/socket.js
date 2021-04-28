@@ -15,9 +15,9 @@ const io = require("socket.io")(server, {
 io.on('connection', socket => {
 
     console.log(`Connection to the socket: ${socket.id} has been made`);
-    socket.on('connect', usr => console.log(usr));
-
     
+
+
     socket.emit('admin-message', 'Welcome to the quizz, live!');
 
 
@@ -30,11 +30,6 @@ io.on('connection', socket => {
     
 
     socket.broadcast.emit('admin-message', `New quizz player has joined the room`)
-
-
-    
-
-  
     
     socket.on('pass-username', (username) => {
         console.log(`Created the quiz ${username}`)
