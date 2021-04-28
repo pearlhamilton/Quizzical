@@ -1,32 +1,35 @@
 import React from "react";
 import "./style.css";
 import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 
 const Question = (props) => {
+  //console.log(props.id)
+  const results = useSelector((state) => state.quizReducer.results);
+  const questionArrayLength = results.length;
 
+  //console.log(results)
+  //console.log(questionArrayLength);
+  function containsEncodedComponents(question) {
+    return decodeURIComponent(question);
+  }
+  containsEncodedComponents(props.question);
 
-// function encode(question) {
-//   return encodeURIComponent(question)
-//     .replace(/%40/gi, "@")
-//     .replace(/%3A/gi, ":")
-//     .replace(/%24/g, "$")
-//     .replace(/%2C/gi, ",")
-//     .replace(/%5B/gi, "[")
-//     .replace(/%5D/gi, "]")
-//     .replace(/&quot;/, '"')
-//     .replace(/&#039;/, "'")
+  let questionNumber = props.index + 1
+  console.log(questionNumber);
 
-
-// }
-// encode(question)
-// console.log(question)
   return (
-  <div>
-    <h3 style={{color: "white"}}> {props.question} </h3>;
-  </div>
-  )
-
+    <div>
+      <h2>
+        Question {questionNumber} of {questionArrayLength}
+      </h2>
+      <h3 style={{ color: "white" }}>
+        {containsEncodedComponents(props.question)}
+      </h3>
+      ;
+    </div>
+  );
 };
 
 export default Question;

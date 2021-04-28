@@ -5,7 +5,19 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
-    "build": "webpack --config config/webpack.config.production.js"
+    "build": "webpack --config config/webpack.config.production.js",
+    "test": "jest --watch --silent --setupFilesAfterEnv ./src/test/setupTests.js",
+    "coverage": "jest --silent --setupFilesAfterEnv ./src/test/setupTests.js --coverage --watchAll=false"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/actions/"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -22,7 +34,11 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.31.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "jest": "^26.6.3",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.4"
   },
   "dependencies": {
     "axios": "^0.21.1",
