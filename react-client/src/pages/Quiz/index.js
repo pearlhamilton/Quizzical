@@ -14,6 +14,10 @@ const Quiz = () => {
   const question = result[currentQuestion].question;
 
 
+
+  //POST to database
+
+
 // SHUFFLE ARRAY, so answers are not in the same order each time
   function shuffle(array) {
     var currentIndex = array.length,
@@ -36,7 +40,7 @@ const Quiz = () => {
   const shuffledAnswers = shuffle(answers);
  
 //if not at the end of the questions, keep rendering questions
-  if (!endQuestion){
+  // if (!endQuestion){
 
   return (
     <>
@@ -46,14 +50,18 @@ const Quiz = () => {
         shuffledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
     </>
   );
-      } 
+      // } 
     //else go to the leader board 
-    else{ 
-      return(
-        <Redirect to="/leaderboard"/>
+    // else{ 
+
+      
+    //   return(
    
-    )
-    }
+
+    //     // <Redirect to="/leaderboard"/>
+    //     <h1>Waiting</h1>
+    // )
+    // }
 };
 
 export default Quiz;

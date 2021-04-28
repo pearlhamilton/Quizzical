@@ -78,7 +78,7 @@ function Form() {
           <label for="3 players">3 players</label>
         </label> */}
         <br />
-        <label for="pick a category">
+        <label htmlFor="pick a category">
           Pick a category
           <select onChange={handleChangeSubject}>
             {/* https://opentdb.com/api_category.php */}
@@ -92,7 +92,7 @@ function Form() {
           </select>
         </label>
         <br />
-        <label for="number of questions">
+        <label htmlFor="number of questions">
           Number of questions (min:5 max:20)
           <input
             value={numberOfQs}
@@ -104,7 +104,7 @@ function Form() {
           />
         </label>
         <br />
-        <label for="difficulty">
+        <label htmlFor="difficulty">
           Difficulty
           <select name="difficulty-level" onChange={handleChangeDifficulty}>
             <option value="easy">Easy</option>
