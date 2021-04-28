@@ -73,6 +73,9 @@ To teardown docker compose completely:
 # Bugs
 - [x] issues with routing with mongodb  
 - [x] cors error when implementing socket.io
+- [ ] fetch returns undefined data
+- [ ] answers are encoded 
+- [ ] after submitting answer for final question in quiz, page will crash
 
 # Changelog
 
@@ -83,22 +86,26 @@ To teardown docker compose completely:
 1. Set up server with routes, models and controllers
 2. Install socket.io and integrate into client
 3. Complete GET, POST, PATCH routes 
+4. Test!
 
 ### db 
 1. Initially decided on SQL but changed to noSQL due to simplicity of data needed.   
 2. Update config files and install dependencies required for mongodb.
 3. Set up connectin string with mongodb and mock connection for testing
+4. Set up mongodb atlas and connect to Heroku and code
 
 # Wins & Challenges
 
 ### Wins
 - Deploying to Heroku and Netlify from one repo! And deploy early!
 - Amazing progress after Day 1 - socket connection establisted, routes working on API, react-redux set up!
+- Set up connection between api, db and client
 
 ### Challenges
 - Understanding and implementing socket.io
 - Testing with mongodb
 - Deploying mongodb
+- Passing data around - may need to refactor code
 
 # Future Features 
 - Login / user accounts with authentication   
