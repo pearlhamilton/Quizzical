@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { endQuestions, changeQuestion } from "../../actions";
 import {useSelector} from "react-redux"
+import "./style.css";
+
 
 const AnswerCard = (props) => {
 
