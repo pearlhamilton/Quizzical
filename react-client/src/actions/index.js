@@ -53,7 +53,13 @@ export const fetchQuiz = (numberOfQs, subject, difficulty) => {
         type: "LOAD_QUESTIONS",
         payload: quizData,
       });
-    } catch (err) {}
+    } catch (err) {
+      console.warn(err.message)
+      dispatch({
+        type: "SET_ERROR",
+        payload: err.message
+      })
+    }
   };
 };
 
