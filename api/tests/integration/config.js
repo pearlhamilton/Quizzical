@@ -1,24 +1,35 @@
-const { MongoClient } = require('mongodb');
-// const fs = require('fs');
-
-const request = require('supertest');
-const apiServer = require('../../server.js');
-
-// const reset = fs.readFileSync(__dirname + '/reset.js').toString();
+const request = require("supertest");
+const fs = require("fs");
+const { MongoClient, ObjectId } = require("mongodb");
+const { init } = require("../../dbConfig/init.js");
+const app = require("../../server.js");
+const connectionUrl = process.env.DB_CONNECTION;
+const dbName = process.env.DB_NAME;
 
 const resetTestDB = () => {
-    return new Promise (async (res, rej) => {
+    return new Promise(async (resolve, reject) => {
         try {
-            const db = new MongoClient();
-            await db.collection.remove() //
-            res('Test DB reset')
-        } catch(err){
-            rej('Could not reset TestDB')
-        }
-    }) 
-}
+            const db = await init();
+            await db.collection("players").removeMany({});
+            await db.collection("players").insertMany([
+                {   
 
-global.request = request
-global.app = apiServer
-global.resetTestDB = resetTestDB
-global.port = process.env.PORT || 5000
+                    player: "Player 1",
+                    score: 1,
+                },
+                {
+                    player: "Player 2",
+                    score: 2,
+                }
+            ]);
+            resolve("Test DB reset");
+        } catch (err) {
+            reject(`Test DB could not be reset: ${err} in ${err.file}`);
+        }
+    });
+};
+
+global.request = request;
+global.app = app;
+global.resetTestDB = resetTestDB;
+global.port = process.env.PORT || 5000;
