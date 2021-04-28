@@ -22,7 +22,7 @@ const Question = (props) => {
 // console.log(question)
   return (
   <div>
-    //<StartAgain />
+    {/* <StartAgain /> */}
     <h3 style={{color: "white"}}> {props.question} </h3>;
   </div>
   )

@@ -4,6 +4,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { userReducer, quizReducer } from './reducers'
 
-const store = createStore(combineReducers({quizReducer, userReducer}), composeWithDevTools(applyMiddleware(thunk)))
+const rootReducer = combineReducers({
+    quizReducer, // key name same as the carefully renamed default export
+    user: userReducer // specific key name instead of the variable name
+  })
 
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+console.log(store.getState())
 export default store;

@@ -20,6 +20,7 @@ const Welcome = ({ playerCount, socket }) => {
   const handleInput = (e) => {
     setUsrInput(e.target.value);
   };
+  
 
   const handleCreate = (e) => {
     e.preventDefault();
