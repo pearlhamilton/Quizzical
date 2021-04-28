@@ -73,21 +73,24 @@ To teardown docker compose completely:
 # Bugs
 - [x] issues with routing with mongodb  
 - [x] cors error when implementing socket.io
-- [ ] fetch returns undefined data
-- [ ] answers are encoded 
-- [ ] after submitting answer for final question in quiz, page will crash
-- [ ] sends wrong quiz score to post
+- [x] fetch returns undefined data
+- [x] answers are encoded 
+- [x] after submitting answer for final question in quiz, page will crash
+- [x] sends wrong quiz score to post
 
 # Changelog
 
 ### React-Client
-1.
+1. Set up pages and components   
+2. Test suite!
+3. Use axios to set up GET request from OpenTrivia API, and POST score data to quizzical-quiz API   
 
 ### API
 1. Set up server with routes, models and controllers
 2. Install socket.io and integrate into client
 3. Complete GET, POST, PATCH routes 
 4. Test!
+5. Create DELETE route to clear database
 
 ### db 
 1. Initially decided on SQL but changed to noSQL due to simplicity of data needed.   
@@ -100,15 +103,19 @@ To teardown docker compose completely:
 ### Wins
 - Deploying to Heroku and Netlify from one repo! And deploy early!
 - Amazing progress after Day 1 - socket connection establisted, routes working on API, react-redux set up!
-- Set up connection between api, db and client
+- Set up connection between api, db and client   
+- Responsive!
 
 ### Challenges
 - Understanding and implementing socket.io
 - Testing with mongodb
 - Deploying mongodb
 - Passing data around - may need to refactor code
+- Setting up multiplayer
 
 # Future Features 
 - Login / user accounts with authentication   
 - High scores leaderboard for each difficulty  
-- Score to include time taken to complete quiz  
+- Score to include time taken to complete quiz 
+- Sound effects
+- Full socket io real time implementation
