@@ -13,8 +13,7 @@
     "test": "jest --setupFiles ./tests/integration/config.js --testPathPattern=/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "unitTests": "jest --testPathPattern=/unit/ --verbose",
     "coverage": "jest --setupFiles ./tests/integration/config.js --testPathPattern=/integration/ --coverage",
-    "unitCoverage": "jest --testPathPattern=/unit/ --coverage",
-    "preset": "@shelf/jest-mongodb"
+    "unitCoverage": "jest --testPathPattern=/unit/ --coverage"
   },
   "keywords": [],
   "author": "",

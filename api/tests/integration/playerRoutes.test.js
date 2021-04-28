@@ -41,5 +41,17 @@ describe("players endpoints", () => {
     it("should return status code 404 error if no player found", async () => {
         const res = await request(api).get("/player/123");
         expect(res.statusCode).toEqual(404);
-    })
+    });
+
+    it("should delete a player", async () => {
+        const res = await request(api).delete(
+            "/player/6087e49084422b709335fa11"
+        );
+        expect(res.statusCode).toEqual(204);
+        const playerRes = await request(api).get(
+            "/player/6087e49084422b709335fa11"
+        );
+        expect(playerRes.statusCode).toEqual(404);
+        expect(playerRes.body).toHaveProperty("err");
+    });
 });
