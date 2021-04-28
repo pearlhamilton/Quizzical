@@ -63,12 +63,32 @@ class Player {
         return new Promise(async (resolve, reject) => {
             try {
                 const db = await init();
-                let updatedPlayerData = await db.collection('players').findOneAndUpdate({ _id: ObjectId(this.id) }, { $set: { "score": highScore } }, {returnOriginal: false })
-                console.log(updatedPlayerData)
+                let updatedPlayerData = await db
+                    .collection("players")
+                    .findOneAndUpdate(
+                        { _id: ObjectId(this.id) },
+                        { $set: { score: highScore } },
+                        { returnOriginal: false }
+                    );
+                console.log(updatedPlayerData);
                 let updatedPlayer = new Player(updatedPlayerData.value);
                 resolve(updatedPlayer);
             } catch (err) {
-                reject('Error updating player score');
+                reject("Error updating player score");
+            }
+        });
+    }
+
+    destroy() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = await init();
+                await db
+                    .collection("players")
+                    .deleteOne({ _id: ObjectId(this.id) });
+                resolve("Player was deleted");
+            } catch (err) {
+                reject("Could not delete player");
             }
         });
     }
