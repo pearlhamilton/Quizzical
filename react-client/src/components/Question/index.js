@@ -1,9 +1,10 @@
 import React from "react";
-//import { StartAgain } from "..";
-import { useSelector } from "react-redux";
 import "./style.css";
+import { useSelector } from "react-redux";
+
 
 const Question = (props) => {
+
 
 // function encode(question) {
 //   return encodeURIComponent(question)
@@ -22,7 +23,6 @@ const Question = (props) => {
 // console.log(question)
   return (
   <div>
-    //<StartAgain />
     <h3 style={{color: "white"}}> {props.question} </h3>;
   </div>
   )

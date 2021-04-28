@@ -1,4 +1,5 @@
 import React from "react";
+
 import {useSelector} from "react-redux"
 
 function leaderBoard() {
@@ -17,4 +18,4 @@ function leaderBoard() {
     </div>
   );
 }
-export default leaderBoard
+export default leaderBoard;
