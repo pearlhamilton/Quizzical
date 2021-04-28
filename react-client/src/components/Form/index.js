@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
-
+//import logo from "../../images/quizlogo.png";
+import "./style.css";
 
 function Form() {
   const [difficulty, setDifficulty] = useState("easy");
@@ -24,19 +25,26 @@ function Form() {
 
   const handleChangeNumberQs = (e) => {
     setNumberOfQs(e.target.value);
-    
   };
 
   const handleChangeSubject = (e) => {
     setSubject(e.target.value);
-    subject(setSubject)
+    subject(setSubject);
   };
+
+  //random category
+  let categories = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  //let categories = [9, 12, 21, 22, 26, 31]
+  const random = Math.floor(Math.random() * categories.length);
+  let randomCategory = categories[random];
+  console.log(randomCategory)
 
   return (
     <div>
-      <h1>Let's Get Quizzical</h1>
+      {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
+      {/* <img src={logo} alt="logo: Let's Get Quizzical" className="logo-small" /> */}
       <form onSubmit={handleSubmit}>
-        <label for="number of players">
+        {/* <label for="number of players">
           Number of players
           <input type="radio" id="1-player" name="players" value="1 player" />
           <label for="1 player">1 player</label>
@@ -44,7 +52,7 @@ function Form() {
           <label for="2 players">2 players</label>
           <input type="radio" id="3-players" name="players" value="3 players" />
           <label for="3 players">3 players</label>
-        </label>
+        </label> */}
         <br />
         <label for="pick a category">
           Pick a category
@@ -56,12 +64,14 @@ function Form() {
             <option value="22">Geography</option>
             <option value="31">Anime and Manga</option>
             <option value="26">Celebrities</option>
+            <option value={randomCategory}> Surprise Me</option>
           </select>
         </label>
         <br />
         <label for="number of questions">
           Number of questions (min:5 max:20)
           <input
+            value={numberOfQs}
             type="number"
             name="number-of-questions"
             min="5"
@@ -79,7 +89,7 @@ function Form() {
           </select>
         </label>
         <br />
-        <input type="submit" value="Play" />
+        <input type="submit" value="Play" id="play-button" />
       </form>
     </div>
   );
