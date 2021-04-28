@@ -5,10 +5,10 @@ import { Redirect } from "react-router";
 
 const Quiz = () => {
   
-
-  const endQuestion = useSelector((state)=> state.endOfQuestions)
-  const currentQuestion = useSelector((state) => state.current_question_index);
-  const result = useSelector((state) => state.results);
+  
+  const endQuestion = useSelector((state)=> state.quizReducer.endOfQuestions)
+  const currentQuestion = useSelector((state) => state.quizReducer.current_question_index);
+  const result = useSelector((state) => state.quizReducer.results);
   const answers = result[currentQuestion].answers;
   const index = result.indexOf(result[currentQuestion])
   const question = result[currentQuestion].question;

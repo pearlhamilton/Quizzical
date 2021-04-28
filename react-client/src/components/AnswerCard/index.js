@@ -10,7 +10,7 @@ const AnswerCard = (props) => {
 
   const nextQuestion = (answer) => dispatch(changeQuestion(answer));
   const endQuestion = (finalAnswer) => dispatch(endQuestions(finalAnswer))
-  const results = useSelector((state) => state.results)
+  const results = useSelector((state) => state.quizReducer.results)
   const questionArrayLength = results.length
 
     // index 9 is where the code broke, so if the answer that is clicked on is at index 9 of the array, do not go to the next question, instead end the questions
