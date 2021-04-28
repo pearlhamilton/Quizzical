@@ -1,6 +1,6 @@
 import { default as Form } from ".";
-import { screen, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { screen } from "@testing-library/react";
+// import userEvent from "@testing-library/user-event";
 // import { MemoryRouter } from "react-router-dom";
 
 describe("Form", () => {
@@ -25,7 +25,7 @@ describe("Form", () => {
   //     expect(getResultMock).toHaveBeenNthCalledWith(1, "Music");
   //   });
 
-  test("it renders a number of questions menu", () => {
+  test("it renders a number of questions option", () => {
     let numberOfQuestionsInput = screen.getByLabelText("number of questions");
     expect(numberOfQuestionsInput).toBeInTheDocument();
   });

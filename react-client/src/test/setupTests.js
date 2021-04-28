@@ -13,7 +13,9 @@ const TestProviders = ({ initState }) => {
   initState ||= {
     location: "",
     result: [{ question: "", correct_answer: "", answers: [] }],
-    current_question: 0,
+    current_question_index: 0,
+    score: 0,
+    endOfQuestions: false,
     loading: false,
   };
   let testReducer = () => quizReducer(initState, { type: "@@INIT" });

@@ -33,11 +33,35 @@ function Form() {
   };
 
   //random category
-  let categories = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  let categories = [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+  ];
   //let categories = [9, 12, 21, 22, 26, 31]
   const random = Math.floor(Math.random() * categories.length);
   let randomCategory = categories[random];
-  console.log(randomCategory)
+ 
 
   return (
     <div>
@@ -54,9 +78,13 @@ function Form() {
           <label for="3 players">3 players</label>
         </label> */}
         <br />
-        <label htmlFor="pick a category">
+        <label htmlFor="category">
           Pick a category
-          <select onChange={handleChangeSubject} aria-label="category">
+          <select
+            onChange={handleChangeSubject}
+            aria-label="category"
+            id="category"
+          >
             {/* https://opentdb.com/api_category.php */}
             <option value="9">General Knowledge</option>
             <option value="12">Music</option>
@@ -68,14 +96,16 @@ function Form() {
           </select>
         </label>
         <br />
-        <label htmlFor="number of questions">
+        <label htmlFor="number-of-questions">
           Number of questions (min:5 max:20)
           <input
             value={numberOfQs}
             type="number"
             name="number-of-questions"
+            aria-label="number of questions"
             min="5"
             max="20"
+            id="number-of-questions"
             onChange={handleChangeNumberQs}
           />
         </label>
@@ -86,6 +116,7 @@ function Form() {
             name="difficulty-level"
             onChange={handleChangeDifficulty}
             aria-label="number of questions"
+            id="difficulty"
           >
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>

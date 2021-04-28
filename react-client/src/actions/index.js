@@ -2,9 +2,11 @@ import axios from "axios";
 
 export const fetchQuiz = (numberOfQs, subject, difficulty) => {
   return async (dispatch) => {
+
     try {
       const { data } = await axios.get(
-        `https://opentdb.com/api.php?amount=${numberOfQs}&category=${subject}&difficulty=${difficulty}&type=multiple`
+        `https://opentdb.com/api.php?amount=${numberOfQs}&category=${subject}&difficulty=${difficulty}&type=multiple&encode=url3986`
+
       );
 
       let quizData = data.results.map((element, i) => ({
@@ -13,13 +15,17 @@ export const fetchQuiz = (numberOfQs, subject, difficulty) => {
         correct_answer: element.correct_answer,
         answers: [...element.incorrect_answers, element.correct_answer],
       }));
-     
+      
       dispatch({
         type: "LOAD_QUESTIONS",
         payload: quizData,
       });
-    } catch (err) {}
+    } catch (err) {
+      throw new Error(err.message);
+    }
   };
 };
 
-export const changeQuestion = () => ({ type: "CHANGE_QUESTION" });
+export const changeQuestion = (answer) => ({ type: "CHANGE_QUESTION", payload:answer });
+
+export const endQuestions = (finalAnswer) => ({type: "END_QUESTIONS", payload:finalAnswer});
