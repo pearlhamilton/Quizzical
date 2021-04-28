@@ -23,7 +23,7 @@
  
 }
  
-#answer-cards:hover button {
+#answer-cards:hover {
   cursor: pointer;
   background-color: fuchsia;
   color: lightcyan;
