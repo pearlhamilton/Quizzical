@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component} from 'react'
 import io from "socket.io-client";
 import { Switch, Route } from 'react-router-dom';
-import { Welcome, Home, LeaderBoard, Quiz } from "./pages";
+import { Welcome, Home, LeaderBoard, Quiz, ScorePage } from "./pages";
 
 const serverEndpoint = "http://localhost:5001";
 // const serverEndpoint = "https://quizzicalquiz.herokuapp.com"
@@ -63,6 +63,8 @@ const App = () => {
         <Route path="/home" component={Home} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/leaderboard" component={LeaderBoard} />
+      <Route path="/score" component={ScorePage} />
+
       {/* <Route path="/" component={PageNotFound} /> */}
         {/* <Route exact path="/quizz/:id" component={quiz} /> */}
       </Switch>

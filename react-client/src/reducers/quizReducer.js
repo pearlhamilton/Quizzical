@@ -7,8 +7,7 @@ const init = {
               }
             ],
     current_question_index: 0,
-    score: 0,
-    endOfQuestions:false
+    score: 0
 }
 
 
@@ -41,12 +40,14 @@ const quizReducer = (state = init, action) => {
 
     case "END_QUESTIONS":
       if (chosenAnswer === correctAnswer){
-        return{...state, score:score+1, endOfQuestions:true}
+        return{...state, score:score+1}
 
       } else{
-          return{...state, endOfQuestions: true}
+          return{...state}
       }
       
+    case "GET_SCORE":
+      return{...state}
     default:
       return state;
   }
