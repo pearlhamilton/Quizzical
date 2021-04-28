@@ -10,19 +10,13 @@ function leaderBoard() {
 
   return (
     <>
-    {/* <div style={{color: "lightblue"}}>
-      <h1>⭐️You scored 97%⭐️</h1>
-      <h2>LEADERBOARD</h2>
-      <p>Wonder Woman: 92%</p>
-      <p>Joe Bloggs: 78%</p>
-      <p>Barack Obama: 51%</p>
-      <p>Will Smith: 30%</p>
+    <div id="playerscore">
       <h1>You scored: {score}</h1>
-    </div> */}
-
-    <LeaderBoardTable/>
-
-<h1>You scored: {score}</h1>
+    </div>
+    <div id="leaderboard">
+      <h2>leaderboard </h2>
+      <LeaderBoardTable/>
+    </div>
 </>
   );
 }

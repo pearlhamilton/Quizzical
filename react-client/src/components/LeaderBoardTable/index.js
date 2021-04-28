@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios"
 import {useEffect} from "react"
+import {LeaderBoardScore} from ".."
 
 
 
@@ -18,8 +19,6 @@ const LeaderBoardTable = () => {
           );
           console.log(data)
           setScores(data);
-        //   console.log(scores[0].id)
-        //   console.log(setScores)
 
         } catch (err) {
           setError(err.message);
@@ -28,37 +27,19 @@ const LeaderBoardTable = () => {
       getScores();
     }, []);
 
-    console.log(scores)
-    if (scores){
-    scores.map(score => console.log(score))}
-    
-    else{
-        console.log('no scores')
-    }
-
-    // const renderScores = () => {
-    //     return scores.map(score => <div>{score.player}{score.score}</div>)
-    //   }
-
-    // console.log(renderScores())
-
     return (
         <>
-    hello 
-        {/* {renderScores()} */}
-          {/* {scores ? (
-            <>
-              <p>{scores}</p>
-            </>
-          ) : (
+  
+          {scores ? scores.map(score => <LeaderBoardScore key={score.id} score={score}/>): 
             <h4 id="loading">
-              Loading...{" "}
+              Loading Scores...
             </h4>
-          )} */}
+          }
+          
         </>
       );
     };
 
 
 
-export default LeaderBoardTable
+export default LeaderBoardTable 
