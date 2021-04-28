@@ -5,6 +5,7 @@ import {useSelector} from "react-redux"
 import "./style.css";
 
 
+
 const AnswerCard = (props) => {
 
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const AnswerCard = (props) => {
         <button style={{color: "white", backgroundColor: "pink"}} onClick={() => nextQuestion(props.answer)}>{props.answer}</button>
     );
   }
+
 };
 
 export default AnswerCard;

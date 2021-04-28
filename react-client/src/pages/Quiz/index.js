@@ -14,7 +14,6 @@ const Quiz = () => {
   const question = result[currentQuestion].question;
 
 
-
 // SHUFFLE ARRAY, so answers are not in the same order each time
   function shuffle(array) {
     var currentIndex = array.length,
