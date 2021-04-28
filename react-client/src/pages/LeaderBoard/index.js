@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import {useSelector} from "react-redux"
 import {LeaderBoardTable} from "../../components"
 
 function leaderBoard() {
 
-  const score = useSelector((state)=> state.score) //get score from state
+  const score = useSelector((state)=> state.quizReducer.score) //get score from state
+
 
 
   return (
