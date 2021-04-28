@@ -1,18 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import axios from "axios";
 // import { Socket } from "socket.io-client";
 import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
+import {socket} from '../../socket/index.js';
 import * as actions from '../../actions/user';
 import {useDispatch} from 'react-redux';
 
-const server = "http://localhost:3000";
+// const server = "http://localhost:3000";
 
-const Welcome = ({ playerCount, socket }) => {
+
+const Welcome = () => {
     const dispatch = useDispatch()
-    const [usrInput, setUsrInput] = useState(undefined);
     const history = useHistory();
+
+    const [playerCount, setPlayerCount] = useState(); 
+    const [usrInput, setUsrInput] = useState(undefined);
+
+    // const playerCountFun = () => { socket.on('users', count => setPlayerCount(count.length))}
+
+    useEffect(() => {
+        socket.on('users', count => setPlayerCount(count.length))
+        
+
+        // setInterval(() => {
+        //     playerCountFun
+        // }, 1000);
+        // const interval = setInterval(() => {
+        //     console.log(playerCount)
+        //    playerCount
+        //   }, 1000);
+       
+        //   return () => clearInterval(interval)
+    }, []);
+
+    console.log(playerCount)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,15 +81,16 @@ const Welcome = ({ playerCount, socket }) => {
         let tags = null;
 
         if (playerCount < 2) {
-        tags = "disabled";
+            tags = "disabled";
         }
         
         return (
-        <>
-            <input type="submit" className={tags} name="joinQuiz" value="Join" />
-        </>
+            <>
+                <input type="submit" className={tags} name="joinQuiz" value="Join" />
+            </>
         );
     };
+
 
     return (
         <div id="welcome">
@@ -75,26 +98,26 @@ const Welcome = ({ playerCount, socket }) => {
         <form autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Choose your player name"
-            value={usrInput}
-            onChange={handleInput}
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose your player name"
+                value={usrInput}
+                onChange={handleInput}
             />
 
             <input
-            type="submit"
-            name="newQuiz"
-            value="New Game"
-            onClick={handleCreate}
+                type="submit"
+                name="newQuiz"
+                value="New Game"
+                onClick={handleCreate}
             />
             {renderJoin()}
         </form>
         <p>
             {playerCount - 1 === 0
-            ? "No Players Online"
-            : `Players online: ${playerCount - 1}`}
+                ? "No Players Online"
+                : `Players online: ${playerCount - 1}`}
         </p>
         </div>
     );

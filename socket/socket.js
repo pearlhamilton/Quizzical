@@ -3,7 +3,6 @@
 // const io = require('socket.io')(server);
 // io.on('connection', () => { /* … */ });
 // server.listen(3000);
-
 const server = require('http').createServer();
 //make server and sockets interact
 const io = require("socket.io")(server, {
@@ -12,34 +11,15 @@ const io = require("socket.io")(server, {
     }
 });
 
+
+
+
+let interval;
+
 io.on('connection', socket => {
-
+    // let users = {}; 
+    // users[socket.id] = socket; // store socket for later use
     console.log(`Connection to the socket: ${socket.id} has been made`);
-    
-
-
-    socket.emit('admin-message', 'Welcome to the quizz, live!');
-
-
-
-
-    // socket.emit('player-count', {players_count: participantCount});
-    const participantCount = io.engine.clientsCount;
-    socket.emit('player-count', {players_count: participantCount});
-
-    
-
-    socket.broadcast.emit('admin-message', `New quizz player has joined the room`)
-    
-    socket.on('pass-username', (username) => {
-        console.log(`Created the quiz ${username}`)
-        socket.join(username); 
-        socket.username = username;
-
-        console.log(`Existing socket rooms: `);
-        console.log(socket.rooms);
-    });
-
 
     const users = [];
     for (let [id, socket] of io.of("/").sockets) {
@@ -48,9 +28,55 @@ io.on('connection', socket => {
             username: socket.username
         });
     }
-    socket.emit("users", users);
-  // ...
 
+
+    // socket.on('subscribeToTimer', (interval) => {
+    //     console.log('client is subscribing to timer with interval ', interval);
+    //     setInterval(() => {
+    //         socket.emit("users", users);
+    //     }, interval);
+    //   });
+
+    socket.emit("users", users);
+    console.log(users)
+
+
+    socket.broadcast.emit('admin-message', `New quizz player has joined the room`)
+    // socket.emit('admin-message', 'Welcome to the quizz, live!');
+
+    // socket.emit('player-count', {players_count: participantCount});
+    const participantCount = io.engine.clientsCount;
+    socket.emit('player-count', {players_count: participantCount});
+    
+    socket.on('pass-username', (roomId) => {
+        console.log(`Created the quiz ${roomId}`)
+        // socket.join(username); 
+        socket.username = username;
+
+        console.log(`Existing socket rooms: `);
+        console.log(socket.rooms);
+    });
+
+    socket.on('request-join', ({quizzId, username}) => {
+        console.log(`${username} joining ${quizzId}`)
+
+        socket.join(quizzId) // add User to room (creates new room if no matching room ID)
+        // send event to all other Users in specific room
+        socket.broadcast.to(quizzId).emit('add-user', { username })
+
+        // gather updated room data
+        const roomData = io.sockets.adapter.rooms[quizzId]
+        const inRoomCount = roomData.length
+        const inRoomIds = Object.keys(roomData.sockets)
+
+        // send event only to User
+        socket.emit('entry-permission', { quizzId, players: inRoomIds})
+        // send event to all other Users in specific room
+        socket.to(quizzId).emit('new-player-joining', { username, quizzId })
+        // send event to all Users in specific room
+        io.in(quizzId).emit('admin-message', `${inRoomCount} players now in ${quizzId}!`)
+    })
+    
 
     // for (const room of socket.rooms) {
 
