@@ -1,5 +1,5 @@
 import React from "react";
-import { StartAgain } from "..";
+
 import { useSelector } from "react-redux";
 import "./style.css";
 
@@ -10,7 +10,7 @@ const Question = () => {
 
   return (
   <div>
-    <StartAgain />
+   
     <h3> {question} </h3>;
   </div>
   )
