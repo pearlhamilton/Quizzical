@@ -23,11 +23,10 @@
 
 body {
   color: whitesmoke;
-  margin: 0;
-  padding: 0;
 }
 
 h2 {
   padding-top: 12rem;
   font-family: var(--content-text);
+  font-size: 1.8rem;
 }
