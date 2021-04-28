@@ -6,7 +6,7 @@
   --content: white;
 }
 
-button {
+#answer-cards {
   display: block;
   text-align: center;
   padding: 2rem;
@@ -22,8 +22,8 @@ button {
   font-family: var(--content-text);
  
 }
-
-button:hover {
+ 
+#answer-cards:hover {
   cursor: pointer;
   background-color: fuchsia;
   color: lightcyan;

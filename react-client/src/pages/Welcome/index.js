@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import axios from "axios";
-import { Socket } from "socket.io-client";
-const server = "http://localhost:3000";
+// import { Socket } from "socket.io-client";
 import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
 
-const Welcome = ({ playerCount, joinGame, socket }) => {
-  // const [ username, setUsername ] = useState("");
-  //get the existing usrnames????
+const server = "http://localhost:3000";
+
+const Welcome = ({ playerCount, socket }) => {
+
   const [usrInput, setUsrInput] = useState();
   const history = useHistory();
 
@@ -20,6 +20,7 @@ const Welcome = ({ playerCount, joinGame, socket }) => {
   const handleInput = (e) => {
     setUsrInput(e.target.value);
   };
+  
 
   const handleCreate = (e) => {
     e.preventDefault();
@@ -58,14 +59,13 @@ const Welcome = ({ playerCount, joinGame, socket }) => {
     let tags = null;
 
     if (playerCount < 2) {
-      tags = "disabled";
+    tags = "disabled";
     }
-    console.log;
-
+    
     return (
-      <>
+    <>
         <input type="submit" className={tags} name="joinQuiz" value="Join" />
-      </>
+    </>
     );
   };
 
