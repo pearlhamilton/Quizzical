@@ -1,13 +1,9 @@
 import React from "react";
-import { StartAgain } from "..";
+//import { StartAgain } from "..";
 import { useSelector } from "react-redux";
 import "./style.css";
 
-const Question = () => {
-  const currentQuestion = useSelector((state) => state.current_question);
-  const result = useSelector((state) => state.results);
-  const question = result[currentQuestion].question;
-
+const Question = (props) => {
 
 // function encode(question) {
 //   return encodeURIComponent(question)
@@ -26,8 +22,8 @@ const Question = () => {
 // console.log(question)
   return (
   <div>
-    <StartAgain />
-    <h3> {question} </h3>;
+    //<StartAgain />
+    <h3 style={{color: "white"}}> {props.question} </h3>;
   </div>
   )
 
