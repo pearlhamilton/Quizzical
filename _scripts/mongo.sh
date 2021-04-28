@@ -1,1 +1,1 @@
-docker exec -it quizzical_db mongo
+docker exec -it quizzical_db mongo "mongodb+srv://cluster0.qufzr.mongodb.net/quizzical_db" --username quizzicalTeam
