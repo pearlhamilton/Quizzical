@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
 import {socket} from '../../socket/index.js';
 import * as actions from '../../actions/user';
+import {setHost, setPlayer} from '../../actions/userType';
 import {useDispatch} from 'react-redux';
 
 // const server = "http://localhost:3000";
@@ -16,22 +17,26 @@ const Welcome = () => {
 
     const [playerCount, setPlayerCount] = useState(); 
     const [usrInput, setUsrInput] = useState(undefined);
-
-    // const playerCountFun = () => { socket.on('users', count => setPlayerCount(count.length))}
+    const [room, setRoom] = useState(undefined);
+    const [error, setError] = useState("");
 
     useEffect(() => {
-        socket.on('users', count => setPlayerCount(count.length))
-        
-
-        // setInterval(() => {
-        //     playerCountFun
-        // }, 1000);
+        socket.on('users', users => setPlayerCount(users))
+        // let test2; 
+        // const test = socket.on('users', users => setPlayerCount(users.length));
+        // // const test = socket.on('users', users => test2 = users);
+        // console.log(test)
+        // // console.log(test2)
+        // // setInterval(() => {
+        // //     playerCountFun
+        // // }, 1000);
         // const interval = setInterval(() => {
+           
         //     console.log(playerCount)
-        //    playerCount
-        //   }, 1000);
+        //     setPlayerCount(playerCount)
+        // }, 1000);
        
-        //   return () => clearInterval(interval)
+        // return () => clearInterval(interval)
     }, []);
 
     console.log(playerCount)
@@ -45,6 +50,9 @@ const Welcome = () => {
         setUsrInput(e.target.value);
     };
 
+    const handleRoomInput = (e) => {
+        setRoom(e.target.value);
+    };
 
     const handleCreate = (e) => {
         e.preventDefault();
@@ -52,29 +60,40 @@ const Welcome = () => {
 
         if (player === undefined) {
             alert("Don't be rude, introduce yourself!");
+        } else if (room === undefined) {
+            alert("You need to create room or give an existing name");
         } else {
+            // dispatch(actions.addUser(player));
+            socket.emit("create-room", room, (res) => {
+                console.log("socket response", res);
 
-        //pass back to server
-        // axios.post(`${server}/quizzes`, {
-        //     player: player
-        //   })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
+                if (res.code === "success") {
+                    setRoom(room);
+                    dispatch(setHost(player, room));
+                    // socket.emit("pass-username", player);
+                    history.push("/home");
+                } else {
+                    setRoom(undefined);
+                    setError(res.message);
+                }
+            });
+        }
+    };
 
-        // console.log(socket)
-        // useEffect(
-        //     socket.emit('add user', player)
-        // );
-
-        // setUsrInput("");
-            dispatch(actions.addUser(player))
+    const handleJoin = (e) => {
+        e.preventDefault();
+        const player = usrInput;
+        if (player === undefined) {
+            alert("Don't be rude, introduce yourself!");
+        } else {
+            // dispatch(actions.addUser(player));
+            dispatch(setPlayer(player));
             socket.emit("pass-username", player);
             history.push("/home");
+
+            //push to lobby
         }
+       
     };
 
     const renderJoin = () => {
@@ -86,7 +105,7 @@ const Welcome = () => {
         
         return (
             <>
-                <input type="submit" className={tags} name="joinQuiz" value="Join" />
+                <input type="submit" className={tags} name="joinQuiz" value="Join" onClick={handleJoin}/>
             </>
         );
     };
@@ -106,6 +125,16 @@ const Welcome = () => {
                 onChange={handleInput}
             />
 
+            <label htmlFor="roomName">Room Name</label>
+            <input
+                type="text"
+                id="roomName"
+                name="roomName"
+                placeholder="Room name to create or join"
+                value={room}
+                onChange={handleRoomInput}
+            />
+
             <input
                 type="submit"
                 name="newQuiz"
@@ -117,8 +146,9 @@ const Welcome = () => {
         <p>
             {playerCount - 1 === 0
                 ? "No Players Online"
-                : `Players online: ${playerCount - 1}`}
+                : `Total players online: ${playerCount - 1}`}
         </p>
+        {/* create conditional error state showing */}
         </div>
     );
 };

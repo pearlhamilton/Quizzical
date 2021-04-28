@@ -14,7 +14,6 @@ const socket = io(serverEndpoint);
 socket.on("connect", () => {
     console.log(`user connected to the socket id ${socket.id}`);
     const socketId = socket.id; 
-
 });
 
 
