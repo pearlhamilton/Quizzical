@@ -1,8 +1,9 @@
 import React from "react";
 import "./style.css";
+import { useSelector } from "react-redux";
+
 
 const Question = (props) => {
-
 
 
 // function encode(question) {
@@ -22,7 +23,6 @@ const Question = (props) => {
 // console.log(question)
   return (
   <div>
-   
     <h3 style={{color: "white"}}> {props.question} </h3>;
   </div>
   )
