@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
+//import logo from "../../images/quizlogo.png";
 import "./style.css";
 
 function Form() {
@@ -31,10 +32,17 @@ function Form() {
     subject(setSubject);
   };
 
+  //random category
+  let categories = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  //let categories = [9, 12, 21, 22, 26, 31]
+  const random = Math.floor(Math.random() * categories.length);
+  let randomCategory = categories[random];
+  console.log(randomCategory)
+
   return (
     <div>
       {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
-      <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical" />
+      {/* <img src={logo} alt="logo: Let's Get Quizzical" className="logo-small" /> */}
       <form onSubmit={handleSubmit}>
         {/* <label for="number of players">
           Number of players
@@ -56,12 +64,14 @@ function Form() {
             <option value="22">Geography</option>
             <option value="31">Anime and Manga</option>
             <option value="26">Celebrities</option>
+            <option value={randomCategory}> Surprise Me</option>
           </select>
         </label>
         <br />
         <label for="number of questions">
           Number of questions (min:5 max:20)
           <input
+            value={numberOfQs}
             type="number"
             name="number-of-questions"
             min="5"

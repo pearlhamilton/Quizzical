@@ -19,15 +19,14 @@ const AnswerCard = (props) => {
 
   if (props.index === questionArrayLength-1){
     return(
-        <button style={{color: "white", backgroundColor: "pink"}} onClick = { () => endQuestion(props.answer)}>{props.answer}</button>
+        <button id="answer-cards" onClick = { () => endQuestion(props.answer)}>{props.answer}</button>
     )
   
   }else{
       return (
-        <button style={{color: "white", backgroundColor: "pink"}} onClick={() => nextQuestion(props.answer)}>{props.answer}</button>
+        <button id="answer-cards" onClick={() => nextQuestion(props.answer)}>{props.answer}</button>
     );
   }
-
 };
 
 export default AnswerCard;
