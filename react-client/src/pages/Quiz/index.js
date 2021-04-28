@@ -1,7 +1,9 @@
 import React, {useEffect} from "react";
+import "./style.css";
 import { AnswerCard, Question } from "../../components";
 import { useSelector} from "react-redux";
 import { Redirect } from "react-router";
+
 
 const Quiz = () => {
   
@@ -43,12 +45,12 @@ const Quiz = () => {
   // if (!endQuestion){
 
   return (
-    <>
+    <div id="quiz-page">
       <Question question={question} index={index} />
 
       {shuffledAnswers &&
         shuffledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
-    </>
+    </div>
   );
       // } 
     //else go to the leader board 
