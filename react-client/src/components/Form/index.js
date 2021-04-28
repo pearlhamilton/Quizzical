@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
+//import logo from "../../images/quizlogo.png";
 import "./style.css";
 
 function Form() {
@@ -41,7 +42,7 @@ function Form() {
   return (
     <div>
       {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
-      <img src="../../images/quizlogo.png" alt="logo: Let's Get Quizzical" />
+      {/* <img src={logo} alt="logo: Let's Get Quizzical" className="logo-small" /> */}
       <form onSubmit={handleSubmit}>
         {/* <label for="number of players">
           Number of players
