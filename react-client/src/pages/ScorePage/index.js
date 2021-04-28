@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import "./style.css";
 import {useSelector} from "react-redux"
 import {Link} from "react-router-dom"
 import axios from 'axios'
@@ -19,7 +20,7 @@ const score = useSelector((state)=> state.quizReducer.score) //get score from st
                 "score": score
               }
             console.log(results)
-            const { data } = await axios.post(`https://quizzicalquiz.herokuapp.com/players`, results, options)
+            // const { data } = await axios.post(`https://quizzicalquiz.herokuapp.com/players`, results, options)
             console.log(data)
             if (data.err){
                 throw Error(data.err)
@@ -37,14 +38,14 @@ const score = useSelector((state)=> state.quizReducer.score) //get score from st
     })
 
   return (
-    <>
+    <div id="score-page">
     <div id="playerscore">
       <h1>You scored: {score}</h1>
-    </div>
+
     
     <Link to="/leaderboard"><button>Go to Leaderboard</button></Link>
- 
-    </>
+    </div>
+    </div>
   );
 }
 export default ScorePage;

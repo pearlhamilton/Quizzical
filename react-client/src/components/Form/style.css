@@ -11,13 +11,13 @@ form {
   font-family: var(--content-text);
   text-align: center;
   color: whitesmoke;
-  padding-left: 2rem;
+  padding-left: 4rem;
   font-size: 1.2rem;
 }
 
 select {
-  color: fuchsia;
-  background-color: lightcyan;
+  color: #ca2bfc;
+  background-color: rgb(255, 253, 244);
   border-radius: 4px;
   padding: 0.2rem;
   margin: 0rem 0.5rem;
@@ -28,10 +28,10 @@ label {
   text-align: left;
 }
 input {
-  background-color: lightcyan;
+  background-color: rgb(255, 253, 244);
   border-radius: 4px;
   border: none;
-  color: fuchsia;
+  color: #ca2bfc;
   margin: 0rem 0.5rem;
 }
 
