@@ -44,7 +44,7 @@ const Quiz = () => {
 
   return (
     <>
-      <Question question={question} />
+      <Question question={question} index={index} />
 
       {shuffledAnswers &&
         shuffledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
