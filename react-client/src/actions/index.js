@@ -36,3 +36,5 @@ export const fetchQuiz = (numberOfQs, subject, difficulty) => {
 export const changeQuestion = (answer) => ({ type: "CHANGE_QUESTION", payload:answer });
 
 export const endQuestions = (finalAnswer) => ({type: "END_QUESTIONS", payload:finalAnswer});
+
+export const getScore = () => ({type: "GET_SCORE"});
