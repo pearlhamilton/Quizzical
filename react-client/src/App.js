@@ -14,16 +14,18 @@ const App = () => {
 
     useEffect(() => {
         const socket = io(serverEndpoint);
-
-        socket.on("connect", () => {
-          console.log(socket.id); // ojIckSD2jqNzOqIrAGzL
+        setSocket( socket );
         
+        socket.on("connect", () => {
+          console.log(`user connected to the socket id ${socket.id}`);
         });
+       
         socket.on('admin-message', msg => console.log(msg));
+        
         // socket.on('admin-message', msg => setMessage(msg));
         socket.on('player-count', count => setPlayerCount(count.players_count));
 
-        setSocket( socket );
+        
         // console.log(socket)
 
         // const joinGame = e => {
@@ -35,13 +37,13 @@ const App = () => {
         // }
 
 
-        socket.on("users", (users) => {
-          users.forEach((user) => {
-            // user.self = user.userID === socket.id;
-            // initReactiveProperties(user);
-            console.log(user)
-          });
-        });
+        // socket.on("users", (users) => {
+        //   users.forEach((user) => {
+        //     // user.self = user.userID === socket.id;
+        //     // initReactiveProperties(user);
+        //     console.log(user)
+        //   });
+        // });
 
         return() => {
           

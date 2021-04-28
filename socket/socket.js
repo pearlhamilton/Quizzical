@@ -12,22 +12,29 @@ const io = require("socket.io")(server, {
     }
 });
 
-//io overall session || socket sesion branches
 io.on('connection', socket => {
+
+    console.log(`Connection to the socket: ${socket.id} has been made`);
+    socket.on('connect', usr => console.log(usr));
+
+    
+    socket.emit('admin-message', 'Welcome to the quizz, live!');
+
+
 
 
     // socket.emit('player-count', {players_count: participantCount});
     const participantCount = io.engine.clientsCount;
     socket.emit('player-count', {players_count: participantCount});
 
-    socket.emit('admin-message', 'Hi there, new quizz player')
+    
 
     socket.broadcast.emit('admin-message', `New quizz player has joined the room`)
 
 
     
 
-    console.log(`connected to socket: ${socket.id}`);
+  
     
     socket.on('pass-username', (username) => {
         console.log(`Created the quiz ${username}`)
