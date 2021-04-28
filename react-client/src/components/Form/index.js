@@ -61,7 +61,6 @@ function Form() {
   //let categories = [9, 12, 21, 22, 26, 31]
   const random = Math.floor(Math.random() * categories.length);
   let randomCategory = categories[random];
- 
 
   return (
     <div>
@@ -78,7 +77,7 @@ function Form() {
           <label for="3 players">3 players</label>
         </label> */}
         <br />
-        <label htmlFor="category">
+        <label htmlFor="pick a category">
           Pick a category
           <select
             onChange={handleChangeSubject}
@@ -96,7 +95,7 @@ function Form() {
           </select>
         </label>
         <br />
-        <label htmlFor="number-of-questions">
+        <label htmlFor="number of questions">
           Number of questions (min:5 max:20)
           <input
             value={numberOfQs}

@@ -30,28 +30,23 @@ const quizReducer = (state = init, action) => {
     case "SET ERROR":
       return { ...state, error: action.payload };
 
-    case "CHANGE_QUESTION":
+    case"CHANGE_QUESTION":
       //at this point when change question, we want to know whether the answer they clicked was correct
       // if chosenAnswer and correct answer are the same move to next question but also add one to the score
-      if (chosenAnswer === correctAnswer) {
-        return {
-          ...state,
-          current_question_index: nextQuestionIndex,
-          score: score + 1,
-        };
-      } else {
-        return { ...state, current_question_index: nextQuestionIndex };
-      }
+      if (chosenAnswer === correctAnswer){
+          return{...state, current_question_index: nextQuestionIndex, score:score+1}
+      } else{ 
+          return{...state, current_question_index: nextQuestionIndex}
+      };
 
     case "END_QUESTIONS":
-      if (chosenAnswer === correctAnswer) {
-        return { ...state, score: score + 1, endOfQuestions: true };
-      } else {
-        return { ...state, endOfQuestions: true };
-      }
-    case "SET_ERROR":
-      return { ...state, error: action.payload, loading: false };
+      if (chosenAnswer === correctAnswer){
+        return{...state, score:score+1, endOfQuestions:true}
 
+      } else{
+          return{...state, endOfQuestions: true}
+      }
+      
     default:
       return state;
   }

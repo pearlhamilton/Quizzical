@@ -21,9 +21,9 @@ const Question = (props) => {
 
   return (
     <div>
-      <h1>
+      <h2>
         Question {questionNumber} of {questionArrayLength}
-      </h1>
+      </h2>
       <h3 style={{ color: "white" }}>
         {containsEncodedComponents(props.question)}
       </h3>

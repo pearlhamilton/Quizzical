@@ -1,9 +1,12 @@
 import axios from "axios";
 
+
+
+
 export const fetchQuiz = (numberOfQs, subject, difficulty) => {
   return async (dispatch) => {
-
     try {
+
       const { data } = await axios.get(
         `https://opentdb.com/api.php?amount=${numberOfQs}&category=${subject}&difficulty=${difficulty}&type=multiple&encode=url3986`
 
@@ -21,7 +24,11 @@ export const fetchQuiz = (numberOfQs, subject, difficulty) => {
         payload: quizData,
       });
     } catch (err) {
-      throw new Error(err.message);
+      console.warn(err.message)
+      dispatch({
+        type: "SET_ERROR",
+        payload: err.message
+      })
     }
   };
 };
