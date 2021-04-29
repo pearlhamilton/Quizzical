@@ -2,22 +2,52 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
+import { useSelector } from 'react-redux'
+import {roomConfig} from "../../actions/roomConfig"
+import {socket} from '../../socket/index.js';
 //import logo from "../../images/quizlogo.png";
 import "./style.css";
 
 function Form() {
+
   const [difficulty, setDifficulty] = useState("easy");
   const [numberOfQs, setNumberOfQs] = useState(5);
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState("9");
+  const roomName = useSelector(state => state.user.room);
+  const id = useSelector(state => state.user.id);
+
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log(roomName)
+
+    const config =  {
+      host: id,
+      room: roomName, 
+      difficulty: difficulty, 
+      count: numberOfQs,
+      subject: subject
+    }
+
     dispatch(fetchQuiz(numberOfQs, subject, difficulty));
-    history.push("/quiz");
+    dispatch(roomConfig(numberOfQs,subject,difficulty));
+
+  
+    socket.emit("add-config", config, (res) => {
+      console.log(res)
+    });
+    // dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+   
+
+
+    // go to quiz
+    // history.push("/quiz");
   };
+
 
   const handleChangeDifficulty = (e) => {
     setDifficulty(e.target.value);
@@ -76,7 +106,6 @@ function Form() {
           <input type="radio" id="3-players" name="players" value="3 players" />
           <label for="3 players">3 players</label>
         </label> */}
-        <br />
         <label htmlFor="pick a category">
           Pick a category
           <select

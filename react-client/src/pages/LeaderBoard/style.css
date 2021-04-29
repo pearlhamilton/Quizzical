@@ -9,9 +9,19 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-left: 2.8rem;
+}
+
+.score-container {
+  overflow: auto;
+  max-height: 300px;
+  min-width: 500px;
+  font-family: var( --content-text);
 }
 
 
@@ -26,7 +36,7 @@ body {
 }
 
 h2 {
-  padding-top: 12rem;
+  /* padding-top: 12rem; */
   font-family: var(--content-text);
   font-size: 1.8rem;
 }

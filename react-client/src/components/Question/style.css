@@ -9,7 +9,7 @@ h3 {
   font-family: var(--content-text);
   color: var(--content);
   text-align: center;
-  padding-top: 6rem;
+  /* padding-top: 2rem; */
   margin: 0 auto;
 }
 
