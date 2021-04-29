@@ -75,9 +75,10 @@ const Welcome = () => {
         const player = usrInput;
 
         if (player === undefined) {
-            alert("Don't be rude, introduce yourself!");
+            setError("Don't be rude, introduce yourself!")
+            // alert("Don't be rude, introduce yourself!");
         } else if (room === undefined) {
-            alert("You need to create room or give an existing name");
+            setError("You need to create room or give an existing name");
         } else {
             // dispatch(actions.addUser(player));
             socket.emit("check-room", room, (res) => {
@@ -90,6 +91,7 @@ const Welcome = () => {
                     history.push("/home");
                 } else {
                     setRoom(undefined);
+                    console.warn(error);
                     setError(res.message);
                     alert(res.message)
                 }
@@ -101,9 +103,10 @@ const Welcome = () => {
         e.preventDefault();
         const player = usrInput;
         if (player === undefined) {
-            alert("Don't be rude, introduce yourself!");
+            setError("Don't be rude, introduce yourself!");
         } else if (room === undefined) {
-            alert("You need to create room or give an existing name");
+            setError("You need to create room or give an existing name");
+
         } else {
             // dispatch(actions.addUser(player));
             dispatch(setPlayer(player));
@@ -156,7 +159,8 @@ const Welcome = () => {
 
     return (
         <div id="welcome">
-        <img src={logo} alt="Lets Get Quizzical" />
+        <img src={logo} alt="logo: Let's Get Quizzical" />
+        { error && <div id="error">{error}</div> }
         <form autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
@@ -189,7 +193,7 @@ const Welcome = () => {
         <p>
             {playerCount - 1 === 0
                 ? "No Players Online"
-                : `Total players online: ${playerCount - 1}`}
+                : `Total players online: ${playerCount}`}
         </p>
         {/* create conditional error state showing */}
         <p>{error}</p>
