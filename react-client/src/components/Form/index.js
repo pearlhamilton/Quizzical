@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
+
+import { useSelector } from 'react-redux'
 //import logo from "../../images/quizlogo.png";
 import "./style.css";
 
@@ -9,15 +11,34 @@ function Form() {
   const [difficulty, setDifficulty] = useState("easy");
   const [numberOfQs, setNumberOfQs] = useState(5);
   const [subject, setSubject] = useState("");
+  const roomName = useSelector(state => state.user.room);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
-    history.push("/quiz");
-  };
+    
+    
+    console.log(roomName)
+
+    const config =  {
+      room: roomName, 
+      difficulty: difficulty, 
+      count: numberOfQs,
+      subject: subject
+    }
+
+    socket.emit("add-config", config, (res) => {
+
+    
+    });
+    // dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+
+    // go to quiz
+    // history.push("/quiz");
+    
+  }
 
   const handleChangeDifficulty = (e) => {
     setDifficulty(e.target.value);

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
 import {socket} from '../../socket/index.js';
 import * as actions from '../../actions/user';
-import {setHost, setPlayer} from '../../actions/userType';
+import {setHocst, setPlayer} from '../../actions/userType';
 import {useDispatch} from 'react-redux';
 
 // const server = "http://localhost:3000";
@@ -15,13 +15,14 @@ const Welcome = () => {
     const dispatch = useDispatch()
     const history = useHistory();
 
-    const [playerCount, setPlayerCount] = useState(); 
+    const [playerCount, setPlayerCount] = useState(0); 
     const [usrInput, setUsrInput] = useState(undefined);
     const [room, setRoom] = useState(undefined);
     const [error, setError] = useState("");
 
     useEffect(() => {
-        socket.on('users', users => setPlayerCount(users))
+        
+        socket.on('users', users => setPlayerCount(users - 1))
         // let test2; 
         // const test = socket.on('users', users => setPlayerCount(users.length));
         // // const test = socket.on('users', users => test2 = users);
@@ -39,7 +40,9 @@ const Welcome = () => {
         // return () => clearInterval(interval)
     }, []);
 
-    console.log(playerCount)
+    const handleData = (users) => {
+        setPlayerCount(users);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -64,13 +67,13 @@ const Welcome = () => {
             alert("You need to create room or give an existing name");
         } else {
             // dispatch(actions.addUser(player));
-            socket.emit("create-room", room, (res) => {
+            socket.emit("check-room", room, (res) => {
+
                 console.log("socket response", res);
 
                 if (res.code === "success") {
                     setRoom(room);
                     dispatch(setHost(player, room));
-                    // socket.emit("pass-username", player);
                     history.push("/home");
                 } else {
                     setRoom(undefined);
@@ -114,7 +117,7 @@ const Welcome = () => {
     return (
         <div id="welcome">
         <img src={logo} alt="logo: Let's Get Quizzical" />
-        <form id="welcome-form" autoComplete="off">
+        <form autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
                 type="text"
