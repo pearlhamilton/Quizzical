@@ -15,17 +15,11 @@ describe("Form", () => {
     let categoryInput = screen.getByLabelText("category");
     expect(categoryInput).toBeInTheDocument();
   });
-<<<<<<< HEAD
-  // test("it calls category choice on form submission", () => {
-  //   let categoryInput = screen.getByRole("category", {
-  //     name: /Pick a category/i
-=======
 
   //   test("it calls category choice on form submission", () => {
   //     let categoryInput = screen.getByLabelText("category");
   //     userEvent.type(categoryInput, "Music{enter}");
   //     expect(getResultMock).toHaveBeenNthCalledWith(1, "Music");
->>>>>>> origin/staging
   //   });
 
   test("it renders a number of questions option", () => {
