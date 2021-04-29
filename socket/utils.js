@@ -3,38 +3,32 @@
 // const games = new GameManager();
 
 class Games {
-    constructor(){
+    constructor() {
 
         this.games = []; 
         this.players = [];
     }
 
-    //  addGame = (hostID, roomName, difficulty, count, subject, results, index) => {
-    addGame = (hostID, roomName, difficulty, count, subject) => {
+    addGame (hostID, roomName, difficulty, count, subject) {
+                let game = {
+                    host: hostID,
+                    room: roomName,
+                    difficulty: difficulty,
+                    count: count,
+                    subjects: subject,
+                    players: [],
+                    active: false
+                }
         
-        // let game = {
-        //     host: hostID,
-        //     room: roomName,
-        //     difficulty: difficulty,
-        //     count: count,
-        //     subject: subject,
-        //     players: [],
-        //     // currentQuestion: current,
-        //     // results: results,
-        //     // current_question_index: index,
-        //     active: false
-        // }
-
-        let game = new Game(hostID, roomName, difficulty, count, subject);
-
+                // let game = new Game(hostID, roomName, difficulty, count, subject);
+                this.games.push(game);
+                console.log("game added, room list:")
+                this.games.forEach(room => console.log(room))
+                return game;
+    }
         
-        this.games.push(game);
-        console.log("game added, room list:")
-        this.games.forEach(room => console.log(room))
-        return game;
-    };
-
-    addPlayer = (username, room, hostID) => {
+    addPlayer (username, room, hostID) {
+        console.log("add player method")
         let player = {
             username: username, 
             roomName: room, 
@@ -43,13 +37,18 @@ class Games {
         }
 
         this.players.push(player);
-        let game = this.games.filter(game => game.room === room);
-        console.log(game.players)
-        // game.players.push(player);
+        let game = this.games.find( y => y.room == room);
+        game.players.push(player);
         return player;
     }
 
-    filterRoom = (roomName) => {
+    getPLayersForGame(roomName) {
+
+        //get all players
+    }
+
+
+    filterRoom (roomName) {
         return this.games.room === roomName; 
     }
 
@@ -64,16 +63,24 @@ class Games {
 
     //check the room id
     //get player with room id
-    getPlayerData = (roomName) => {
+    getPlayerData (roomName) {
         //find room in games
-        console.log("no of players")
-        const game =  this.games.filter(game => {console.log(game.room === roomName); return game.room === roomName});
+        console.log("   player data")
+        // const game =  this.games.filter(game => game.room === roomName);
+        let game = this.games.find( y => y.room == roomName);
+        console.log(game)
         // const players = this.players.filter(player => player.room === roomName)
-        console.log( game.player.length)
-        return game.player.length;
+        if(game === undefined ){
+            return "error"
+        }
+        return game.players;
     }
   
+    getGame (roomName){
+        let game = this.games.find( y => y.room == roomName);
+        return game;
 
+    }
     getGameByRoom(roomName) {
         console.log("Looking for room")
         console.log(roomName)
@@ -111,8 +118,6 @@ class Game {
     }
 
     addPlayer (player) {
-
-
         this.players.push(player);
         console.log(players.length)
         console.log("player added")

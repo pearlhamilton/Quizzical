@@ -4,9 +4,10 @@ const setHost = (username, room) => ({
     room: room
 });
 
-const setPlayer = (username) => ({
+const setPlayer = (username, room) => ({
     type: "SET_PLAYER",
-    payload: {username: username, type: "PLAYER"}
+    payload: {username: username, type: "PLAYER"},
+    room: room
 });
 
 const setID = (id) => ({

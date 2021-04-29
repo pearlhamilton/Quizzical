@@ -35,6 +35,13 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.leaderboard-score {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 3rem;
+  margin-left: 3rem;
+}
+
 
 @media screen and (max-width: 450px) {
   #leaderboard-page {
