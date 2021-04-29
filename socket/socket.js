@@ -3,7 +3,7 @@
 // const io = require('socket.io')(server);
 // io.on('connection', () => { /* … */ });
 // server.listen(3000);
-const games = require('./utils');
+const {Games} =require('./utils') 
 const server = require('http').createServer();
 //make server and sockets interact
 const io = require("socket.io")(server, {
@@ -12,9 +12,13 @@ const io = require("socket.io")(server, {
     }
 });
 
+const games = new Games();
+
 io.on('connection', (socket) => {
 
     console.log(`Connection to the socket: ${socket.id} has been made`);
+   
+    socket.emit('assign-id', { id: socket.id});
 
     const users = [];
     for (let [id, socket] of io.of("/").sockets) {
@@ -25,15 +29,15 @@ io.on('connection', (socket) => {
     };
 
     const participantCount = io.engine.clientsCount;
-
+    console.log(participantCount)
+    // socket.emit("users", participantCount);
     socket.emit("users", participantCount);
-    console.log(users);
+    socket.broadcast.emit("users", participantCount);
+    // console.log(users);
 
-    socket.on("create-room", (roomName, callback) => {
+    socket.on("check-room", (roomName, callback) => {
         console.log("CLIENT REQUEST TO CREATE ROOM WITH " ,  roomName)
         if (games.checkRoomName(roomName)) {
-            games.addGame(socket.id, roomName)
-            socket.join(roomName)
             callback({code: "success",
                     message: `SUCCESS: Created room with name ${roomName}`
                 }); 
@@ -44,10 +48,22 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('add-config', (config, cb) => {
+        /// TODO see ticket # 80 
+        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject)
+        socket.join(config.host)
+        cb({
+            code: "success",
+            message: `SUCCESS: configuration has been added`
+        }); 
+    })
+
     socket.on('disconnect', () => {
+        socket.broadcast.emit("users", participantCount);
         socket.broadcast.emit('user-left', `${socket.username} left`);
+     
         console.log(`Player ${socket.id} disconnected`);
-        
+   
     })
 
 });

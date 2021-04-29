@@ -1,0 +1,9 @@
+#Lobby{
+    background-color: black;
+    height:100vh;
+}
+
+#players{
+    display:flex;
+    justify-content: space-between;
+}

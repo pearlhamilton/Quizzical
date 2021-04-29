@@ -9,8 +9,13 @@ const setPlayer = (username) => ({
     payload: {username: username, type: "PLAYER"}
 });
 
+const setID = (id) => ({
+    type: "SET_ID",
+    payload: id
+})
+
 const resetType = () => ({
     type: "RESET_TYPE"
 });
 
-export {setHost, setPlayer}
+export {setHost, setPlayer, setID}
