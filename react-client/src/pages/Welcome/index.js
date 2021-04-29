@@ -193,7 +193,7 @@ const Welcome = () => {
         <p>
             {playerCount - 1 === 0
                 ? "No Players Online"
-                : `Total players online: ${playerCount}`}
+                : `Total players online: ${playerCount -1}`}
         </p>
         {/* create conditional error state showing */}
         </div>
