@@ -35,14 +35,14 @@ const AnswerCard = (props) => {
 
   if (props.index === questionArrayLength-1){
     return(
-        <button id="answer-cards" onClick = {handleFinalAnswer}>{decodedAnswers}</button>
+        <button aria-label="finalAnswer" id="answer-cards" onClick = {handleFinalAnswer}>{decodedAnswers}</button>
 
     )
   
 
   }else{
       return (
-        <button id="answer-cards" onClick={() => nextQuestion(props.answer)}>{decodedAnswers}</button>
+        <button aria-label="answer" id="answer-cards" onClick={() => nextQuestion(props.answer)}>{decodedAnswers}</button>
     );
   }
 };

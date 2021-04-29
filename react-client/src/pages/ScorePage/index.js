@@ -39,14 +39,16 @@ const score = useSelector((state)=> state.quizReducer.score) //get score from st
     })
 
   return (
-    <div id="score-page">
-    <div id="playerscore">
-      <h1>You scored: {score}</h1>
+    <>
+    {/* <div id="score-page">
+    <div id="playerscore"> */}
+      <h1 role="heading">You scored: {score}</h1>
 
     
     <Link to="/leaderboard"><button>Go to Leaderboard</button></Link>
-    </div>
-    </div>
+    {/* </div>
+    </div> */}
+    </>
   );
 }
 export default ScorePage;

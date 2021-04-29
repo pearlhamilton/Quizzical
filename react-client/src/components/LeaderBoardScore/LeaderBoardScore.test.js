@@ -6,8 +6,9 @@ import userEvent from "@testing-library/user-event";
 // failing
 describe("p", () => {
   test("it renders a p", () => {
-    render(<LeaderBoardScore />);
-    let p = screen.getByText("");
+    const fakeprop ="hello"
+    render(<LeaderBoardScore props={fakeprop} />);
+    let p = screen.getByRole("leaderboardScore");
     expect(p).toBeInTheDocument();
   });
 })
