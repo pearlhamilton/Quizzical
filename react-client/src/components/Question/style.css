@@ -9,5 +9,16 @@ h3 {
   font-family: var(--content-text);
   color: var(--content);
   text-align: center;
-  margin-top: 4rem;
+  padding-top: 6rem;
+  margin: 0 auto;
+}
+
+#question-container {
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+}
+
+#question-num {
+  font-size:1.8rem;
 }

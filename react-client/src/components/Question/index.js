@@ -20,14 +20,13 @@ const Question = (props) => {
   console.log(questionNumber);
 
   return (
-    <div>
-      <h2>
+    <div id="question-container">
+      {/* <h2>
         Question {questionNumber} of {questionArrayLength}
-      </h2>
-      <h3 style={{ color: "white" }}>
+      </h2> */}
+      <h3 style={{ color: "white" }}><span id="question-num">Question {questionNumber} of {questionArrayLength}:</span> <br></br> 
         {containsEncodedComponents(props.question)}
       </h3>
-      ;
     </div>
   );
 };
