@@ -1,0 +1,15 @@
+#home-page{
+  background-image: url('../../images/settings-desktop.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+  #home-page {
+      background-image: url('../../images/settings-mobile.jpg');
+  }
+}

@@ -1,10 +1,11 @@
 import React from "react";
+import "./style.css";
 
 import { Form } from "../../components";
 
 function Home() {
   return (
-    <div>
+    <div id="home-page">
     
       <Form />
     </div>

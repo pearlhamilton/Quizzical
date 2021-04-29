@@ -1,0 +1,46 @@
+:root {
+  --heading-text: "Pacifico";
+  --content-text: "Nunito", sans-serif;
+  --content: white;
+}
+
+#score-page{
+  background-image: url('../../images/score-desktop.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#playerscore {
+  color: whitesmoke;
+  font-family: var(--content-text);
+  padding-top: 10rem;
+  padding-left: 2rem;
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 450px) {
+  #score-page {
+      background-image: url('../../images/score-mobile.jpg');
+  }
+  #playerscore {
+    font-size: 1rem;
+  }
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  color: #ca2bfc;
+  font-size: 1.1rem;
+}
+
+button:hover {
+  background-color: #ca2bfc;
+  color: whitesmoke;
+  transition-duration: 0.3s;
+}

@@ -6,17 +6,6 @@
     --content: white;
 }
 
-body{
-    background-image: url('../../images/home-background.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #welcome{
     box-sizing: border-box;
     display: flex;
@@ -25,12 +14,17 @@ body{
     align-items: center; 
     /* flex-wrap: wrap; */
     font-style: var(--content-text);
+    background-image: url('../../images/home-desktop.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    text-align: center;
 }
 
 #welcome img{
-    height: auto;
-    width: 200px;
-    margin: 3rem;
+    height: 300px;
+    width: auto;
+    padding-top: 0.5rem;
 }
 
 #welcome form{
@@ -38,28 +32,76 @@ body{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 70%;
+    width: 40%;
+    text-align:center;
+    margin-right: 30%;
 }
+
+
 #welcome label{
     display: none;
 }
 #welcome input {
-    font-size: 18px;
+    margin: 0 auto;
+    font-size: 15px;
     margin-bottom: 10px;
     text-align: center;
     border-radius: 5px;  
     padding: 10px 0;
+
 }
 
 #welcome input[type="text"] {
     width: 100%;
+    margin-right: auto;
+    display:inline-block;
+    margin-left: auto;
 }
 
-#welcome input[type="submit"] {
-    padding: 10px 0;
-    width: 100%;
+#welcome input[name="newQuiz"] {
+    color:#005db6;
+    width: 49%;
+    display:inline-block;
     border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:
+        hsl(188,88%,90%);
 }
+
+#welcome input[name="joinQuiz"] {
+    color:
+    #ae2ae7;
+    width: 49%;
+    display:inline-block;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: 
+        #ffd3fe;
+}
+
+#welcome input[name="joinQuiz"]:hover {
+    color:#ae2ae7;
+    background-color: #ff91fd;
+    box-shadow: 0 0 5px #ff91fd,
+                0 0 10px rgb(255 114 253 / 0.8),
+                0 0 15px rgb(255 114 253 / 0.7),
+                0 0 30px rgb(255 114 253 / 0.6);
+    border-color: #ff91fd;
+}
+
+#welcome input[name="newQuiz"]:hover {
+    color:#005db6;
+    background-color: #91f7fe;
+    box-shadow: 0 0 5px 
+    #91f7fe,
+                0 0 10px rgb(145 247 254 / 0.8),
+                0 0 15px rgb(145 247 254 / 0.7),
+                0 0 30px rgb(145 247 254/ 0.6);
+    border-color: #91f7fe;
+}
+
 #welcome p{
     width:100%;
     text-align: center;
@@ -72,15 +114,24 @@ body{
     color: grey;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (max-width: 450px) {
+    #welcome{
+        background-image: url('../../images/home-mobile.jpg');
+        background-size: 100vw 100vh;
+    }
     #welcome img{
-        height: 360px; 
-        width: auto;
-        margin: 2rem;
+        height: auto;
+        width: 310px;
+        padding-top: 0.5rem;
     }
 
-    #welcome input[type="submit"] {
-        font-weight: 600;
-        width: 49%;
+    #welcome input[name="joinQuiz"], #welcome input[name="newQuiz"], #welcome input[type="text"] {
+        font-size: 0.8rem;
     }
+    #welcome form{
+        width: 55%;
+}
+    #welcome p{
+    font-size: 0.9rem;
+}
 }

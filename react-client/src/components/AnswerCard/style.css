@@ -9,22 +9,22 @@
 #answer-cards {
   display: block;
   text-align: center;
-  padding: 2rem;
+  padding: 1.2rem;
   background-color: lightcyan;
-  color: fuchsia;
+  color: #2d6cdf;
   border-radius: 4px;
   border: none;
   display: flex;
   justify-content: space-evenly;
-  width: 40%;
-  margin: auto;
+  width: 30%;
+  /* margin: auto; */
   margin-top: 1rem;
   font-family: var(--content-text);
- 
 }
  
 #answer-cards:hover {
   cursor: pointer;
-  background-color: fuchsia;
+  background-color: #2d6cdf;
   color: lightcyan;
+  transition-duration: 0.4s;
 }

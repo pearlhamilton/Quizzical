@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#quiz-page{
+  background-image: url('../../images/question-desktop.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-left: 2.8rem;
+}
+
+@media screen and (max-width: 450px) {
+  #quiz-page {
+      background-image: url('../../images/question-mobile.jpg');
+  }
+}

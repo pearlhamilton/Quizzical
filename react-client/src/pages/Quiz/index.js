@@ -1,21 +1,17 @@
-import React, {useEffect} from "react";
+import React from "react";
+import "./style.css";
 import { AnswerCard, Question } from "../../components";
 import { useSelector} from "react-redux";
-import { Redirect } from "react-router";
 
 const Quiz = () => {
   
   
-  const endQuestion = useSelector((state)=> state.quizReducer.endOfQuestions)
   const currentQuestion = useSelector((state) => state.quizReducer.current_question_index);
   const result = useSelector((state) => state.quizReducer.results);
   const answers = result[currentQuestion].answers;
   const index = result.indexOf(result[currentQuestion])
   const question = result[currentQuestion].question;
 
-
-
-  //POST to database
 
 
 // SHUFFLE ARRAY, so answers are not in the same order each time
@@ -39,29 +35,15 @@ const Quiz = () => {
 //Use the shuffled array and for each answer in the array map over it 
   const shuffledAnswers = shuffle(answers);
  
-//if not at the end of the questions, keep rendering questions
-  // if (!endQuestion){
-
   return (
-    <>
+    <div id="quiz-page">
       <Question question={question} index={index} />
 
       {shuffledAnswers &&
         shuffledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
-    </>
+    </div>
   );
-      // } 
-    //else go to the leader board 
-    // else{ 
-
-      
-    //   return(
-   
-
-    //     // <Redirect to="/leaderboard"/>
-    //     <h1>Waiting</h1>
-    // )
-    // }
+  
 };
 
 export default Quiz;
