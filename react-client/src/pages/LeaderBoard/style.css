@@ -1,0 +1,32 @@
+:root {
+  --heading-text: "Pacifico";
+  --content-text: "Nunito", sans-serif;
+  --content: white;
+}
+
+#leaderboard-page{
+  background-image: url('../../images/leaderboard-desktop.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 450px) {
+  #leaderboard-page {
+      background-image: url('../../images/home-mobile.jpg');
+  }
+}
+
+body {
+  color: whitesmoke;
+}
+
+h2 {
+  padding-top: 12rem;
+  font-family: var(--content-text);
+  font-size: 1.8rem;
+}

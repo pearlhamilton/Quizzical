@@ -76,7 +76,6 @@ function Form() {
           <input type="radio" id="3-players" name="players" value="3 players" />
           <label for="3 players">3 players</label>
         </label> */}
-        <br />
         <label htmlFor="pick a category">
           Pick a category
           <select

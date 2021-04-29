@@ -7,35 +7,48 @@
 }
 
 
-
 form {
   font-family: var(--content-text);
   text-align: center;
   color: whitesmoke;
+  padding-left: 6rem;
+  font-size: 1.4rem;
 }
 
-select {
-  color: fuchsia;
-  background-color: lightcyan;
+#category, #difficulty, #number-of-questions {
+  color:#242223;
+  background-color: rgb(255, 250, 230);
   border-radius: 4px;
   padding: 0.2rem;
+  margin: 0rem 0.5rem;
 }
 label {
   display: flex;
   justify-content: center;
   text-align: left;
 }
-input {
-  background-color: lightcyan;
-  border-radius: 4px;
-  border: none;
-  color: fuchsia;
-}
 
-#play-button input {
+#play-button {
   font-size: 18px;
   margin-bottom: 10px;
   text-align: center;
-  color: fuchsia;
-  padding:0.2rem
+  color: ##242223;
+  padding:0.5rem 1.2rem;
+  background-color: rgb(255, 253, 244);
+  border-radius: 5px;
+}
+
+#play-button:hover {
+  /* color:#ca2bfc; */
+  color:#242223;
+  background-color: 
+#f8e181;
+  transition-duration: 0.4s;
+}
+
+
+@media screen and (max-width: 450px) {
+  form {
+    font-size: 0.9rem;
+  }
 }

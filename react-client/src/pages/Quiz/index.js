@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 import { AnswerCard, Question } from "../../components";
 import { useSelector} from "react-redux";
 
@@ -35,12 +36,12 @@ const Quiz = () => {
   const shuffledAnswers = shuffle(answers);
  
   return (
-    <>
+    <div id="quiz-page">
       <Question question={question} index={index} />
 
       {shuffledAnswers &&
         shuffledAnswers.map((answer) => <AnswerCard answer={answer} index={index} />)} 
-    </>
+    </div>
   );
   
 };
