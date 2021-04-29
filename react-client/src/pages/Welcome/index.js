@@ -196,7 +196,6 @@ const Welcome = () => {
                 : `Total players online: ${playerCount}`}
         </p>
         {/* create conditional error state showing */}
-        <p>{error}</p>
         </div>
     );
 };
