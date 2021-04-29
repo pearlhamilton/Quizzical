@@ -8,7 +8,9 @@ import {socket} from '../../socket/index.js';
 const ScorePage =() => {
 const username = useSelector((state) => state.user.user.username)
 const score = useSelector((state)=> state.quizReducer.score) //get score from state
-
+const results = useSelector((state) => state.quizReducer.results);
+const percentage = Math.round(score / results.length * 100)
+console.log(percentage)
   
 const getPlayers = () => {
     //TODO: extract from redux room name and store to roomName
@@ -25,7 +27,7 @@ const getPlayers = () => {
             }
             const results = {
                 "player": username,
-                "score": score
+                "score": percentage
               }
             console.log(results)
             const { data } = await axios.post(`https://quizzicalquiz.herokuapp.com/players`, results, options)
@@ -42,10 +44,11 @@ const getPlayers = () => {
     useEffect(() => {
         sendResults()
     })
+
   return (
     <div id="score-page">
     <div id="playerscore">
-      <h1>You scored: {score}</h1>
+      <h1>You scored: {percentage}% </h1>
     <Link to="/leaderboard"><button>Go to Leaderboard</button></Link>
     </div>
     </div>
