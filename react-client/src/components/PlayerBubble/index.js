@@ -4,7 +4,7 @@ import "./style.css"
 const PlayerBubble = (props) => {
 
     return(
-        <p className="bubble">{props.player}</p>
+        <p role="playerbubble" className="bubble">{props.player}</p>
     )
 
 }
