@@ -22,8 +22,9 @@ describe("Form", () => {
   //   });
   //   //userEvent.type(categoryInput, "Music{enter}");
   //   expect(categoryInput).toBeInTheDocument();
-    //expect(getResultMock).toHaveBeenNthCalledWith(1, "Music");
+  //   //expect(getResultMock).toHaveBeenNthCalledWith(1, "Music");
   // });
+
   test("it renders a number of questions option", () => {
     let numberOfQuestionsInput = screen.getByAltText("number of questions");
     expect(numberOfQuestionsInput).toBeInTheDocument();
