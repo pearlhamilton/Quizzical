@@ -12,7 +12,7 @@ import quizReducer from "../reducers/quizReducer";
 const TestProviders = ({ initState }) => {
   initState ||= {
     location: "",
-    result: [{ question: "", correct_answer: "", answers: [] }],
+    results: [{ question: "", correct_answer: "", answers: [] }],
     current_question_index: 0,
     score: 0,
     endOfQuestions: false,
