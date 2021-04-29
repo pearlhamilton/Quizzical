@@ -109,7 +109,7 @@ const Welcome = () => {
 
         } else {
             // dispatch(actions.addUser(player));
-            dispatch(setPlayer(player));
+            // dispatch(setPlayer(player));
 
 
             // socket.emit("pass-username", player);
@@ -193,7 +193,7 @@ const Welcome = () => {
         <p>
             {playerCount - 1 === 0
                 ? "No Players Online"
-                : `Total players online: ${playerCount}`}
+                : `Total players online: ${playerCount - 1}`}
         </p>
         {/* create conditional error state showing */}
         <p>{error}</p>

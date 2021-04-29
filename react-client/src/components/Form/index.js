@@ -14,13 +14,14 @@ function Form() {
   const [numberOfQs, setNumberOfQs] = useState(5);
   const [subject, setSubject] = useState("9");
 
+
   // const [results, setResults] = useState("");
   // const [index, setIndex] = useState("");
   // const [score, setScore] = useState("");
 
   const roomName = useSelector(state => state.user.room);
   const id = useSelector(state => state.user.id);
-
+  const username = useSelector(state => state.user.user.username);
   // const resultsFetch = useSelector((state) => state.quizReducer.results);
   // const indexFetch = useSelector((state) => state.quizReducer.current_question_index);
   // const scoreFetch =  useSelector((state) => state.quizReducer.score)
@@ -50,6 +51,7 @@ function Form() {
       difficulty: difficulty, 
       count: numberOfQs,
       subject: subject,
+      username: username
       // results:results, 
       // current_question_index: index,
       // score: score
