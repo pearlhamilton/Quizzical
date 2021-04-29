@@ -1,20 +1,25 @@
 import React from 'react'
+import {LobbyStatus, PlayerBubble} from '../../components'
+import {useSelector} from "react-redux"
+import "./style.css"
+
 
 const Lobby = () => {
+    const players = ['player1', 'player2', 'player3']// this will come from redux 
+
     return(
-        <>
+        <div id="Lobby">
             <h1>Lobby</h1>
-        {/* if host? */}
-        <button>Startgame </button>
-     
-      
-        {/* if not host */}
-        <div> waiting for the game to start  </div>
+    
+            <LobbyStatus/> 
 
-        {/* everyone sees how many people are in the loby  */}
+            <div id="players">
 
-        <div>This div shows players in the lobby</div>
-        </>
+            {players &&
+            players.map((player) => <PlayerBubble key={players.indexOf(player)} player={player} />)} 
+            
+            </div>
+        </div>
     )
 }
 
