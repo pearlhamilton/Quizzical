@@ -29,9 +29,9 @@ function Form() {
       subject: subject
     }
 
+  
     socket.emit("add-config", config, (res) => {
-
-    
+      console.log(cb)
     });
     // dispatch(fetchQuiz(numberOfQs, subject, difficulty));
 

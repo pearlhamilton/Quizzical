@@ -8,7 +8,7 @@ class Games {
         this.players = [];
     }
 // let game = games.addGame(SOCKETID, room);
-    addGame = (hostID, roomName, difficulty, count, subject) => {
+    static addGame = (hostID, roomName, difficulty, count, subject) => {
         let game = {
             host: hostID,
             room: roomName,
@@ -18,16 +18,24 @@ class Games {
             active: false
         }
         this.games.push(game);
+        console.log("game added")
         return game;
     };
 
-    getGameByRoom(roomName) {
-        return this.games.filter((game) => {
-            return game.room === roomName;
-        })[0];
+    static getGameByRoom(roomName) {
+        if(this.games){
+            console.log(this.games)
+            return this.games.filter((game) => {
+                return game.room === roomName;
+            })[0];
+        } else {
+            console.log(this.games)
+            return "";
+        }
+        
     };
 
-    checkRoomName(room) {
+    static checkRoomName(room) {
         let game = this.getGameByRoom(room);
 
         if(game) {
