@@ -4,13 +4,11 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import { quizReducer, userReducer } from "../reducers";
+import {quizReducer, userReducer} from "../reducers";
 const TestProviders = ({ initState, defaultState }) => {
   initState ||= {
     location: "",
-    results: [
-      { question: "Hello", correct_answer: "hello", answers: ["hello"] },
-    ],
+    results: [{ question: "Hello", correct_answer: "hello", answers: ["hello"] }],
     current_question_index: 0,
     score: 0,
     endOfQuestions: false,
@@ -19,14 +17,14 @@ const TestProviders = ({ initState, defaultState }) => {
   defaultState ||= {
     user: { username: "testUser", type: "HOST" },
     id: "adsfasfafsaf",
-    room: "hello",
+    room: "hello"
   };
   let testReducer = () => quizReducer(initState, { type: "@@INIT" });
-  let testReducerTwo = () => userReducer(defaultState, { type: "@@INIT" });
+  let testReducerTwo = () => userReducer(defaultState, { type: "@@INIT"})
   const rootReducer = combineReducers({
-    quizReducer: testReducer,
-    user: testReducerTwo,
-  });
+    quizReducer:testReducer,
+    user: testReducerTwo
+  })
   const testStore = createStore(rootReducer, applyMiddleware(thunk));
   return ({ children }) => <Provider store={testStore}>{children}</Provider>;
 };
