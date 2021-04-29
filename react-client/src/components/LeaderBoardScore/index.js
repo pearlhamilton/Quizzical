@@ -4,7 +4,7 @@ const LeaderBoardScore = (props) => {
 
     return(
     
-        <p>{props.score.player} : {props.score.score}</p>
+        <p role="leaderboardScore">{props.score.player} : {props.score.score}</p>
         
     )
 }

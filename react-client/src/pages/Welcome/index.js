@@ -3,10 +3,10 @@ import "./style.css";
 // import { Socket } from "socket.io-client";
 import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
-import {socket} from '../../socket/index.js';
+import { socket } from '../../socket/index.js';
 import * as actions from '../../actions/user';
-import {setHost, setPlayer, setID} from '../../actions/userType';
-import {useDispatch} from 'react-redux';
+import { setHost, setPlayer, setID } from '../../actions/userType';
+import { useDispatch } from 'react-redux';
 
 // const server = "http://localhost:3000";
 
@@ -15,7 +15,7 @@ const Welcome = () => {
     const dispatch = useDispatch()
     const history = useHistory();
 
-    const [playerCount, setPlayerCount] = useState(0); 
+    const [playerCount, setPlayerCount] = useState(0);
     const [usrInput, setUsrInput] = useState(undefined);
     const [room, setRoom] = useState(undefined);
     const [error, setError] = useState("");
@@ -23,18 +23,18 @@ const Welcome = () => {
 
     useEffect(() => {
         // socket.on("connect", () => {
-            
+
         //     let actual = socket.id;
         //     console.log(actual)
         //     setLocalId(handleSetId)
         //     console.log(id)
         //     dispatch(setId);
-            
+
         // });
 
         socket.on('assign-id', id => dispatch(setID(id)))
         console.log(id)
-      
+
         socket.on('users', users => setPlayerCount(users))
         // let test2; 
         // const test = socket.on('users', users => setPlayerCount(users.length));
@@ -45,11 +45,11 @@ const Welcome = () => {
         // //     playerCountFun
         // // }, 1000);
         // const interval = setInterval(() => {
-           
+
         //     console.log(playerCount)
         //     setPlayerCount(playerCount)
         // }, 1000);
-       
+
         // return () => clearInterval(interval)
     }, []);
 
@@ -93,7 +93,6 @@ const Welcome = () => {
                     setRoom(undefined);
                     console.warn(error);
                     setError(res.message);
-                    alert(res.message)
                 }
             });
         }
@@ -139,7 +138,7 @@ const Welcome = () => {
 
             //push to lobby
         }
-       
+
     };
 
     const renderJoin = () => {
@@ -148,10 +147,10 @@ const Welcome = () => {
         if (playerCount < 2) {
             tags = "disabled";
         }
-        
+
         return (
             <>
-                <input type="submit" className={tags} name="joinQuiz" value="Join" onClick={handleJoin}/>
+                <input type="submit" className={tags} name="joinQuiz" value="Join" onClick={handleJoin} />
             </>
         );
     };
@@ -159,6 +158,7 @@ const Welcome = () => {
 
     return (
         <div id="welcome">
+
         <img src={logo} alt="logo: Let's Get Quizzical" />
         { error && <div id="error">{error}</div> }
         <form autoComplete="off">
@@ -197,6 +197,7 @@ const Welcome = () => {
         </p>
         {/* create conditional error state showing */}
         <p>{error}</p>
+
         </div>
     );
 };
