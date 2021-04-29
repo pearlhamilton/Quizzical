@@ -115,13 +115,7 @@ function Form() {
     <div>
       {/* <h1 id="lets-get-quizzical">Let's Get Quizzical</h1> */}
       {/* <img src={logo} alt="logo: Let's Get Quizzical" className="logo-small" /> */}
-      <form
-        aria-label="game-selection"
-        htmlFor="game"
-        aria-label="game-selection"
-        aria-hidden="true"
-        onSubmit={handleSubmit}
-      >
+      <form aria-label="game-selection" onSubmit={handleSubmit}>
         {/* <label for="number of players">
           Number of players
           <input type="radio" id="1-player" name="players" value="1 player" />
@@ -136,7 +130,7 @@ function Form() {
           <select
             onChange={handleChangeSubject}
             aria-label="category"
-            aria-hidden="true"
+            id="category"
           >
             {/* https://opentdb.com/api_category.php */}
             <option value="9">General Knowledge</option>
@@ -155,8 +149,7 @@ function Form() {
             value={numberOfQs}
             type="number"
             name="number-of-questions"
-            // aria-label="number of questions"
-            alt="number of questions"
+            aria-label="number of questions"
             min="5"
             max="20"
             id="number-of-questions"
