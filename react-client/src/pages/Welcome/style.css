@@ -113,3 +113,25 @@
     pointer-events: none;
     color: grey;
 }
+
+@media screen and (max-width: 450px) {
+    #welcome{
+        background-image: url('../../images/home-mobile.jpg');
+        background-size: 100vw 100vh;
+    }
+    #welcome img{
+        height: auto;
+        width: 310px;
+        padding-top: 0.5rem;
+    }
+
+    #welcome input[name="joinQuiz"], #welcome input[name="newQuiz"], #welcome input[type="text"] {
+        font-size: 0.8rem;
+    }
+    #welcome form{
+        width: 55%;
+}
+    #welcome p{
+    font-size: 0.9rem;
+}
+}
