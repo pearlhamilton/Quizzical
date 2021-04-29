@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 30%;
-  margin: auto;
+  /* margin: auto; */
   margin-top: 1rem;
   font-family: var(--content-text);
 }

@@ -156,7 +156,7 @@ const Welcome = () => {
 
     return (
         <div id="welcome">
-        <img src={logo} alt="logo: Let's Get Quizzical" />
+        <img src={logo} alt="Lets Get Quizzical" />
         <form autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
