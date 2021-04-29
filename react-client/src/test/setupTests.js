@@ -4,22 +4,37 @@ import "@testing-library/jest-dom";
 
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 
-import quizReducer from "../reducers/quizReducer";
+import {quizReducer, userReducer} from "../reducers";
 
-const TestProviders = ({ initState }) => {
+const TestProviders = ({ initState, defaultState }) => {
   initState ||= {
     location: "",
-    results: [{ question: "", correct_answer: "", answers: [] }],
+    results: [{ question: "", correct_answer: "", answers: [""] }],
     current_question_index: 0,
     score: 0,
     endOfQuestions: false,
     loading: false,
   };
+
+  defaultState ||= {
+    user: { username: "testUser", type: "HOST" },
+    id: "adsfasfafsaf",
+    room: "hello"
+  };
+  
   let testReducer = () => quizReducer(initState, { type: "@@INIT" });
-  const testStore = createStore(testReducer, applyMiddleware(thunk));
+
+  let testReducerTwo = () => userReducer(defaultState, { type: "@@INIT"})
+
+  const rootReducer = combineReducers({
+    testReducer,
+    user: testReducerTwo
+  })
+
+  const testStore = createStore(rootReducer, applyMiddleware(thunk));
 
   return ({ children }) => <Provider store={testStore}>{children}</Provider>;
 };

@@ -35,7 +35,7 @@ const Welcome = () => {
         socket.on('assign-id', id => dispatch(setID(id)))
         console.log(id)
       
-        socket.on('users', users => setPlayerCount(users - 1))
+        socket.on('users', users => setPlayerCount(users))
         // let test2; 
         // const test = socket.on('users', users => setPlayerCount(users.length));
         // // const test = socket.on('users', users => test2 = users);
@@ -91,6 +91,7 @@ const Welcome = () => {
                 } else {
                     setRoom(undefined);
                     setError(res.message);
+                    alert(res.message)
                 }
             });
         }
