@@ -11,12 +11,12 @@ form {
   font-family: var(--content-text);
   text-align: center;
   color: whitesmoke;
-  padding-left: 5rem;
-  font-size: 1.2rem;
+  padding-left: 6rem;
+  font-size: 1.4rem;
 }
 
 #category, #difficulty, #number-of-questions {
-  color: #ca2bfc;
+  color:#242223;
   background-color: rgb(255, 250, 230);
   border-radius: 4px;
   padding: 0.2rem;
@@ -32,14 +32,15 @@ label {
   font-size: 18px;
   margin-bottom: 10px;
   text-align: center;
-  color: #ca2bfc;
+  color: ##242223;
   padding:0.5rem 1.2rem;
   background-color: rgb(255, 253, 244);
   border-radius: 5px;
 }
 
 #play-button:hover {
-  color:#ca2bfc;
+  /* color:#ca2bfc; */
+  color:#242223;
   background-color: 
 #f8e181;
   transition-duration: 0.4s;

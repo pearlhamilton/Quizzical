@@ -20,7 +20,7 @@ const score = useSelector((state)=> state.quizReducer.score) //get score from st
                 "score": score
               }
             console.log(results)
-            // const { data } = await axios.post(`https://quizzicalquiz.herokuapp.com/players`, results, options)
+            const { data } = await axios.post(`https://quizzicalquiz.herokuapp.com/players`, results, options)
             console.log(data)
             if (data.err){
                 throw Error(data.err)

@@ -72,7 +72,7 @@ const Welcome = ({ playerCount, socket }) => {
     return (
         <div id="welcome">
         <img src={logo} alt="logo: Let's Get Quizzical" />
-        <form autoComplete="off">
+        <form id="welcome-form" autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
             type="text"
