@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { fetchQuiz } from "../../actions";
+import { fetchQuiz} from "../../actions";
+import {roomConfig} from "../../actions/roomConfig"
 //import logo from "../../images/quizlogo.png";
 import "./style.css";
 
 function Form() {
   const [difficulty, setDifficulty] = useState("easy");
   const [numberOfQs, setNumberOfQs] = useState(5);
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState("9");
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -16,6 +17,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+    dispatch(roomConfig(numberOfQs,subject,difficulty))
     history.push("/quiz");
   };
 
