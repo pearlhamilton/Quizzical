@@ -77,6 +77,7 @@ To teardown docker compose completely:
 - [x] answers are encoded 
 - [x] after submitting answer for final question in quiz, page will crash
 - [x] sends wrong quiz score to post
+- [ ] socket and client integration
 
 # Changelog
 
