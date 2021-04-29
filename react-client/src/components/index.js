@@ -5,6 +5,7 @@ export { default as LeaderBoardTable } from "./LeaderBoardTable";
 export { default as LeaderBoardScore } from "./LeaderBoardScore"; 
 export { default as LobbyStatus} from "./LobbyStatus"; 
 export { default as PlayerBubble} from "./PlayerBubble"; 
+export { default as StartAgain } from "./StartAgain";
 
 
 
