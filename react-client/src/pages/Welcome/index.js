@@ -108,7 +108,7 @@ const Welcome = () => {
 
         } else {
             // dispatch(actions.addUser(player));
-            dispatch(setPlayer(player));
+            // dispatch(setPlayer(player));
 
 
             // socket.emit("pass-username", player);
@@ -158,43 +158,46 @@ const Welcome = () => {
 
     return (
         <div id="welcome">
-            <img src={logo} alt="logo: Let's Get Quizzical" />
-            { error && <div id="error">{error}</div>}
-            <form autoComplete="off">
-                <label htmlFor="username">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="Choose your player name"
-                    value={usrInput}
-                    onChange={handleInput}
-                />
 
-                <label htmlFor="roomName">Room Name</label>
-                <input
-                    type="text"
-                    id="roomName"
-                    name="roomName"
-                    placeholder="Room name to create or join"
-                    value={room}
-                    onChange={handleRoomInput}
-                />
+        <img src={logo} alt="logo: Let's Get Quizzical" />
+        { error && <div id="error">{error}</div> }
+        <form autoComplete="off">
+            <label htmlFor="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose your player name"
+                value={usrInput}
+                onChange={handleInput}
+            />
 
-                <input
-                    type="submit"
-                    name="newQuiz"
-                    value="New Game"
-                    onClick={handleCreate}
-                />
-                {renderJoin()}
-            </form>
-            <p>
-                {playerCount - 1 === 0
-                    ? "No Players Online"
-                    : `Total players online: ${playerCount - 1}`}
-            </p>
-            {/* create conditional error state showing */}
+            <label htmlFor="roomName">Room Name</label>
+            <input
+                type="text"
+                id="roomName"
+                name="roomName"
+                placeholder="Room name to create or join"
+                value={room}
+                onChange={handleRoomInput}
+            />
+
+            <input
+                type="submit"
+                name="newQuiz"
+                value="New Game"
+                onClick={handleCreate}
+            />
+            {renderJoin()}
+        </form>
+        <p>
+            {playerCount - 1 === 0
+                ? "No Players Online"
+                : `Total players online: ${playerCount - 1}`}
+        </p>
+        {/* create conditional error state showing */}
+        <p>{error}</p>
+
         </div>
     );
 };

@@ -1,7 +1,7 @@
 export const roomConfig = (numberOfQs,subject,difficulty) => {
 
     let roomConfig = {
-      numberOfQs: numberOfQs,
+        numberOfQs: numberOfQs,
         difficulty: difficulty,
         subject: subject,
     }

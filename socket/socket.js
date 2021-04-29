@@ -14,6 +14,7 @@ const io = require("socket.io")(server, {
 
 const games = new Games();
 
+
 io.on('connection', (socket) => {
 
     console.log(`Connection to the socket: ${socket.id} has been made`);
@@ -54,6 +55,11 @@ io.on('connection', (socket) => {
         // games.addGame(config.host, config.room, config.difficulty, config.count, config.subject, config.results, config.current_question_index, config.score );
         games.addGame(config.host, config.room, config.difficulty, config.count, config.subject );
         socket.join(config.host)
+
+        games.addPlayer(config.username, config.room, config.host)
+
+       
+
         cb({
             code: "success",
             message: `SUCCESS: configuration has been added`
@@ -88,19 +94,19 @@ io.on('connection', (socket) => {
             // console.log(games.getPlayerCount())
             // if(existingGame.getPlayerCount <= 4){
                 //check username
-                games.addPlayer(config.room, config.username, socket.id);
+                console.log("adding player")
+                games.addPlayer( config.username, config.room, socket.id);
                 socket.join(config.room);
                 socket.emit(`${config.username} has joined the room`);
                 let game = games.getGameByRoom(config.room);
-                // let players = games.getPlayerData(config.room);
                 cb({
                     code: "success",
-                    player: config.name, 
+                    player: config.username, 
                     score: 0 
                 });
 
                 io.to(game.host).emit("player-connected", { 
-                    name: config.name, 
+                    name: config.username, 
                     score: 0 
                 });
                 
@@ -113,20 +119,48 @@ io.on('connection', (socket) => {
         }
            
     })
+    
+    let gamePlayers; 
+    let roomNameVar; 
+    socket.on('game-players', (roomName, cb) => {
+        const data = games.getPlayerData(roomName)
+        console.log("Player data")
+        console.log(data)
+        gamePlayers = data
+        roomNameVar = roomName
+        // io.to(roomName).emit('data', data);
+
+        // socket.on('chat-message', (message) => {
+        //     const messageData = chatMessage(message, socket);
+        //     console.log(messageData);
+        io.in(roomName).emit(data);
+        // })
+
+        cb(
+            data
+        )
+
+    })
+
+    io.to(roomNameVar).emit('game-players');
+    
+    // socket.broadcast.emit("game-players", gamePlayers);
+   
+
          
 
 
 
-    socket.on('get-player-data', (roomID, cb) => {
-        //get room
-        //get score
-        let playerScore = games.getPlayerData(roomID);
+    // socket.emit('get-player-data', (roomID, cb) => {
+    //     //get room
+    //     //get score
+    //     let playerScore = games.getPlayerData(roomID);
 
-        cb({
-            code: "success",
-            score: playerScore
-        }); 
-    })
+    //     cb({
+    //         code: "success",
+    //         score: playerScore
+    //     }); 
+    // })
 
     socket.on('disconnect', () => {
         socket.broadcast.emit("users", participantCount);

@@ -22,7 +22,8 @@ const userReducer = (state = defaultState, action) => {
         case "SET_PLAYER":
             return {
                 ...state, 
-                user: action.payload
+                user: action.payload,
+                room: action.room
             };
         case "SET_ID":
             return {

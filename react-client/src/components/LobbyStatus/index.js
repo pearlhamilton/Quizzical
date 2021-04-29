@@ -1,21 +1,22 @@
 import React from 'react';
-import {useSelector} from "react-redux"
+import {useSelector} from "react-redux";
+import { useHistory } from 'react-router-dom';
 
 
-const LobbyStatus = () => {
-
+const LobbyStatus = ({host}) => {
+    const history = useHistory();
 
     const subject = useSelector((state) => state.config.config.subject) //need to change this back into words
     const difficulty = useSelector((state) => state.config.config.difficulty)
     const numberOfQs = useSelector((state) => state.config.config.numberOfQs ) 
 
-    // const usertype = useSelector((state) => state.user.user.type)
-    const usertype = "PLAYER"
-
+    const usertype = host//useSelector((state) => state.user.user.type)
+    // const usertype = "PLAYER"
+console.log(usertype)
 
     if (usertype === "HOST"){
         return (
-            <button>Start Game</button> 
+            <button onClick={() => history.push('/quiz')}>Start Game</button> 
             // onclick fetch questions and go to quiz page
         )
 
