@@ -3,7 +3,7 @@
 // const io = require('socket.io')(server);
 // io.on('connection', () => { /* … */ });
 // server.listen(3000);
-const Games = require('./utils');
+const {Games} =require('./utils') 
 const server = require('http').createServer();
 //make server and sockets interact
 const io = require("socket.io")(server, {
@@ -12,10 +12,14 @@ const io = require("socket.io")(server, {
     }
 });
 
+const games = new Games();
+
 io.on('connection', (socket) => {
 
     console.log(`Connection to the socket: ${socket.id} has been made`);
    
+    socket.emit('assign-id', { id: socket.id});
+
     const users = [];
     for (let [id, socket] of io.of("/").sockets) {
         users.push({
@@ -33,7 +37,7 @@ io.on('connection', (socket) => {
 
     socket.on("check-room", (roomName, callback) => {
         console.log("CLIENT REQUEST TO CREATE ROOM WITH " ,  roomName)
-        if (Games.checkRoomName(roomName)) {
+        if (games.checkRoomName(roomName)) {
             callback({code: "success",
                     message: `SUCCESS: Created room with name ${roomName}`
                 }); 
@@ -46,9 +50,9 @@ io.on('connection', (socket) => {
 
     socket.on('add-config', (config, cb) => {
         /// TODO see ticket # 80 
-        Games.addGame(socket.id, config.room, config.difficulty, config.count, config.subject)
-        socket.join(roomName)
-        callback({
+        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject)
+        socket.join(config.host)
+        cb({
             code: "success",
             message: `SUCCESS: configuration has been added`
         }); 

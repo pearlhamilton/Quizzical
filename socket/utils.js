@@ -4,11 +4,13 @@
 
 class Games {
     constructor(){
+
         this.games = []; 
         this.players = [];
     }
-// let game = games.addGame(SOCKETID, room);
-    static addGame = (hostID, roomName, difficulty, count, subject) => {
+
+    addGame = (hostID, roomName, difficulty, count, subject) => {
+        
         let game = {
             host: hostID,
             room: roomName,
@@ -17,27 +19,29 @@ class Games {
             subject: subject,
             active: false
         }
+        
         this.games.push(game);
         console.log("game added")
+        console.log("room list ")
+        this.games.forEach(room => console.log(room))
         return game;
     };
 
-    static getGameByRoom(roomName) {
-        if(this.games){
+    getGameByRoom(roomName) {
+        // if(this.games){
             console.log(this.games)
             return this.games.filter((game) => {
                 return game.room === roomName;
             })[0];
-        } else {
-            console.log(this.games)
-            return "";
-        }
+        // } else {
+        //     console.log(this.games)
+        //     return "";
+        // }
         
     };
 
-    static checkRoomName(room) {
+    checkRoomName(room) {
         let game = this.getGameByRoom(room);
-
         if(game) {
             return false;
         } else {
@@ -47,5 +51,5 @@ class Games {
 }
 
 
-module.exports = Games;
+module.exports = {Games};
 

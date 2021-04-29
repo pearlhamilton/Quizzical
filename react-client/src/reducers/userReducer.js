@@ -1,5 +1,6 @@
 const defaultState = {
-    user: {username: "", type: "" },
+    user: { username: "", type: "" },
+    id: "",
     room: null
 }
   
@@ -23,6 +24,11 @@ const userReducer = (state = defaultState, action) => {
                 ...state, 
                 user: action.payload
             };
+        case "SET_ID":
+            return {
+                ...state, 
+                id: action.payload.id
+            };    
         case "RESET_TYPE":
             return defaultState;
         default:

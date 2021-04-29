@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
 import { useSelector } from 'react-redux'
 import {roomConfig} from "../../actions/roomConfig"
+import {socket} from '../../socket/index.js';
 //import logo from "../../images/quizlogo.png";
 import "./style.css";
 
@@ -13,6 +14,8 @@ function Form() {
   const [numberOfQs, setNumberOfQs] = useState(5);
   const [subject, setSubject] = useState("9");
   const roomName = useSelector(state => state.user.room);
+  const id = useSelector(state => state.user.id);
+
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -23,22 +26,26 @@ function Form() {
     console.log(roomName)
 
     const config =  {
+      host: id,
       room: roomName, 
       difficulty: difficulty, 
       count: numberOfQs,
       subject: subject
     }
 
+    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+    dispatch(roomConfig(numberOfQs,subject,difficulty));
+
   
     socket.emit("add-config", config, (res) => {
-      console.log(cb)
+      console.log(res)
     });
     // dispatch(fetchQuiz(numberOfQs, subject, difficulty));
-    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
-    dispatch(roomConfig(numberOfQs,subject,difficulty))
+   
+
+
     // go to quiz
     // history.push("/quiz");
-    
   };
 
 

@@ -1,5 +1,7 @@
 // import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+// import {setID} from '../actions/userType';
+// import {useDispatch} from 'react-redux';
 const serverEndpoint = "http://localhost:5001";
 // const serverEndpoint = "https://quizzicalquiz.herokuapp.com"
 
@@ -11,11 +13,13 @@ const socket = io(serverEndpoint);
 //     socket.on('timer', timestamp => cb(timestamp));
 //     socket.emit('getTimer', 1000)
 // }
+
 socket.on("connect", () => {
+    // const dispatch = useDispatch()
     console.log(`user connected to the socket id ${socket.id}`);
     const socketId = socket.id; 
+    // dispatch(setID(socketId));
 });
-
 
 // const getPlayerCount = () => {
 //     let count = socket.on('users', count => count)

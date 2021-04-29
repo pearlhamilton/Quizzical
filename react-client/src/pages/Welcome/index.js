@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
 import {socket} from '../../socket/index.js';
 import * as actions from '../../actions/user';
-import {setHocst, setPlayer} from '../../actions/userType';
+import {setHost, setPlayer, setID} from '../../actions/userType';
 import {useDispatch} from 'react-redux';
 
 // const server = "http://localhost:3000";
@@ -19,9 +19,22 @@ const Welcome = () => {
     const [usrInput, setUsrInput] = useState(undefined);
     const [room, setRoom] = useState(undefined);
     const [error, setError] = useState("");
+    const [id, setLocalId] = useState("");
 
     useEffect(() => {
-        
+        // socket.on("connect", () => {
+            
+        //     let actual = socket.id;
+        //     console.log(actual)
+        //     setLocalId(handleSetId)
+        //     console.log(id)
+        //     dispatch(setId);
+            
+        // });
+
+        socket.on('assign-id', id => dispatch(setID(id)))
+        console.log(id)
+      
         socket.on('users', users => setPlayerCount(users - 1))
         // let test2; 
         // const test = socket.on('users', users => setPlayerCount(users.length));
