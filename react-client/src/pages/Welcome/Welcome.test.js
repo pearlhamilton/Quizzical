@@ -10,9 +10,7 @@ describe("Welcome", () => {
     expect(screen.getByAltText('Lets Get Quizzical')).toBeInTheDocument();
   })
 
-  // test("it displays the 'New Game' and 'Join Game' buttons", () => {
-  //   expect(screen.getByRole('input', {name: 'newQuiz' })).toBeInTheDocument();
-  //   expect(screen.getByRole('input', {name: 'joinQuiz' })).toBeInTheDocument();
-  // })
-
+  test("it displays the 'New Game'button", () => {
+    expect(screen.getByText('New Game')).toBeInTheDocument();
+  })
 })
