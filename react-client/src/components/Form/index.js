@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
-
 import { useSelector } from 'react-redux'
+import {roomConfig} from "../../actions/roomConfig"
 //import logo from "../../images/quizlogo.png";
 import "./style.css";
 
 function Form() {
+
   const [difficulty, setDifficulty] = useState("easy");
   const [numberOfQs, setNumberOfQs] = useState(5);
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState("9");
   const roomName = useSelector(state => state.user.room);
 
   const dispatch = useDispatch();
@@ -18,8 +19,7 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    
+
     console.log(roomName)
 
     const config =  {
@@ -34,11 +34,13 @@ function Form() {
       console.log(cb)
     });
     // dispatch(fetchQuiz(numberOfQs, subject, difficulty));
-
+    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+    dispatch(roomConfig(numberOfQs,subject,difficulty))
     // go to quiz
     // history.push("/quiz");
     
-  }
+  };
+
 
   const handleChangeDifficulty = (e) => {
     setDifficulty(e.target.value);
