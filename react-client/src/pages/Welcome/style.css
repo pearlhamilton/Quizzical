@@ -6,6 +6,13 @@
     --content: white;
 }
 
+#error {
+    font-family: var(--content-text);
+    position: absolute;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
 #welcome{
     box-sizing: border-box;
     display: flex;
