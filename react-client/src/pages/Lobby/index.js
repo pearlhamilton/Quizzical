@@ -9,7 +9,7 @@ const Lobby = () => {
 
     return(
         <div id="Lobby">
-            <h1>Lobby</h1>
+            <h2>Lobby</h2>
     
             <LobbyStatus/> 
 
