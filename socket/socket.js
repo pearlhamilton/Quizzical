@@ -3,7 +3,7 @@
 // const io = require('socket.io')(server);
 // io.on('connection', () => { /* … */ });
 // server.listen(3000);
-const {Games} =require('./utils') 
+const {Games, Game} =require('./utils') 
 const server = require('http').createServer();
 //make server and sockets interact
 const io = require("socket.io")(server, {
@@ -29,6 +29,7 @@ io.on('connection', (socket) => {
     };
 
     const participantCount = io.engine.clientsCount;
+
     console.log(participantCount)
     // socket.emit("users", participantCount);
     socket.emit("users", participantCount);
@@ -42,7 +43,7 @@ io.on('connection', (socket) => {
                     message: `SUCCESS: Created room with name ${roomName}`
                 }); 
         } else {
-            callback({code: "ROOM_ERROR",
+            callback({code: "ERROR",
                       message: `Room name ${roomName} is taken. Please try another name.`
                     })
         }
@@ -59,7 +60,62 @@ io.on('connection', (socket) => {
         }); 
     })
 
-    
+    // console.log(io.sockets.adapter.rooms['gX4SRDHpAT8Lk9p7AAAF'])
+
+    socket.on('join-room', (config, cb) => {
+        let existingGame = games.getGameByRoom(config.room);
+   
+        if(existingGame.active){
+            //check room capacity
+            //getroom id from room name
+            // if (numClients == 0){
+            //     socket.join(room);
+            //     socket.emit('created', room);
+            // if (numClients == 1) {
+            //     io.sockets.in(room).emit('join', room);
+            //     socket.join(room);
+            //     socket.emit('joined', room);
+            //   } else { // max two clients
+            //     socket.emit('full', room);
+            //   }
+
+            return cb({
+                code: "ERROR",
+                message: `Cannot join room ${config.room}. Game has already started.`
+            });
+
+        } else {
+            // console.log(games.getPlayerCount())
+            // if(existingGame.getPlayerCount <= 4){
+                //check username
+                games.addPlayer(config.room, config.username, socket.id);
+                socket.join(config.room);
+                socket.emit(`${config.username} has joined the room`);
+                let game = games.getGameByRoom(config.room);
+                // let players = games.getPlayerData(config.room);
+                cb({
+                    code: "success",
+                    player: config.name, 
+                    score: 0 
+                });
+
+                io.to(game.host).emit("player-connected", { 
+                    name: config.name, 
+                    score: 0 
+                });
+                
+            // } else {
+            //     return cb({
+            //         code: "ERROR",
+            //         message: `Room: ${config.room} is full.`
+            //     });
+            // }
+        }
+           
+    })
+         
+
+
 
     socket.on('get-player-data', (roomID, cb) => {
         //get room
