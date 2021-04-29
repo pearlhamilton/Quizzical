@@ -76,7 +76,11 @@ class Games {
         return game.players;
     }
   
+    getGame (roomName){
+        let game = this.games.find( y => y.room == roomName);
+        return game;
 
+    }
     getGameByRoom(roomName) {
         console.log("Looking for room")
         console.log(roomName)

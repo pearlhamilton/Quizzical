@@ -143,10 +143,26 @@ io.on('connection', (socket) => {
     })
 
     io.to(roomNameVar).emit('game-players');
+
+    socket.on('game-start', (roomName) => {
+        console.log("game started")
+
+        // cb(
+        //     {response: true}
+        // )
+        io.to(roomName).emit('game-start', true)
+    });
     
     // socket.broadcast.emit("game-players", gamePlayers);
    
+    socket.on('get-questions',  (roomName, cb) => {
+        const data = games.getGame(roomName)
+        console.log(data)
+        cb(
+            data
+        )
 
+    })
          
 
 
