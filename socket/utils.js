@@ -9,7 +9,8 @@ class Games {
         this.players = [];
     }
 
-    addGame = (hostID, roomName, difficulty, count, subject, results, index, score) => {
+    //  addGame = (hostID, roomName, difficulty, count, subject, results, index) => {
+    addGame = (hostID, roomName, difficulty, count, subject) => {
         
         let game = {
             host: hostID,
@@ -18,9 +19,8 @@ class Games {
             count: count,
             subject: subject,
             // currentQuestion: current,
-            results: results,
-            current_question_index: index,
-            score: score,
+            // results: results,
+            // current_question_index: index,
             active: false
         }
         
@@ -30,11 +30,32 @@ class Games {
         return game;
     };
 
+    addPlayer = (username, room, hostID) => {
+        let player = {
+            username: username, 
+            roomName: room, 
+            roomID: hostID,
+            score: 0
+        }
+
+        this.player.push(player);
+        return player;
+    }
+
+    //check the room id
+    //get player with room id
+    getPlayerData = (roomName) => {
+        //find room in games
+        const players = this.players.filter(player => player.room === roomName)
+        return players
+    }
+  
+
     getGameByRoom(roomName) {
         // if(this.games){
             if(this.games.length === 0){
                 console.log("no rooms")
-                return false
+                return null
             }
             return this.games.filter((game) => {
                 return game.room === roomName;
@@ -45,6 +66,8 @@ class Games {
         // }
         
     };
+
+
 
     checkRoomName(room) {
         let game = this.getGameByRoom(room);

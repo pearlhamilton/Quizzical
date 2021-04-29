@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchQuiz } from "../../actions";
@@ -13,18 +13,25 @@ function Form() {
   const [difficulty, setDifficulty] = useState("easy");
   const [numberOfQs, setNumberOfQs] = useState(5);
   const [subject, setSubject] = useState("9");
+
+  // const [results, setResults] = useState("");
+  // const [index, setIndex] = useState("");
+  // const [score, setScore] = useState("");
+
   const roomName = useSelector(state => state.user.room);
   const id = useSelector(state => state.user.id);
 
-
-  const results = useSelector((state) => state.quizReducer.results);
-  const index = useSelector((state) => state.quizReducer.current_question_index);
-  const score =  useSelector((state) => state.quizReducer.score)
+  // const resultsFetch = useSelector((state) => state.quizReducer.results);
+  // const indexFetch = useSelector((state) => state.quizReducer.current_question_index);
+  // const scoreFetch =  useSelector((state) => state.quizReducer.score)
  
 
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+ 
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,18 +41,21 @@ function Form() {
     dispatch(fetchQuiz(numberOfQs, subject, difficulty));
 
 
+
+    // setResults(useSelector(resultsFetch))
+
     const config =  {
       host: id,
       room: roomName, 
       difficulty: difficulty, 
       count: numberOfQs,
       subject: subject,
-      results:results, 
-      current_question_index: index,
-      score: score
+      // results:results, 
+      // current_question_index: index,
+      // score: score
     }
 
-    
+    // console.log(results)
 
     dispatch(roomConfig(numberOfQs,subject,difficulty));
 
