@@ -1,9 +1,45 @@
-#Lobby{
-    background-color: black;
-    height:100vh;
-}
+:root {
+    --heading-text: "Pacifico";
+    --content-text: "Nunito", sans-serif;
+    --content: white;
+  }
 
-#players{
+  #Lobby{
+    background-image: url('../../images/leaderboard-desktop.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 2.8rem;
+  }
+  
+  #players{
     display:flex;
     justify-content: space-between;
-}
+    min-width: 500px;
+  }
+  
+  
+  @media screen and (max-width: 450px) {
+    #leaderboard-page {
+        background-image: url('../../images/home-mobile.jpg');
+    }
+  }
+  
+  body {
+    color: whitesmoke;
+  }
+  
+  h2 {
+    /* padding-top: 12rem; */
+    font-family: var(--content-text);
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-family: var(--content-text);
+  }

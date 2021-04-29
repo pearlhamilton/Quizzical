@@ -50,11 +50,25 @@ io.on('connection', (socket) => {
 
     socket.on('add-config', (config, cb) => {
         /// TODO see ticket # 80 
-        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject)
+        // games.addGame(config.host, config.room, config.difficulty, config.count, config.subject, config.results, config.current_question_index, config.score );
+        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject );
         socket.join(config.host)
         cb({
             code: "success",
             message: `SUCCESS: configuration has been added`
+        }); 
+    })
+
+    
+
+    socket.on('get-player-data', (roomID, cb) => {
+        //get room
+        //get score
+        let playerScore = games.getPlayerData(roomID);
+
+        cb({
+            code: "success",
+            score: playerScore
         }); 
     })
 

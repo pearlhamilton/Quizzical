@@ -22,6 +22,7 @@
   max-height: 300px;
   min-width: 500px;
   font-family: var( --content-text);
+  margin:1rem
 }
 
 
