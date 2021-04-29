@@ -9,7 +9,7 @@
 #error {
     font-family: var(--content-text);
     position: absolute;
-    margin-top: 20px;
+    margin-top: 60px;
     font-size: 13px;
 }
 
@@ -29,9 +29,8 @@
 }
 
 #welcome img{
-    height: 300px;
+    height: 290px;
     width: auto;
-    padding-top: 0.5rem;
 }
 
 #welcome form{
@@ -50,11 +49,11 @@
 }
 #welcome input {
     margin: 0 auto;
-    font-size: 15px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
     text-align: center;
     border-radius: 5px;  
-    padding: 10px 0;
+    padding: 8px 0;
 
 }
 
@@ -90,12 +89,12 @@
 
 #welcome input[name="joinQuiz"]:hover {
     color:#ae2ae7;
-    background-color: #ff91fd;
-    box-shadow: 0 0 5px #ff91fd,
-                0 0 10px rgb(255 114 253 / 0.8),
-                0 0 15px rgb(255 114 253 / 0.7),
-                0 0 30px rgb(255 114 253 / 0.6);
-    border-color: #ff91fd;
+    background-color: #f3a4cb;
+    box-shadow: 0 0 5px #f3a4cb,
+                0 0 10px rgb(243 164 203 / 0.8),
+                0 0 15px rgb(243 164 203 / 0.7),
+                0 0 30px rgb(243 164 203 / 0.6);
+    border-color: #f3a4cb;
 }
 
 #welcome input[name="newQuiz"]:hover {
@@ -114,7 +113,9 @@
     text-align: center;
     font-family: var(--heading-text);
     color: var(--content);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-top: -1rem;
+    padding-top:1rem;
 }
 #welcome .disabled{
     pointer-events: none;
