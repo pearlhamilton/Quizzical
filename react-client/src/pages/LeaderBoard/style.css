@@ -20,9 +20,17 @@
 .score-container {
   overflow: auto;
   max-height: 300px;
-  min-width: 500px;
+  min-width: 400px;
   font-family: var( --content-text);
   margin: 1rem;
+  
+}
+
+.leaderboard-score {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 3rem;
+  margin-left: 3rem;
 }
 
 
