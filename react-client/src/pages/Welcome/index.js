@@ -35,7 +35,7 @@ const Welcome = () => {
         socket.on('assign-id', id => dispatch(setID(id)))
         console.log(id)
       
-        socket.on('users', users => setPlayerCount(users - 1))
+        socket.on('users', users => setPlayerCount(users))
         // let test2; 
         // const test = socket.on('users', users => setPlayerCount(users.length));
         // // const test = socket.on('users', users => test2 = users);
@@ -75,9 +75,10 @@ const Welcome = () => {
         const player = usrInput;
 
         if (player === undefined) {
-            alert("Don't be rude, introduce yourself!");
+            setError("Don't be rude, introduce yourself!")
+            // alert("Don't be rude, introduce yourself!");
         } else if (room === undefined) {
-            alert("You need to create room or give an existing name");
+            setError("You need to create room or give an existing name");
         } else {
             // dispatch(actions.addUser(player));
             socket.emit("check-room", room, (res) => {
@@ -90,7 +91,9 @@ const Welcome = () => {
                     history.push("/home");
                 } else {
                     setRoom(undefined);
+                    console.warn(error);
                     setError(res.message);
+                    alert(res.message)
                 }
             });
         }
@@ -100,12 +103,39 @@ const Welcome = () => {
         e.preventDefault();
         const player = usrInput;
         if (player === undefined) {
-            alert("Don't be rude, introduce yourself!");
+            setError("Don't be rude, introduce yourself!");
+        } else if (room === undefined) {
+            setError("You need to create room or give an existing name");
+
         } else {
             // dispatch(actions.addUser(player));
             dispatch(setPlayer(player));
-            socket.emit("pass-username", player);
-            history.push("/home");
+
+
+            // socket.emit("pass-username", player);
+
+            const config = {
+                room: room,
+                username: player
+            }
+            socket.emit("join-room", config, (res) => {
+
+                console.log("socket response", res);
+
+                if (res.code === "success") {
+                    console.log(res.player)
+                    setRoom(room);
+
+
+                    dispatch(setPlayer(player, room));
+                    history.push("/lobby");
+                } else {
+                    setRoom(undefined);
+                    setError(res.message);
+                }
+            });
+
+            // history.push("/home");
 
             //push to lobby
         }
@@ -130,6 +160,7 @@ const Welcome = () => {
     return (
         <div id="welcome">
         <img src={logo} alt="logo: Let's Get Quizzical" />
+        { error && <div id="error">{error}</div> }
         <form autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
@@ -162,9 +193,10 @@ const Welcome = () => {
         <p>
             {playerCount - 1 === 0
                 ? "No Players Online"
-                : `Total players online: ${playerCount - 1}`}
+                : `Total players online: ${playerCount}`}
         </p>
         {/* create conditional error state showing */}
+        <p>{error}</p>
         </div>
     );
 };

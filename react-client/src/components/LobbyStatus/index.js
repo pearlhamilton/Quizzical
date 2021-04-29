@@ -25,7 +25,13 @@ const LobbyStatus = () => {
             <>
         <p>Waiting for host to start the game</p>
         
-        <p>You will be answering {numberOfQs} questions about {subject} at difficulty level{difficulty}</p>
+        <p>You will be answering 
+            <span style={{ color: "pink" }}> {numberOfQs} </span> 
+            questions about 
+            <span style={{ color: "pink" }}> {subject} </span> 
+            at difficulty level
+            <span style={{ color: "pink" }}> {difficulty} </span> 
+        </p>
         </>
         )
     }
