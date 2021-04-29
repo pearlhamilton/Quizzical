@@ -17,6 +17,12 @@ function Form() {
   const id = useSelector(state => state.user.id);
 
 
+  const results = useSelector((state) => state.quizReducer.results);
+  const index = useSelector((state) => state.quizReducer.current_question_index);
+  const score =  useSelector((state) => state.quizReducer.score)
+ 
+
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,27 +31,30 @@ function Form() {
 
     console.log(roomName)
 
+    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+
+
     const config =  {
       host: id,
       room: roomName, 
       difficulty: difficulty, 
       count: numberOfQs,
-      subject: subject
+      subject: subject,
+      results:results, 
+      current_question_index: index,
+      score: score
     }
 
-    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+    
+
     dispatch(roomConfig(numberOfQs,subject,difficulty));
 
   
     socket.emit("add-config", config, (res) => {
       console.log(res)
     });
-    // dispatch(fetchQuiz(numberOfQs, subject, difficulty));
-   
 
-
-    // go to quiz
-    // history.push("/quiz");
+    history.push("/lobby");
   };
 
 

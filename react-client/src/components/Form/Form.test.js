@@ -10,7 +10,7 @@ describe("Form", () => {
   });
 
   test("it renders a form", () => {
-    let form = screen.getByRole("form");
+    let form = screen.getByLabel("game-selection");
     expect(form).toBeInTheDocument();
   });
 

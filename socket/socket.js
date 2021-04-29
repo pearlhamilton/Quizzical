@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
 
     socket.on('add-config', (config, cb) => {
         /// TODO see ticket # 80 
-        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject)
+        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject, config.results, config.current_question_index, config.score )
         socket.join(config.host)
         cb({
             code: "success",
