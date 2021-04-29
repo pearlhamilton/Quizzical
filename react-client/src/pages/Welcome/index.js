@@ -104,11 +104,38 @@ const Welcome = () => {
         const player = usrInput;
         if (player === undefined) {
             setError("Don't be rude, introduce yourself!");
+        } else if (room === undefined) {
+            setError("You need to create room or give an existing name");
+
         } else {
             // dispatch(actions.addUser(player));
             dispatch(setPlayer(player));
-            socket.emit("pass-username", player);
-            history.push("/home");
+
+
+            // socket.emit("pass-username", player);
+
+            const config = {
+                room: room,
+                username: player
+            }
+            socket.emit("join-room", config, (res) => {
+
+                console.log("socket response", res);
+
+                if (res.code === "success") {
+                    console.log(res.player)
+                    setRoom(room);
+
+
+                    dispatch(setPlayer(player, room));
+                    history.push("/lobby");
+                } else {
+                    setRoom(undefined);
+                    setError(res.message);
+                }
+            });
+
+            // history.push("/home");
 
             //push to lobby
         }
@@ -169,6 +196,7 @@ const Welcome = () => {
                 : `Total players online: ${playerCount}`}
         </p>
         {/* create conditional error state showing */}
+        <p>{error}</p>
         </div>
     );
 };
