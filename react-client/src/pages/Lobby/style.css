@@ -5,7 +5,7 @@
   }
 
   #Lobby{
-    background-image: url('../../images/leaderboard-desktop.jpg');
+    background-image: url('../../images/lobby-desktop.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
@@ -14,20 +14,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: 2.8rem;
+    padding-left: 12rem;
   }
   
   #players{
     display:flex;
     justify-content: space-between;
     min-width: 500px;
-  }
-  
-  
-  @media screen and (max-width: 450px) {
-    #leaderboard-page {
-        background-image: url('../../images/home-mobile.jpg');
-    }
   }
   
   body {
@@ -37,9 +30,16 @@
   h2 {
     /* padding-top: 12rem; */
     font-family: var(--content-text);
-    font-size: 1.8rem;
+    font-size: 2.5rem;
   }
 
   p {
     font-family: var(--content-text);
   }
+
+  @media screen and (max-width: 450px) {
+    #Lobby {
+        background-image: url('../../images/lobby-mobile.jpg');
+    }
+  }
+  
