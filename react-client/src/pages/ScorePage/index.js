@@ -6,7 +6,8 @@ import axios from 'axios'
 
 const ScorePage =() => {
 
-const username = useSelector((state) => state.user.username)
+const username = useSelector((state) => state.user.user.username)
+
 const score = useSelector((state)=> state.quizReducer.score) //get score from state
 
   const sendResults = () => {
