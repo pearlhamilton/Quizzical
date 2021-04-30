@@ -20,10 +20,10 @@
   padding-top: 10rem;
   padding-left: 2rem;
   font-size: 1.8rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+  /* display: flex;
+  /* justify-content: row; 
+  flex-direction: row; */
+} 
 
 @media screen and (max-width: 450px) {
   #score-page {
@@ -49,15 +49,16 @@ button:hover {
 }
 
 .score-banner{
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  width: 60%;
-  text-align: center;
-  margin: 0 auto; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-evenly; 
+  /* flex-direction: row; */
+  /* width: 60%; */
+  /* text-align: center;*/
+  /* margin: 0 auto;   */
 }
 
-.left{
+/* .left{
   justify-content: left;
 
 
@@ -67,8 +68,16 @@ button:hover {
   content: ":" ;
 } */
 
-
-.right{
+/* .right{
   justify-content: right;
-  
+} */
+
+.wrapper {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
+
+h2 {width: 40%; 
+text-align: center;}
