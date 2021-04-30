@@ -3,7 +3,7 @@ const fs = require("fs");
 const { MongoClient, ObjectId } = require("mongodb");
 const { init } = require("../../dbConfig/init.js");
 const app = require("../../server.js");
-const connectionUrl = process.env.DB_CONNECTION;
+const connectionUrl = process.env.MONGODB_URI;
 const dbName = process.env.DB_NAME;
 
 const resetTestDB = () => {
@@ -11,16 +11,12 @@ const resetTestDB = () => {
         try {
             const db = await init();
             await db.collection("players").removeMany({});
-            await db.collection("players").insertMany([
+            await db.collection("players").insertOne([
                 {   
-
+                    _id: ObjectId("608bbf4eb17a10129faef1b9"),
                     player: "Player 1",
                     score: 1,
                 },
-                {
-                    player: "Player 2",
-                    score: 2,
-                }
             ]);
             resolve("Test DB reset");
         } catch (err) {
