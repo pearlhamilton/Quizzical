@@ -95,13 +95,13 @@ const getPlayers = () => {
   return (
     <div id="score-page">
     <div id="playerscore">
-      <h1>You scored: {percentage}% </h1>
+      <h2>You scored: {percentage}% </h2>
 
       <div className="score-banner">
 
       <div className="wrapper"> 
-        <h2>player</h2>
-        <h2>score</h2>
+        <h3>player</h3>
+        <h3>score</h3>
       </div>
 
         {  players && players.map((player, i) =>       

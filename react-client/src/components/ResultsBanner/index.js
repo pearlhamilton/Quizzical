@@ -15,8 +15,8 @@ const ResultsBanner = ({text, player, winner}) => {
     return(
         <>
         <div className="wrapper">
-            {winner ?  <h2>{player} {winner}</h2> : <h2>{player}</h2> }
-            <h2>{percentage}%</h2>
+            {winner ?  <h4>{player} {winner}</h4> : <h4>{player}</h4> }
+            <h4>{percentage}%</h4>
         </div>
         </>
     )
