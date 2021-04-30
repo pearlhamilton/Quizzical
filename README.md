@@ -47,7 +47,7 @@ MongoDB shell
 To teardown docker compose completely:    
 `bash _scripts/teardown.sh`  
 
-# Technologies
+## Technologies
 - HTML, CSS, JavaScript
 
 ### Dependencies: 
@@ -60,7 +60,7 @@ To teardown docker compose completely:
    
    - Client: babel, react-testing-library, jest
 
-# Process 
+## Process 
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board.
 2. Create Figma design plan.  
 3. Deploy to Netlify and Heroku!  
@@ -68,7 +68,7 @@ To teardown docker compose completely:
 5. Connect API and Socket server to React-Client
 6. Connect mongoDB database to API
 
-# Bugs
+## Bugs
 - [x] issues with routing with mongodb  
 - [x] cors error when implementing socket.io
 - [x] fetch returns undefined data
@@ -83,7 +83,7 @@ To teardown docker compose completely:
 - [x] network spam for POST request
 - [ ] winner crown assignment
 
-# Changelog
+## Changelog
 
 ### React-Client
 1. Set up pages and components   
@@ -104,7 +104,7 @@ To teardown docker compose completely:
 3. Set up connectin string with mongodb and mock connection for testing
 4. Set up mongodb atlas and connect to Heroku and code
 
-# Wins & Challenges
+## Wins & Challenges
 
 ### Wins
 - Deploying to Heroku and Netlify from one repo! And deploy early!
@@ -123,7 +123,7 @@ To teardown docker compose completely:
 - Setting up multiplayer
 - React redux testing
 
-# Future Features 
+## Future Features 
 - Login / user accounts with authentication   
 - High scores leaderboard for each difficulty  
 - Score to include time taken to complete quiz 
