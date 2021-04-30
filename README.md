@@ -13,9 +13,7 @@ For each game, up to 4 players can play and the host of each game selects the ty
 
 ## Installation & usage
 
-- Clone or download the repo.
-
-- Navigate to the root directory of this repo.
+Clone or download the repo and navigate to the root directory of this repo.
 
 To run the client, open the terminal:  
 `cd react-client`   
