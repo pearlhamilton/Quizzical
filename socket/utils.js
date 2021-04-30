@@ -38,8 +38,15 @@ class Games {
 
         this.players.push(player);
         let game = this.games.find( y => y.room == room);
-        game.players.push(player);
-        return player;
+
+        try{
+            game.players.push(player);
+            return player;
+        }  catch (err) {
+            console.log("add player has : " + err)
+            return { err: err }   
+        }
+     
     }
 
     getPLayersForGame(roomName) {
@@ -92,7 +99,7 @@ class Games {
         }
         catch (err) {
             console.log("add score has : " + err)
-            return { err: error }   
+            return { err: err }   
         }
     }
   

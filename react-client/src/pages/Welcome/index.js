@@ -22,35 +22,12 @@ const Welcome = () => {
     const [id, setLocalId] = useState("");
 
     useEffect(() => {
-        // socket.on("connect", () => {
-
-        //     let actual = socket.id;
-        //     console.log(actual)
-        //     setLocalId(handleSetId)
-        //     console.log(id)
-        //     dispatch(setId);
-
-        // });
-
+       
         socket.on('assign-id', id => dispatch(setID(id)))
         console.log(id)
 
         socket.on('users', users => setPlayerCount(users))
-        // let test2; 
-        // const test = socket.on('users', users => setPlayerCount(users.length));
-        // // const test = socket.on('users', users => test2 = users);
-        // console.log(test)
-        // // console.log(test2)
-        // // setInterval(() => {
-        // //     playerCountFun
-        // // }, 1000);
-        // const interval = setInterval(() => {
-
-        //     console.log(playerCount)
-        //     setPlayerCount(playerCount)
-        // }, 1000);
-
-        // return () => clearInterval(interval)
+    
     }, []);
 
     const handleData = (users) => {
@@ -63,10 +40,12 @@ const Welcome = () => {
     };
 
     const handleInput = (e) => {
+        setError("")
         setUsrInput(e.target.value);
     };
 
     const handleRoomInput = (e) => {
+        setError("")
         setRoom(e.target.value);
     };
 
@@ -76,11 +55,10 @@ const Welcome = () => {
 
         if (player === undefined) {
             setError("Don't be rude, introduce yourself!")
-            // alert("Don't be rude, introduce yourself!");
         } else if (room === undefined) {
             setError("You need to create room or give an existing name");
         } else {
-            // dispatch(actions.addUser(player));
+       
             socket.emit("check-room", room, (res) => {
 
                 console.log("socket response", res);
@@ -100,6 +78,7 @@ const Welcome = () => {
 
     const handleJoin = (e) => {
         e.preventDefault();
+        
         const player = usrInput;
         if (player === undefined) {
             setError("Don't be rude, introduce yourself!");
@@ -107,11 +86,6 @@ const Welcome = () => {
             setError("You need to create room or give an existing name");
 
         } else {
-            // dispatch(actions.addUser(player));
-            // dispatch(setPlayer(player));
-
-
-            // socket.emit("pass-username", player);
 
             const config = {
                 room: room,
@@ -122,7 +96,6 @@ const Welcome = () => {
                 console.log("socket response", res);
 
                 if (res.code === "success") {
-                    console.log(res.player)
                     setRoom(room);
 
 
@@ -133,10 +106,6 @@ const Welcome = () => {
                     setError(res.message);
                 }
             });
-
-            // history.push("/home");
-
-            //push to lobby
         }
 
     };
@@ -160,7 +129,6 @@ const Welcome = () => {
         <div id="welcome">
 
         <img src={logo} alt="logo: Let's Get Quizzical" />
-        { error && <div id="error">{error}</div> }
         <form autoComplete="off">
             <label htmlFor="username">Username</label>
             <input
@@ -191,13 +159,11 @@ const Welcome = () => {
             {renderJoin()}
         </form>
         <p>
-            {playerCount - 1 === 0
+            {playerCount <= 1
                 ? "No Players Online"
                 : `Total players online: ${playerCount - 1}`}
         </p>
-        {/* create conditional error state showing */}
-        <p>{error}</p>
-
+       {error &&  <p>{error}</p>}
         </div>
     );
 };
