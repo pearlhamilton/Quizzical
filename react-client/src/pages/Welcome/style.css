@@ -9,7 +9,6 @@
 #error {
     font-family: var(--content-text);
     position: absolute;
-    margin-top: 60px;
     font-size: 13px;
 }
 
@@ -29,7 +28,7 @@
 }
 
 #welcome img{
-    height: 290px;
+    height: 420px;
     width: auto;
 }
 
@@ -49,11 +48,11 @@
 }
 #welcome input {
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 8px;
     text-align: center;
     border-radius: 5px;  
-    padding: 8px 0;
+    padding: 10px 0;
 
 }
 
@@ -77,24 +76,24 @@
 
 #welcome input[name="joinQuiz"] {
     color:
-    #ae2ae7;
+    #af135e;
     width: 49%;
     display:inline-block;
     border-radius: 10px;
     margin-right: auto;
     margin-left: auto;
     background-color: 
-        #ffd3fe;
+        #ff8fc5;
 }
 
 #welcome input[name="joinQuiz"]:hover {
-    color:#ae2ae7;
-    background-color: #f3a4cb;
-    box-shadow: 0 0 5px #f3a4cb,
-                0 0 10px rgb(243 164 203 / 0.8),
-                0 0 15px rgb(243 164 203 / 0.7),
-                0 0 30px rgb(243 164 203 / 0.6);
-    border-color: #f3a4cb;
+    color:#af135e;
+    background-color: #ff8fc5;
+    box-shadow: 0 0 5px #ff8fc5,
+                0 0 10px rgb(255 143 197 / 0.8),
+                0 0 15px rgb(255 143 197 / 0.7),
+                0 0 30px rgb(255 143 197 / 0.6);
+    border-color: #ff8fc5;
 }
 
 #welcome input[name="newQuiz"]:hover {
@@ -113,9 +112,7 @@
     text-align: center;
     font-family: var(--heading-text);
     color: var(--content);
-    font-size: 1.2rem;
-    margin-top: -1rem;
-    padding-top:1rem;
+    font-size: 1.4rem;
 }
 #welcome .disabled{
     pointer-events: none;
