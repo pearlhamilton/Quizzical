@@ -157,12 +157,29 @@ io.on('connection', (socket) => {
    
     socket.on('get-questions',  (roomName, cb) => {
         const data = games.getGame(roomName)
-        console.log(data)
+        console.log(data);
         cb(
             data
         )
 
     })
+
+    // let scores = []
+
+    socket.on('score',  (config, cb) => {
+        console.log("SCORE RETALIATION")
+        //get data
+        // scores.push(config.score)
+        let scores =  games.addScore(config.room, config.username, config.score)
+        console.log(scores)
+        io.to(config.room).emit('score', scores)
+
+        cb({
+            code: "success",
+            scores: scores
+        })
+    });
+    
          
 
 

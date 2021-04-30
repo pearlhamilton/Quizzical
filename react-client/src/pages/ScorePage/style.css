@@ -20,6 +20,9 @@
   padding-top: 10rem;
   padding-left: 2rem;
   font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 450px) {
@@ -43,4 +46,29 @@ button:hover {
   background-color: #ca2bfc;
   color: whitesmoke;
   transition-duration: 0.3s;
+}
+
+.score-banner{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 60%;
+  text-align: center;
+  margin: 0 auto; 
+}
+
+.left{
+  justify-content: left;
+
+
+}
+
+/* .left:after{
+  content: ":" ;
+} */
+
+
+.right{
+  justify-content: right;
+  
 }
