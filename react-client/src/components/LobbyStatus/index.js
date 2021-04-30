@@ -61,6 +61,34 @@ console.log(ready)
     }
 
 
+       //changing subject from number to word
+       let subjectWord;
+
+       switch(subject){
+           case "9":
+               subjectWord = 'General Knowledge';
+               break;
+           case "12":
+               subjectWord = 'Music';
+               break;
+           case "21":
+               subjectWord = 'Sport';
+               break;
+           case "22":
+               subjectWord = 'Geography';
+               break;
+           case "31":
+               subjectWord = 'Anime and Manga';
+               break;
+           case "26":
+               subjectWord = 'Celebrities';
+               break;
+           default:
+               subjectWord = 'Suprise Me'
+       }
+
+
+
     if (usertype === "HOST"){
         return (
             <button onClick={handleClick}>Start Game</button> 
@@ -77,7 +105,7 @@ console.log(ready)
         <p>You will be answering 
             <span style={{ color: "pink" }}> {numberOfQs} </span> 
             questions about 
-            <span style={{ color: "pink" }}> {subject} </span> 
+            <span style={{ color: "pink" }}> {subjectWord} </span> 
             at difficulty level
             <span style={{ color: "pink" }}> {difficulty} </span> 
         </p>
