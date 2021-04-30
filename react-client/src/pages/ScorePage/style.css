@@ -26,15 +26,6 @@
   flex-direction: row; */
 } 
 
-@media screen and (max-width: 450px) {
-  #score-page {
-      background-image: url('../../images/score-mobile.jpg');
-  }
-  #playerscore {
-    font-size: 1rem;
-  }
-}
-
 button {
   padding: 0.5rem 1rem;
   background-color: whitesmoke;
@@ -80,6 +71,23 @@ button:hover {
   justify-content: center;
 }
 
-h4 {width: 40%; 
+h4 {
+  width: 40%; 
 text-align: center;
-font-size: 1rem}
+font-size: 1rem
+}
+
+
+@media screen and (max-width: 450px) {
+  #score-page {
+      background-image: url('../../images/score-mobile.jpg');
+      padding-left: 0rem;
+  }
+  #playerscore {
+    font-size: 0.9rem;
+          padding-left: 0.5rem;
+  }
+  #score-page h2 {
+    font-size: 1.5rem;
+  }
+}

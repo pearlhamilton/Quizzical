@@ -28,3 +28,12 @@
   color: lightcyan;
   transition-duration: 0.4s;
 }
+
+@media screen and (max-width: 450px) {
+  #answer-cards {
+
+  padding: 0.9rem;
+  font-size: 0.8rem;
+  font-family: var(--content-text);
+}
+}

@@ -60,10 +60,10 @@ h2 {
   #leaderboard-page {
       background-image: url('../../images/leaderboard-mobile.jpg');
       padding-left: 0rem;
-
   }
-  h2 {
+  #leaderboard-page h2 {
     margin-top:-11rem;
+    font-size: 1.5rem;
   }
   .score-container {
     max-height: 190px;

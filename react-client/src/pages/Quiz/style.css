@@ -21,3 +21,9 @@ body {
       background-image: url('../../images/question-mobile.jpg');
   }
 }
+
+@media screen and (max-width: 450px) {
+  #quiz-page {
+    padding-left: 0rem;
+  }
+}

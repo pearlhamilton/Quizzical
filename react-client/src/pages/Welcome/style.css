@@ -127,7 +127,7 @@
     }
     #welcome img{
         height: auto;
-        width: 310px;
+        width: 380px;
         padding-top: 0.5rem;
     }
 
@@ -135,7 +135,8 @@
         font-size: 0.8rem;
     }
     #welcome form{
-        width: 55%;
+        width: 60%;
+        margin-right: 20%;
 }
     #welcome p{
     font-size: 0.9rem;
