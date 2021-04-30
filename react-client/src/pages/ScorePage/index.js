@@ -16,6 +16,7 @@ const [allScores, setAllScores] = useState("")
 const [players, setPlayers] = useState("")
 const room = useSelector((state) => state.user.room)
 
+
 useEffect(() => {
 
   let config =  {
@@ -26,15 +27,13 @@ useEffect(() => {
 
   socket.emit('score', config, (res) => {
       const scoresArr = res.scores.map(el => el.score);
-      console.log(scoresArr);
+      // console.log(scoresArr);
       const userArr = res.scores.map(el => el.username);
-      console.log(userArr);
+      // console.log(userArr);
       setAllScores(scoresArr);
       setPlayers(userArr);
-  });
 
-  // socket.on('score', config, val => console.log(val))
-  
+  });
 }, [allScores])
 
 console.log(allScores)
@@ -71,10 +70,27 @@ const getPlayers = () => {
 
 
   useEffect(() => {
-        
         sendResults()
-        console.log("\n\n\n\nRESULTS BEING SEND\n\n\n\n")
   }, [score])
+
+  let highest = 0;
+  const winnerIs = (player, score) => {
+
+  let str; 
+
+  if(players.length <= 1){
+    str = "👑";
+  } else if (player.length > 1){
+
+    //multiplayer
+    if(highest <= score){
+      highest = score; 
+      str = "👑";
+    }
+  }
+  return str; 
+}
+
 
   return (
     <div id="score-page">
@@ -87,28 +103,10 @@ const getPlayers = () => {
         <h2>player</h2>
         <h2>score</h2>
       </div>
-{/* 
-      <div className="wrapper">
-            <h2 >smkt</h2>
-            <h2 >0</h2>
-      </div>  
-      <div className="wrapper">
-            <h2 >tree</h2>
-            <h2 >5</h2>
-      </div>  */}
-   
-{  players && players.map((player, i) =>  
-          < ResultsBanner className="right" player={player} text={allScores[i]}/>)}
 
-{/* {  players && players.map((player) =>  
-          < ResultsBanner className="right" player={player}/>)}
-
-      { allScores && allScores.map(score =>  
-          < ResultsBanner className="left" text={score}/>)} */}
-
-
-                      
-          {/* <h2 style={ {writingMode: "vertical-rl", textOrientation: "upright"}}>{players}</h2> */}
+        {  players && players.map((player, i) =>       
+          < ResultsBanner className="right" player={player} text={allScores[i]} winner={winnerIs(player, allScores[i])}/>)
+        }
       </div>
       <Link to="/leaderboard"><button>Go to Leaderboard</button></Link>
     </div>

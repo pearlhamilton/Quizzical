@@ -19,6 +19,9 @@ class Player {
                 const players = playersData.map(
                     (p) => new Player({ ...p, id: p._id })
                 );
+                
+                players.sort((a, b) => b.score - a.score);
+                //players.sort(player => player)
                 resolve(players);
             } catch (err) {
                 reject(`Error retrieving players: ${err}`);

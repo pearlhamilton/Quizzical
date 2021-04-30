@@ -18,6 +18,7 @@ const LeaderBoardTable = () => {
           `https://quizzicalquiz.herokuapp.com/players`
         );
         console.log(data)
+        data.sort((a, b) => b.score - a.score)
         setScores(data);
 
       } catch (err) {
@@ -26,6 +27,8 @@ const LeaderBoardTable = () => {
     }
     getScores();
   }, []);
+
+
 
   return (
     <>
