@@ -6,7 +6,7 @@ describe("Player", () => {
 
     beforeAll(async () => {
         
-        connection = await MongoClient.connect(process.env.MONGODB_URI
+        connection = await MongoClient.connect(process.env.MONGODB_CONNECTION
         );
         console.log(connection)
         db = await connection.db(process.env.DB_NAME);

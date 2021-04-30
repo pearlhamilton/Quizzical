@@ -1,10 +1,15 @@
 const request = require("supertest");
 const fs = require("fs");
 const { MongoClient, ObjectId } = require("mongodb");
-const { init } = require("../../dbConfig/init.js");
+// const { init } = require("../../dbConfig/init.js");
 const app = require("../../server.js");
-const connectionUrl = process.env.MONGODB_URI;
+const connectionUrl = process.env.MONGODB_CONNECTION;
 const dbName = process.env.DB_NAME;
+const init = async () => {
+    let client = await MongoClient.connect(connectionUrl);
+    console.log("connected to database!", dbName);
+    return client.db(dbName);
+};
 
 const resetTestDB = () => {
     return new Promise(async (resolve, reject) => {
