@@ -1,44 +1,42 @@
 # Project: Let's Get Quizzical
 
-A online quiz game built in react with redux. A host can create a game with a unique ID which others can join (4 players in total). Users can choose how many questions, difficulty and the topic, fetching from OpenTrivia API. A winner is declared at the end of every game and scores are stored in a mongoDB database connected to Heroku. 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c3504deb-6376-4b64-abbb-4a4536f23868/deploy-status)](https://app.netlify.com/sites/letsgetquizzical/deploys)
 
-🦋  [![Netlify Status](https://api.netlify.com/api/v1/badges/c3504deb-6376-4b64-abbb-4a4536f23868/deploy-status)](https://app.netlify.com/sites/letsgetquizzical/deploys) 🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=quizzicalquiz&style=flat) ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
- 
-# Description
+## Description
+Lockdown has seen a spike in online quizzes and people have been deprived of the party experience. So with that in mind, we wanted to give people a platform to play multiplayer quizzes remotely, mordernise the typical pub quiz by having a neon party theme to bring the party feel to the user!
 
-Let's Get Quizzical is...
+Let's Get Quizzical is an online quiz game built in fullstack with react and redux on the client, Node.js and Express on the server and a mongoDB database. The game uses Socket.io to allow multiple users to play together, questions and answers are fetched from OpenTrivia API, and it is deployed on Netlify and Heroku.
 
-# Installation & usage
 
-## Installation
-Clone or download the repo.
+## How to play
+For each game, up to 4 players can play and the host of each game selects the type of quiz they want everyone to play (i.e the number of questions, category, and difficulty). Users are then able to join the game using a unique room name set by the host. Once users have joined the lobby, they can take it in turns to play and the winner is announced at the end of every game and all new and existing scores are then shown on the leaderboard. 
 
-## Usage
+## Installation & usage
 
-### For our app to be run on your local machine:
+- Clone or download the repo.
 
-Clone this repo and navigate to the root directory of this repo.
+- Navigate to the root directory of this repo.
 
-Open the terminal:  
+To run the client, open the terminal:  
 `cd react-client`   
 `npm install`  
 `npm run dev`   
 
 It should automatically load on 0.0.0.0:8080
 
-To start up client test suite:   
+To run client test suite:   
 `npm run tests` 
 
 ****
 
-To start docker compose with api and database containers:  
-`bash _scripts/startDev.sh`    
+To start the server and use docker compose for the api and database containers, open the terminal and run: 
+`bash _scripts/startDev.sh`
 - starts api & db services
 - runs db migrations
 - seeds db for development
 - serves api on localhost:3000
 
-To run our test suite:    
+To run the server test suite:    
 `bash _scripts/startTest.sh` 
 - starts api & db services
 - runs db migrations
@@ -81,10 +79,11 @@ To teardown docker compose completely:
 - [x] sends wrong quiz score to post
 - [x] socket and client integration
 - [x] scores not showing as percentage
-- [ ] leaderboard not sorted by descending order
+- [x] leaderboard not sorted by descending order
 - [x] winner not displayed
-- [ ] score syling
+- [x] score styling
 - [x] network spam for POST request
+- [ ] winner crown assignment
 
 # Changelog
 
@@ -114,21 +113,17 @@ To teardown docker compose completely:
 - Amazing progress after Day 1 - socket connection establisted, routes working on API, react-redux set up!
 - Set up connection between api, db and client   
 - Responsive!
+- Decoded answers from API
 - Successful mob programming sessions
-
-<img width="546" alt="Screenshot 2021-04-30 at 02 04 09" src="https://user-images.githubusercontent.com/58271566/116728429-ce5d0000-a9dd-11eb-848b-e2b70150af83.png">
 
 ### Challenges
 - Understanding and implementing socket.io
 - Testing with mongodb
+- Testing with react
 - Deploying mongodb
 - Passing data around - may need to refactor code
 - Setting up multiplayer
 - React redux testing
-
-# Code Snippet
-
-<img width="500" alt="Screenshot 2021-04-30 at 18 00 45" src="https://user-images.githubusercontent.com/58271566/116728687-1f6cf400-a9de-11eb-9fc6-24fa0bfbc450.png">
 
 # Future Features 
 - Login / user accounts with authentication   
@@ -136,7 +131,3 @@ To teardown docker compose completely:
 - Score to include time taken to complete quiz 
 - Sound effects
 - Full socket.io real time implementation
-
-# Slide Deck
-
-https://www.canva.com/design/DAEcypURzgQ/hUwNi51yfXyb7-FrHAeP4Q/edit#1
