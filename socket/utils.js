@@ -82,12 +82,18 @@ class Games {
         //in the room find the player usernmae
         console.log(game)
         console.log(username)
-        let player = game.players.find(p => p.username === username)
+        try{
+            let player = game.players.find(p => p.username === username)
         
-        //and add the score
-        player.score = score; 
-        //return all player scores for the gamae getPlayerData()
-        return game.players
+            //and add the score
+            player.score = score; 
+            //return all player scores for the gamae getPlayerData()
+            return game.players
+        }
+        catch (err) {
+            console.log("add score has : " + err)
+            return { err: error }   
+        }
     }
   
     getGame (roomName){

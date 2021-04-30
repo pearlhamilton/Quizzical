@@ -16,15 +16,6 @@ const [allScores, setAllScores] = useState("")
 const [players, setPlayers] = useState("")
 const room = useSelector((state) => state.user.room)
 
-
-// oponentScore
-  
-
-///useEffect
-//socket event with score 
-//socket broadcast
-//
-
 useEffect(() => {
 
   let config =  {
@@ -34,18 +25,13 @@ useEffect(() => {
   }
 
   socket.emit('score', config, (res) => {
-      console.log(res.scores[0])
-      
-
-      const scoresArr = res.scores.map(el => el.score)
-      console.log(scoresArr)
-      const userArr = res.scores.map(el => el.username)
-      console.log(userArr)
-            // console.log(usernames)
+      const scoresArr = res.scores.map(el => el.score);
+      console.log(scoresArr);
+      const userArr = res.scores.map(el => el.username);
+      console.log(userArr);
       setAllScores(scoresArr);
-      setPlayers(userArr)
-     
-  })
+      setPlayers(userArr);
+  });
 
   // socket.on('score', config, val => console.log(val))
   
@@ -70,9 +56,9 @@ const getPlayers = () => {
                 "player": username,
                 "score": percentage
               }
-            console.log(results)
+            console.log(results);
             const { data } = await axios.post(`https://quizzicalquiz.herokuapp.com/players`, results, options)
-            console.log(data)
+           
             if (data.err){
                 throw Error(data.err)
             }
@@ -82,44 +68,43 @@ const getPlayers = () => {
         }
     })
   }
-    useEffect(() => {
+
+
+  useEffect(() => {
+        
         sendResults()
-    })
-
-    // const renderScores = () => {
-    //   let components = []; 
-
-    //   for (let i = 0; i < allScores.length; i++){
-    //     components[i].push(<h2>{allScores[i]} : {players[i]}</h2>)
-    //   }
-
-    //   return(
-    //     { allScores.map( el  => <h2>el</h2>) }
-    //   )
-    // }
-
-  // const mapIt = ( )= 
+        console.log("\n\n\n\nRESULTS BEING SEND\n\n\n\n")
+  }, [score])
 
   return (
     <div id="score-page">
     <div id="playerscore">
       <h1>You scored: {percentage}% </h1>
 
-            {/* <h2>{allScores}:{players}</h2>  */}
-      {/* {renderScores} */}
-     
-      {/* <h2 style={ {writingMode: "vertical-rl", textOrientation: "upright"} }>{allScores}</h2> */}
-      {/* { allScores} */}
       <div className="score-banner">
-     
-          
-      <h2 className="left">player</h2>
-      <h2 className="right">score</h2>
-    
-      {  players && players.map((player) =>  
+
+      <div className="wrapper"> 
+        <h2>player</h2>
+        <h2>score</h2>
+      </div>
+{/* 
+      <div className="wrapper">
+            <h2 >smkt</h2>
+            <h2 >0</h2>
+      </div>  
+      <div className="wrapper">
+            <h2 >tree</h2>
+            <h2 >5</h2>
+      </div>  */}
+   
+{  players && players.map((player, i) =>  
+          < ResultsBanner className="right" player={player} text={allScores[i]}/>)}
+
+{/* {  players && players.map((player) =>  
           < ResultsBanner className="right" player={player}/>)}
+
       { allScores && allScores.map(score =>  
-          < ResultsBanner className="left" text={score}/>)}
+          < ResultsBanner className="left" text={score}/>)} */}
 
 
                       
