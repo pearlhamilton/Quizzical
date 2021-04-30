@@ -25,6 +25,8 @@
   
   body {
     color: whitesmoke;
+
+    text-align: center;
   }
   
   h2 {
@@ -40,6 +42,15 @@
   @media screen and (max-width: 450px) {
     #Lobby {
         background-image: url('../../images/lobby-mobile.jpg');
+        padding: 0rem 1.7rem;
     }
+     #players{
+    display:flex;
+    justify-content: space-between;
+    min-width: 200px;
+  }
+  #Lobby h2 {
+    font-size: 1.5rem;
+  }
   }
   

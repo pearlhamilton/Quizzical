@@ -50,5 +50,6 @@ label {
 @media screen and (max-width: 450px) {
   form {
     font-size: 0.9rem;
+    padding-left: 0.7rem;
   }
 }

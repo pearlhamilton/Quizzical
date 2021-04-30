@@ -22,3 +22,12 @@ h3 {
 #question-num {
   font-size:1.8rem;
 }
+
+@media screen and (max-width: 450px) {
+  #question-container {
+  text-align: center;
+  width: 220px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+}

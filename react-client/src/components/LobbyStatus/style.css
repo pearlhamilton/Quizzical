@@ -11,3 +11,12 @@
   color: whitesmoke;
   transition-duration: 0.3s;
 }
+
+
+@media screen and (max-width: 450px) {
+  p {
+  text-align: center;
+  width: 80%; 
+  font-size: 0.8rem;
+}
+}
