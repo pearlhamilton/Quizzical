@@ -65,7 +65,7 @@ class Games {
     //get player with room id
     getPlayerData (roomName) {
         //find room in games
-        console.log("   player data")
+        console.log("player data")
         // const game =  this.games.filter(game => game.room === roomName);
         let game = this.games.find( y => y.room == roomName);
         console.log(game)
@@ -74,6 +74,20 @@ class Games {
             return "error"
         }
         return game.players;
+    }
+
+    addScore(room, username, score){
+        //find the game
+        let game = this.games.find( y => y.room == room);
+        //in the room find the player usernmae
+        console.log(game)
+        console.log(username)
+        let player = game.players.find(p => p.username === username)
+        
+        //and add the score
+        player.score = score; 
+        //return all player scores for the gamae getPlayerData()
+        return game.players
     }
   
     getGame (roomName){
