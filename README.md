@@ -80,7 +80,9 @@ To teardown docker compose completely:
 - [x] socket and client integration
 - [x] scores not showing as percentage
 - [ ] leaderboard not sorted by descending order
-- [ ] winner not displayed
+- [x] winner not displayed
+- [ ] score syling
+- [x] network spam for POST request
 
 # Changelog
 
