@@ -1,0 +1,13 @@
+#start-game, #play-now{
+  padding: 0.5rem 1rem;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  color: #c84754;
+  font-size: 1.1rem;
+}
+
+#start-game:hover, #play-now:hover {
+  background-color: #c84754;
+  color: whitesmoke;
+  transition-duration: 0.3s;
+}
