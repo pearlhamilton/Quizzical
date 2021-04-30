@@ -8,10 +8,10 @@ app.use(cors());
 
 //ROUTES
 const playersRoutes = require('./routes/players');
-const scoresRoutes = require('./routes/scores');
+// const scoresRoutes = require('./routes/scores');
 
 app.use('/players', playersRoutes);
-app.use('/scores', scoresRoutes);
+// app.use('/scores', scoresRoutes);
 
 // Root route
 app.get('/', (req, res) => res.send("Hello, world! Welcome to Quizzical\'s API!"));

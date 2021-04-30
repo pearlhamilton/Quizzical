@@ -61,4 +61,15 @@ describe('players controller', () => {
         })
     });
 
+        describe('destroy', () => {
+        test('it returns a 204 status code on successful deletion', async () => {
+            jest.spyOn(Player.prototype, 'destroy')
+                .mockResolvedValue('Deleted');
+    
+            const mockReq = { params: {id: 1} }
+            await playersController.destroy(mockReq, mockRes);
+            expect(mockStatus).toHaveBeenCalledWith(204);
+        })
+    });
+
 })
