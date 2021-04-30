@@ -36,7 +36,7 @@ const Quiz = () => {
   const shuffledAnswers = shuffle(answers);
  
   return (
-    <div id="quiz-page">
+    <div role="quiz-container" id="quiz-page">
       <Question question={question} index={index} />
 
       {shuffledAnswers &&

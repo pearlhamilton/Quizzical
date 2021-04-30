@@ -9,6 +9,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -17,10 +18,13 @@
 #playerscore {
   color: whitesmoke;
   font-family: var(--content-text);
-  padding-top: 10rem;
+  /* padding-top: 10rem; */
   padding-left: 2rem;
   font-size: 1.8rem;
-}
+  /* display: flex;
+  /* justify-content: row; 
+  flex-direction: row; */
+} 
 
 @media screen and (max-width: 450px) {
   #score-page {
@@ -44,3 +48,38 @@ button:hover {
   color: whitesmoke;
   transition-duration: 0.3s;
 }
+
+.score-banner{
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-evenly; 
+  /* flex-direction: row; */
+  /* width: 60%; */
+  /* text-align: center;*/
+  /* margin: 0 auto;   */
+}
+
+/* .left{
+  justify-content: left;
+
+
+}
+
+/* .left:after{
+  content: ":" ;
+} */
+
+/* .right{
+  justify-content: right;
+} */
+
+.wrapper {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+h4 {width: 40%; 
+text-align: center;
+font-size: 1rem}

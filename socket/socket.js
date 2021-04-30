@@ -3,7 +3,7 @@
 // const io = require('socket.io')(server);
 // io.on('connection', () => { /* … */ });
 // server.listen(3000);
-const {Games} =require('./utils') 
+const {Games, Game} =require('./utils') 
 const server = require('http').createServer();
 //make server and sockets interact
 const io = require("socket.io")(server, {
@@ -13,6 +13,7 @@ const io = require("socket.io")(server, {
 });
 
 const games = new Games();
+
 
 io.on('connection', (socket) => {
 
@@ -29,6 +30,7 @@ io.on('connection', (socket) => {
     };
 
     const participantCount = io.engine.clientsCount;
+
     console.log(participantCount)
     // socket.emit("users", participantCount);
     socket.emit("users", participantCount);
@@ -42,7 +44,7 @@ io.on('connection', (socket) => {
                     message: `SUCCESS: Created room with name ${roomName}`
                 }); 
         } else {
-            callback({code: "ROOM_ERROR",
+            callback({code: "ERROR",
                       message: `Room name ${roomName} is taken. Please try another name.`
                     })
         }
@@ -50,13 +52,148 @@ io.on('connection', (socket) => {
 
     socket.on('add-config', (config, cb) => {
         /// TODO see ticket # 80 
-        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject)
+        // games.addGame(config.host, config.room, config.difficulty, config.count, config.subject, config.results, config.current_question_index, config.score );
+        games.addGame(config.host, config.room, config.difficulty, config.count, config.subject );
         socket.join(config.host)
+
+        games.addPlayer(config.username, config.room, config.host)
+
+       
+
         cb({
             code: "success",
             message: `SUCCESS: configuration has been added`
         }); 
     })
+
+    // console.log(io.sockets.adapter.rooms['gX4SRDHpAT8Lk9p7AAAF'])
+
+    socket.on('join-room', (config, cb) => {
+        let existingGame = games.getGameByRoom(config.room);
+   
+        if(existingGame.active){
+            //check room capacity
+            //getroom id from room name
+            // if (numClients == 0){
+            //     socket.join(room);
+            //     socket.emit('created', room);
+            // if (numClients == 1) {
+            //     io.sockets.in(room).emit('join', room);
+            //     socket.join(room);
+            //     socket.emit('joined', room);
+            //   } else { // max two clients
+            //     socket.emit('full', room);
+            //   }
+
+            return cb({
+                code: "ERROR",
+                message: `Cannot join room ${config.room}. Game has already started.`
+            });
+
+        } else {
+            // console.log(games.getPlayerCount())
+            // if(existingGame.getPlayerCount <= 4){
+                //check username
+                console.log("adding player")
+                games.addPlayer( config.username, config.room, socket.id);
+                socket.join(config.room);
+                socket.emit(`${config.username} has joined the room`);
+                let game = games.getGameByRoom(config.room);
+                cb({
+                    code: "success",
+                    player: config.username, 
+                    score: 0 
+                });
+
+                io.to(game.host).emit("player-connected", { 
+                    name: config.username, 
+                    score: 0 
+                });
+                
+            // } else {
+            //     return cb({
+            //         code: "ERROR",
+            //         message: `Room: ${config.room} is full.`
+            //     });
+            // }
+        }
+           
+    })
+    
+    let gamePlayers; 
+    let roomNameVar; 
+    socket.on('game-players', (roomName, cb) => {
+        const data = games.getPlayerData(roomName)
+        console.log("Player data")
+        console.log(data)
+        gamePlayers = data
+        roomNameVar = roomName
+        // io.to(roomName).emit('data', data);
+
+        // socket.on('chat-message', (message) => {
+        //     const messageData = chatMessage(message, socket);
+        //     console.log(messageData);
+        io.in(roomName).emit(data);
+        // })
+
+        cb(
+            data
+        )
+
+    })
+
+    io.to(roomNameVar).emit('game-players');
+
+    socket.on('game-start', (roomName) => {
+        console.log("game started")
+
+        // cb(
+        //     {response: true}
+        // )
+        io.to(roomName).emit('game-start', true)
+    });
+    
+    // socket.broadcast.emit("game-players", gamePlayers);
+   
+    socket.on('get-questions',  (roomName, cb) => {
+        const data = games.getGame(roomName)
+        console.log(data);
+        cb(
+            data
+        )
+
+    })
+
+    // let scores = []
+
+    socket.on('score',  (config, cb) => {
+        console.log("SCORE RETALIATION")
+        //get data
+        // scores.push(config.score)
+        let scores =  games.addScore(config.room, config.username, config.score)
+        console.log(scores)
+        io.to(config.room).emit('score', scores)
+
+        cb({
+            code: "success",
+            scores: scores
+        })
+    });
+    
+         
+
+
+
+    // socket.emit('get-player-data', (roomID, cb) => {
+    //     //get room
+    //     //get score
+    //     let playerScore = games.getPlayerData(roomID);
+
+    //     cb({
+    //         code: "success",
+    //         score: playerScore
+    //     }); 
+    // })
 
     socket.on('disconnect', () => {
         socket.broadcast.emit("users", participantCount);

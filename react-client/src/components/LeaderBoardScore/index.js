@@ -1,11 +1,15 @@
 import React from 'react'; 
 
+
 const LeaderBoardScore = (props) => {
 
     return(
-    
-        <p>{props.score.player} : {props.score.score}</p>
+    <p role="leaderboardScore" className="leaderboard-score">
+        <span>{props.score.player}</span>
+        {/* <span> : </span>  */}
+        <span>{props.score.score}%</span>
         
+        </p>
     )
 }
 

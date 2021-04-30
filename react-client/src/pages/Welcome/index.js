@@ -3,10 +3,10 @@ import "./style.css";
 // import { Socket } from "socket.io-client";
 import { useHistory } from "react-router-dom";
 import logo from "../../../public/images/quizlogo.png";
-import {socket} from '../../socket/index.js';
+import { socket } from '../../socket/index.js';
 import * as actions from '../../actions/user';
-import {setHost, setPlayer, setID} from '../../actions/userType';
-import {useDispatch} from 'react-redux';
+import { setHost, setPlayer, setID } from '../../actions/userType';
+import { useDispatch } from 'react-redux';
 
 // const server = "http://localhost:3000";
 
@@ -15,42 +15,19 @@ const Welcome = () => {
     const dispatch = useDispatch()
     const history = useHistory();
 
-    const [playerCount, setPlayerCount] = useState(0); 
+    const [playerCount, setPlayerCount] = useState(0);
     const [usrInput, setUsrInput] = useState(undefined);
     const [room, setRoom] = useState(undefined);
     const [error, setError] = useState("");
     const [id, setLocalId] = useState("");
 
     useEffect(() => {
-        // socket.on("connect", () => {
-            
-        //     let actual = socket.id;
-        //     console.log(actual)
-        //     setLocalId(handleSetId)
-        //     console.log(id)
-        //     dispatch(setId);
-            
-        // });
-
+       
         socket.on('assign-id', id => dispatch(setID(id)))
         console.log(id)
-      
-        socket.on('users', users => setPlayerCount(users - 1))
-        // let test2; 
-        // const test = socket.on('users', users => setPlayerCount(users.length));
-        // // const test = socket.on('users', users => test2 = users);
-        // console.log(test)
-        // // console.log(test2)
-        // // setInterval(() => {
-        // //     playerCountFun
-        // // }, 1000);
-        // const interval = setInterval(() => {
-           
-        //     console.log(playerCount)
-        //     setPlayerCount(playerCount)
-        // }, 1000);
-       
-        // return () => clearInterval(interval)
+
+        socket.on('users', users => setPlayerCount(users))
+    
     }, []);
 
     const handleData = (users) => {
@@ -63,10 +40,12 @@ const Welcome = () => {
     };
 
     const handleInput = (e) => {
+        setError("")
         setUsrInput(e.target.value);
     };
 
     const handleRoomInput = (e) => {
+        setError("")
         setRoom(e.target.value);
     };
 
@@ -75,11 +54,11 @@ const Welcome = () => {
         const player = usrInput;
 
         if (player === undefined) {
-            alert("Don't be rude, introduce yourself!");
+            setError("Don't be rude, introduce yourself!")
         } else if (room === undefined) {
-            alert("You need to create room or give an existing name");
+            setError("You need to create room or give an existing name");
         } else {
-            // dispatch(actions.addUser(player));
+       
             socket.emit("check-room", room, (res) => {
 
                 console.log("socket response", res);
@@ -90,6 +69,7 @@ const Welcome = () => {
                     history.push("/home");
                 } else {
                     setRoom(undefined);
+                    console.warn(error);
                     setError(res.message);
                 }
             });
@@ -98,18 +78,36 @@ const Welcome = () => {
 
     const handleJoin = (e) => {
         e.preventDefault();
+        
         const player = usrInput;
         if (player === undefined) {
-            alert("Don't be rude, introduce yourself!");
-        } else {
-            // dispatch(actions.addUser(player));
-            dispatch(setPlayer(player));
-            socket.emit("pass-username", player);
-            history.push("/home");
+            setError("Don't be rude, introduce yourself!");
+        } else if (room === undefined) {
+            setError("You need to create room or give an existing name");
 
-            //push to lobby
+        } else {
+
+            const config = {
+                room: room,
+                username: player
+            }
+            socket.emit("join-room", config, (res) => {
+
+                console.log("socket response", res);
+
+                if (res.code === "success") {
+                    setRoom(room);
+
+
+                    dispatch(setPlayer(player, room));
+                    history.push("/lobby");
+                } else {
+                    setRoom(undefined);
+                    setError(res.message);
+                }
+            });
         }
-       
+
     };
 
     const renderJoin = () => {
@@ -118,10 +116,10 @@ const Welcome = () => {
         if (playerCount < 2) {
             tags = "disabled";
         }
-        
+
         return (
             <>
-                <input type="submit" className={tags} name="joinQuiz" value="Join" onClick={handleJoin}/>
+                <input type="submit" className={tags} name="joinQuiz" value="Join" onClick={handleJoin} />
             </>
         );
     };
@@ -129,6 +127,7 @@ const Welcome = () => {
 
     return (
         <div id="welcome">
+
         <img src={logo} alt="logo: Let's Get Quizzical" />
         <form autoComplete="off">
             <label htmlFor="username">Username</label>
@@ -160,11 +159,11 @@ const Welcome = () => {
             {renderJoin()}
         </form>
         <p>
-            {playerCount - 1 === 0
+            {playerCount <= 1
                 ? "No Players Online"
                 : `Total players online: ${playerCount - 1}`}
         </p>
-        {/* create conditional error state showing */}
+       {error &&  <p>{error}</p>}
         </div>
     );
 };
