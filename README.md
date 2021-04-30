@@ -69,6 +69,8 @@ To teardown docker compose completely:
 2. Create Figma design plan.  
 3. Deploy to Netlify and Heroku!  
 4. Set up files and folder structure for docker, react-client with redux, api, db for mongodb and test suites.    
+5. Connect API and Socket server to React-Client
+6. Connect mongoDB database to API
 
 # Bugs
 - [x] issues with routing with mongodb  
