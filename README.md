@@ -140,3 +140,7 @@ To teardown docker compose completely:
 ## Slide Deck
 
 https://www.canva.com/design/DAEcypURzgQ/hUwNi51yfXyb7-FrHAeP4Q/edit#1
+
+## Collaborators
+
+[@pearlhamilton](https://github.com/pearlhamilton), [@gretaivan](https://github.com/gretaivan), [@natbibi](https://github.com/natbibi), [@Sem-the-dev](https://github.com/sem-the-dev), [@roselynle](https://github.com/roselynle)
