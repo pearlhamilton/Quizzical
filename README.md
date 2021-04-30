@@ -1,6 +1,6 @@
 # Project: Let's Get Quizzical
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c3504deb-6376-4b64-abbb-4a4536f23868/deploy-status)](https://app.netlify.com/sites/letsgetquizzical/deploys)
+🦋  [![Netlify Status](https://api.netlify.com/api/v1/badges/c3504deb-6376-4b64-abbb-4a4536f23868/deploy-status)](https://app.netlify.com/sites/letsgetquizzical/deploys) 🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=quizzicalquiz&style=flat) ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 Lockdown has seen a spike in online quizzes and people have been deprived of the party experience. So with that in mind, we wanted to give people a platform to play multiplayer quizzes remotely, mordernise the typical pub quiz by having a neon party theme to bring the party feel to the user!
@@ -15,36 +15,36 @@ For each game, up to 4 players can play and the host of each game selects the ty
 
 Clone or download the repo and navigate to the root directory of this repo.
 
-To run the client, open the terminal:  
-`cd react-client`   
+To run the client, open the terminal:   
+`cd react-client`    
 `npm install`  
 `npm run dev`   
 
 It should automatically load on 0.0.0.0:8080
 
-To run client test suite:   
+To run client test suite:    
 `npm run tests` 
 
 ****
 
-To start the server and use docker compose for the api and database containers, open the terminal and run: 
+To start the server and use docker compose for the api and database containers, open the terminal and run:    
 `bash _scripts/startDev.sh`
 - starts api & db services
 - runs db migrations
 - seeds db for development
 - serves api on localhost:3000
 
-To run the server test suite:    
-`bash _scripts/startTest.sh` 
+To run the server test suite:     
+`bash _scripts/startTest.sh`  
 - starts api & db services
 - runs db migrations
 - attaches to api container and triggers full test run
 - no ports mapped to local host
 
-MongoDB shell   
-`bash _scripts/mongo.sh`    
+MongoDB shell     
+`bash _scripts/mongo.sh`     
 
-To teardown docker compose completely:    
+To teardown docker compose completely:      
 `bash _scripts/teardown.sh`  
 
 ## Technologies
@@ -114,6 +114,8 @@ To teardown docker compose completely:
 - Decoded answers from API
 - Successful mob programming sessions
 
+<img width="546" alt="Screenshot 2021-04-30 at 02 04 09" src="https://user-images.githubusercontent.com/58271566/116728429-ce5d0000-a9dd-11eb-848b-e2b70150af83.png">
+
 ### Challenges
 - Understanding and implementing socket.io
 - Testing with mongodb
@@ -123,9 +125,17 @@ To teardown docker compose completely:
 - Setting up multiplayer
 - React redux testing
 
+## Code Snippet
+
+<img width="500" alt="Screenshot 2021-04-30 at 18 00 45" src="https://user-images.githubusercontent.com/58271566/116728687-1f6cf400-a9de-11eb-9fc6-24fa0bfbc450.png">
+
 ## Future Features 
 - Login / user accounts with authentication   
 - High scores leaderboard for each difficulty  
 - Score to include time taken to complete quiz 
 - Sound effects
 - Full socket.io real time implementation
+
+## Slide Deck
+
+https://www.canva.com/design/DAEcypURzgQ/hUwNi51yfXyb7-FrHAeP4Q/edit#1
