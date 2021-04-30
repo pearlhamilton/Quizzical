@@ -1,8 +1,12 @@
 # Project: Let's Get Quizzical
 
+A online quiz game built in react with redux. A host can create a game with a unique ID which others can join (4 players in total). Users can choose how many questions, difficulty and the topic, fetching from OpenTrivia API. A winner is declared at the end of every game and scores are stored in a mongoDB database connected to Heroku. 
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c3504deb-6376-4b64-abbb-4a4536f23868/deploy-status)](https://app.netlify.com/sites/letsgetquizzical/deploys)
  
 # Description
+
+Let's Get Quizzical is...
 
 # Installation & usage
 
@@ -51,18 +55,14 @@ To teardown docker compose completely:
 - HTML, CSS, JavaScript
 
 ### Dependencies: 
-   - Server: 
+   - Server: cors, nodemon, socket.io, express, mongodb
    
-   
-   - Client: 
-   
+   - Client: axios, file-loader, react, router-dom, react-redux, react-router-dom, redux, redux-devtools-extensions, redux-thunk, socket.io-client
 
 ### DevDependencies:
-   - Server: 
+   - Server: jest, nodemon, supertest
    
-   
-   - Client: 
-  
+   - Client: babel, react-testing-library, jest
 
 # Process 
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board.
@@ -77,7 +77,10 @@ To teardown docker compose completely:
 - [x] answers are encoded 
 - [x] after submitting answer for final question in quiz, page will crash
 - [x] sends wrong quiz score to post
-- [ ] socket and client integration
+- [x] socket and client integration
+- [x] scores not showing as percentage
+- [ ] leaderboard not sorted by descending order
+- [ ] winner not displayed
 
 # Changelog
 
@@ -85,6 +88,7 @@ To teardown docker compose completely:
 1. Set up pages and components   
 2. Test suite!
 3. Use axios to set up GET request from OpenTrivia API, and POST score data to quizzical-quiz API   
+4. Implement socket.io client 
 
 ### API
 1. Set up server with routes, models and controllers
@@ -106,6 +110,7 @@ To teardown docker compose completely:
 - Amazing progress after Day 1 - socket connection establisted, routes working on API, react-redux set up!
 - Set up connection between api, db and client   
 - Responsive!
+- Successful mob programming sessions
 
 ### Challenges
 - Understanding and implementing socket.io
@@ -113,10 +118,11 @@ To teardown docker compose completely:
 - Deploying mongodb
 - Passing data around - may need to refactor code
 - Setting up multiplayer
+- React redux testing
 
 # Future Features 
 - Login / user accounts with authentication   
 - High scores leaderboard for each difficulty  
 - Score to include time taken to complete quiz 
 - Sound effects
-- Full socket io real time implementation
+- Full socket.io real time implementation
