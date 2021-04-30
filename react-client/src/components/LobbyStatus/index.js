@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { fetchQuiz } from "../../actions";
 import { socket } from '../../socket';
-
+import "./style.css"
 
 const LobbyStatus = ({host}) => {
     const history = useHistory();
@@ -91,7 +91,7 @@ console.log(ready)
 
     if (usertype === "HOST"){
         return (
-            <button onClick={handleClick}>Start Game</button> 
+            <button id="start-game" onClick={handleClick}>Start Game</button> 
             // onclick fetch questions and go to quiz page
             
         )
@@ -100,7 +100,7 @@ console.log(ready)
     else{
         return(
             <>
-        {ready ? <button onClick={join}>Play Now!</button> : <p>Waiting for host to start the game...</p>}
+        {ready ? <button id="play-now" onClick={join}>Play Now!</button> : <p>Waiting for host to start the game...</p>}
         
         <p>You will be answering 
             <span style={{ color: "pink" }}> {numberOfQs} </span> 
