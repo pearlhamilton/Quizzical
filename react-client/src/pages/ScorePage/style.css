@@ -9,6 +9,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -17,7 +18,7 @@
 #playerscore {
   color: whitesmoke;
   font-family: var(--content-text);
-  padding-top: 10rem;
+  /* padding-top: 10rem; */
   padding-left: 2rem;
   font-size: 1.8rem;
   /* display: flex;
