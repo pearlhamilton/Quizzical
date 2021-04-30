@@ -2,8 +2,8 @@
 import io from "socket.io-client";
 // import {setID} from '../actions/userType';
 // import {useDispatch} from 'react-redux';
-const serverEndpoint = "http://localhost:5001";
-// const serverEndpoint = "https://quizzicalquiz.herokuapp.com"
+// const serverEndpoint = "http://localhost:5001";
+const serverEndpoint = "https://socketio-quizzical.herokuapp.com/"
 
 // const [socket, setSocket] = useState(null);
 const socket = io(serverEndpoint);
