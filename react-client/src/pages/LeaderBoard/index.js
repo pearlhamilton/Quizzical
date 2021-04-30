@@ -14,7 +14,7 @@ function leaderBoard() {
     <div id="leaderboard-page">
       <h2>Leaderboard </h2>
       <LeaderBoardTable/>
-      <button onClick={handleClick}>Start Again</button>
+      <button id="start-again" onClick={handleClick}>Start Again</button>
 </div>
 
   );

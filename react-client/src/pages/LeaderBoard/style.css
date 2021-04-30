@@ -42,7 +42,19 @@ h2 {
   margin-left: 3rem;
 }
 
+#start-again{
+  padding: 0.5rem 1rem;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  color: #65c75e;
+  font-size: 1.1rem;
+}
 
+#start-again:hover {
+  background-color: #65c75e;
+  color: whitesmoke;
+  transition-duration: 0.3s;
+}
 @media screen and (max-width: 450px) {
   #leaderboard-page {
       background-image: url('../../images/home-mobile.jpg');
