@@ -116,6 +116,8 @@ To teardown docker compose completely:
 - Responsive!
 - Successful mob programming sessions
 
+<img width="546" alt="Screenshot 2021-04-30 at 02 04 09" src="https://user-images.githubusercontent.com/58271566/116728429-ce5d0000-a9dd-11eb-848b-e2b70150af83.png">
+
 ### Challenges
 - Understanding and implementing socket.io
 - Testing with mongodb
@@ -123,6 +125,10 @@ To teardown docker compose completely:
 - Passing data around - may need to refactor code
 - Setting up multiplayer
 - React redux testing
+
+# Code Snippet
+
+<img width="500" alt="Screenshot 2021-04-30 at 18 00 45" src="https://user-images.githubusercontent.com/58271566/116728687-1f6cf400-a9de-11eb-9fc6-24fa0bfbc450.png">
 
 # Future Features 
 - Login / user accounts with authentication   
