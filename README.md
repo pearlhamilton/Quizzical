@@ -7,7 +7,7 @@ Lockdown has seen a spike in online quizzes and people have been deprived of the
 
 Let's Get Quizzical is an online quiz game built in fullstack with react and redux on the client, Node.js and Express on the server and a mongoDB database. The game uses Socket.io to allow multiple users to play together, questions and answers are fetched from OpenTrivia API, and it is deployed on Netlify and Heroku.
 
-![](quizdemo.gif)
+![](quizzicaldemo.gif)
 
 ## How to play
 For each game, up to 4 players can play and the host of each game selects the type of quiz they want everyone to play (i.e the number of questions, category, and difficulty). Users are then able to join the game using a unique room name set by the host. Once users have joined the lobby, they can take it in turns to play and the winner is announced at the end of every game and all new and existing scores are then shown on the leaderboard. 
