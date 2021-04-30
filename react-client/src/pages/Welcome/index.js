@@ -145,7 +145,7 @@ const Welcome = () => {
                 type="text"
                 id="roomName"
                 name="roomName"
-                placeholder="Room name to create or join"
+                placeholder="Pick a room name (max 4 players)"
                 value={room}
                 onChange={handleRoomInput}
             />
