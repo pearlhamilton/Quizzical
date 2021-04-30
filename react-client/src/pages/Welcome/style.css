@@ -6,10 +6,11 @@
     --content: white;
 }
 
-#error {
-    font-family: var(--content-text);
+.error {
     position: absolute;
-    font-size: 13px;
+    width: 100%;
+    font-family: var(--heading-text);
+    color: #91f7fe;
 }
 
 #welcome{

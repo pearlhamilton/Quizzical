@@ -162,8 +162,9 @@ const Welcome = () => {
             {playerCount <= 1
                 ? "No Players Online"
                 : `Total players online: ${playerCount - 1}`}
+                 {error &&  <div className="error">{error}</div>}
         </p>
-       {error &&  <p>{error}</p>}
+      
         </div>
     );
 };
